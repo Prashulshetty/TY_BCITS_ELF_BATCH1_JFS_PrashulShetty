@@ -1,0 +1,432 @@
+19/12/2019
+
+
+mysql> create database practice;
+Query OK, 1 row affected (0.05 sec)
+
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| bcits              |
+| mysql              |
+| performance_schema |
+| practice           |
+| sys                |
++--------------------+
+6 rows in set (0.08 sec)
+
+mysql> use practice;
+Database changed
+
+mysql> create table student
+    -> (id int(3) not null unique primary key,
+    -> name varchar(100) not null,
+    -> marks double not null,
+    -> mobile int(10) not null,
+    -> email varchar(150) not null
+    -> );
+Query OK, 0 rows affected (0.31 sec)
+
+ insert into student
+    -> values(10,'prashul',66.3,990134897,'prashul@gmail.com');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into student
+    -> values(20,'dev',76,995348957,'dev@gmail.com');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into student
+    -> values(30,'shetty',66,991148957,'shetty@gmail.com');
+Query OK, 1 row affected (0.36 sec)
+
+mysql> insert into student
+    -> values(40,'ashin',69,999134897,'ashin@gmail.com');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into student
+    -> values(50,'shul',46,995348957,'shul@gmail.com');
+Query OK, 1 row affected (0.08 sec)
+
+
+
+mysql> select * from student;
++----+---------+-------+-----------+-------------------+
+| id | name    | marks | mobile    | email             |
++----+---------+-------+-----------+-------------------+
+| 10 | prashul |  66.3 | 990134897 | prashul@gmail.com |
+| 20 | dev     |    76 | 995348957 | dev@gmail.com     |
+| 30 | shetty  |    66 | 991148957 | shetty@gmail.com  |
+| 40 | ashin   |    69 | 999134897 | ashin@gmail.com   |
+| 50 | shul    |    46 | 995348957 | shul@gmail.com    |
++----+---------+-------+-----------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> delete from student
+    -> ;
+Query OK, 5 rows affected (0.11 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+
+mysql> insert into student
+    -> values(40,'ashin',69,999134897,'ashin@gmail.com');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into student
+    -> values(30,'shetty',66,991148957,'shetty@gmail.com');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into student
+    -> values(20,'dev',76,995348957,'dev@gmail.com');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into student
+    -> values(10,'prashul',66.3,990134897,'prashul@gmail.com');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from student;
++----+---------+-------+-----------+-------------------+
+| id | name    | marks | mobile    | email             |
++----+---------+-------+-----------+-------------------+
+| 10 | prashul |  66.3 | 990134897 | prashul@gmail.com |
+| 20 | dev     |    76 | 995348957 | dev@gmail.com     |
+| 30 | shetty  |    66 | 991148957 | shetty@gmail.com  |
+| 40 | ashin   |    69 | 999134897 | ashin@gmail.com   |
++----+---------+-------+-----------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> update student
+    -> set id = 50
+    -> where id = 40;
+Query OK, 1 row affected (0.16 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++----+---------+-------+-----------+-------------------+
+| id | name    | marks | mobile    | email             |
++----+---------+-------+-----------+-------------------+
+| 10 | prashul |  66.3 | 990134897 | prashul@gmail.com |
+| 20 | dev     |    76 | 995348957 | dev@gmail.com     |
+| 30 | shetty  |    66 | 991148957 | shetty@gmail.com  |
+| 50 | ashin   |    69 | 999134897 | ashin@gmail.com   |
++----+---------+-------+-----------+-------------------+
+4 rows in set (0.00 sec)
+ alter table student1
+    -> drop column marks;
+
+
+mysql> select * from student1;
++----+-------+-----------+----------------+
+| id | name  | mobile    | email          |
++----+-------+-----------+----------------+
+| 30 | shhh  | 901348957 | sh@gmail.com   |
+| 40 | shu1l | 901348957 | sh@gmail.com   |
+| 50 | shul  | 950134957 | shul@gmail.com |
++----+-------+-----------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> desc student1;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| id     | int(3)       | NO   | PRI | NULL    |       |
+| name   | varchar(100) | NO   |     | NULL    |       |
+| mobile | int(10)      | NO   |     | NULL    |       |
+| email  | varchar(150) | NO   |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+mysql> create database newdata;
+Query OK, 1 row affected (0.01 sec)
+
+create table newtable
+    -> (id int not null,
+    -> name varchar(20)
+    -> );
+Query OK, 0 rows affected (0.54 sec)
+
+mysql> truncate table newtable;
+Query OK, 0 rows affected (0.47 sec)
+
+
+mysql> drop database newdata;
+Query OK, 0 rows affected (0.30 sec)
+
+
+mysql> select * from student1;
++-------+-------+-----------+----------------+
+| idnew | name  | mobile    | email          |
++-------+-------+-----------+----------------+
+|    30 | shhh  | 901348957 | sh@gmail.com   |
+|    40 | shu1l | 901348957 | sh@gmail.com   |
+|    50 | shul  | 950134957 | shul@gmail.com |
++-------+-------+-----------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> rename table student1 to student2;
+Query OK, 0 rows affected (0.45 sec)
+
+mysql>  show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| bcits              |
+| mysql              |
+| performance_schema |
+| practice           |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use practice;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_practice |
++--------------------+
+| newtable           |
+| student            |
+| student2           |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> use practice;
+Database changed
+mysql> create table dept
+    -> (deptid int not null unique,
+    -> deptname varchar(20) not null
+    -> );
+Query OK, 0 rows affected (0.36 sec)
+
+mysql> desc dept;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deptid   | int(11)     | NO   | PRI | NULL    |       |
+| deptname | varchar(20) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+mysql> desc dept;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deptid   | int(11)     | NO   | PRI | NULL    |       |
+| deptname | varchar(20) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into dept
+    -> values(10,'shul');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into dept
+    -> values(20,'prashul');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into dept
+    -> values(30,'shetty');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into dept
+    -> values(40,'shetty1');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from dept;
++--------+----------+
+| deptid | deptname |
++--------+----------+
+|     10 | shul     |
+|     20 | prashul  |
+|     30 | shetty   |
+|     40 | shetty1  |
++--------+----------+
+4 rows in set (0.00 sec)
+
+
+mysql> alter table dept
+    -> add location varchar(20);
+Query OK, 0 rows affected (0.58 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc dept;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deptid   | int(11)     | NO   | PRI | NULL    |       |
+| deptname | varchar(20) | NO   |     | NULL    |       |
+| location | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> update dept
+    -> set location ='a'
+    -> where deptid = 10;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update dept
+    -> set location ='b'
+    -> where deptid = 20;
+Query OK, 1 row affected (0.36 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update dept
+    -> set location ='c'
+    -> where deptid = 30;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update dept
+    -> set location ='d'
+    -> where deptid = 40;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> select * from dept;
++--------+----------+----------+
+| deptid | deptname | location |
++--------+----------+----------+
+|     10 | shul     | a        |
+|     20 | prashul  | b        |
+|     30 | shetty   | c        |
+|     40 | shetty1  | d        |
++--------+----------+----------+
+4 rows in set (0.00 sec)
+
+vmysql> select  30 +20;
++--------+
+| 30 +20 |
++--------+
+|     50 |
++--------+
+1 row in set (0.06 sec)
+
+mysql> update dept
+    -> set location = 'z'
+    -> where deptid = 40 ;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from dept;
++--------+----------+----------+
+| deptid | deptname | location |
++--------+----------+----------+
+|     10 | shul     | a        |
+|     20 | prashul  | b        |
+|     30 | shetty   | c        |
+|     40 | dev      | z        |
++--------+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> update dept
+    -> set location = 'a'
+    -> where deptid = 40 ;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from dept;
++--------+----------+----------+
+| deptid | deptname | location |
++--------+----------+----------+
+|     10 | shul     | a        |
+|     20 | prashul  | b        |
+|     30 | shetty   | c        |
+|     40 | dev      | a        |
++--------+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select distinct location from dept;
++----------+
+| location |
++----------+
+| a        |
+| b        |
+| c        |
++----------+
+3 rows in set (0.06 sec)
+
+
+mysql> select distinct location,deptname  from dept;
++----------+----------+
+| location | deptname |
++----------+----------+
+| a        | shul     |
+| b        | prashul  |
+| c        | shetty   |
+| a        | dev      |
++----------+----------+
+4 rows in set (0.00 sec)
+
+mysql>
+
+mysql> select distinct location,deptname  from dept;
++----------+----------+
+| location | deptname |
++----------+----------+
+| a        | shul     |
+| b        | prashul  |
+| c        | shetty   |
++----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select location loc from dept dept1;
++------+
+| loc  |
++------+
+| a    |
+| b    |
+| c    |
+| a    |
++------+
+4 rows in set (0.00 sec)
+mysql>
+mysql> select * from dept;
++--------+----------+----------+
+| deptid | deptname | location |
++--------+----------+----------+
+|     10 | shul     | a        |
+|     20 | prashul  | b        |
+|     30 | shetty   | c        |
+|     40 | shul     | a        |
++--------+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select 4 + 6;
++-------+
+| 4 + 6 |
++-------+
+|    10 |
++-------+
+1 row in set (0.00 sec)
+
+from dept' at line 3
+mysql> select deptid+10
+    -> from dept;
++-----------+
+| deptid+10 |
++-----------+
+|        20 |
+|        30 |
+|        40 |
+|        50 |
++-----------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> select * from dept where deptid >20 and location ='a';
++--------+----------+----------+
+| deptid | deptname | location |
++--------+----------+----------+
+|     40 | shul     | a        |
++--------+----------+----------+
+1 row in set (0.03 sec)
