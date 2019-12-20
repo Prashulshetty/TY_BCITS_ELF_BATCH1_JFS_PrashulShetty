@@ -30,33 +30,16 @@ public static void selectionSortduration(int[] a) {
 }
 
 public static void MergeSortduration(int[] a) {
-	int f=0;
-	int l=a.length-1;
 	Instant s = Instant.now();
-	int b[] =MergeSort.sort(a,f,l);
+	int b[] =MergeSort.sort;
 	ArrayDisplay.display(b);
 	Instant e = Instant.now();
 	Long duration =Duration.between(s,e).toMillis();
 	double seconds = duration /1000.0 ;
 	System.out.println();
-	System.out.println("mergeSort took " +seconds +" seconds");
+	System.out.println("selectionSort took " +seconds +" seconds");
 	System.out.println();
 }
-
-public static void QuickSortduration(int[] a) {
-	int f=0;
-	int l=a.length-1;
-	Instant s = Instant.now();
-	int b[] =QuickSort.Qsort(a,f,l);
-	ArrayDisplay.display(b);
-	Instant e = Instant.now();
-	Long duration =Duration.between(s,e).toMillis();
-	double seconds = duration /1000.0 ;
-	System.out.println();
-	System.out.println("mergeSort took " +seconds +" seconds");
-	System.out.println();
-}
-
 
   public static void Reversearrayduration(int[] a) {
 		Instant s = Instant.now();

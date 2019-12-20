@@ -13,8 +13,6 @@ public class SortMain {
 		Durations.Reversearrayduration(a);
 		Durations.bubbleSortduration(a);
 		Durations.selectionSortduration(a);
-		Durations.MergeSortduration(a);
-		Durations.QuickSortduration(a);
 	}
 
 }

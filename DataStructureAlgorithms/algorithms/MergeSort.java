@@ -2,7 +2,7 @@ package com.ty.bcits.algorithms;
 
 public class MergeSort { 
  
-public static int[] merge(int arr[], int beg, int mid, int end)  
+	void merge(int arr[], int beg, int mid, int end)  
 	{  
 	  
 	int l = mid - beg + 1;  
@@ -46,19 +46,18 @@ public static int[] merge(int arr[], int beg, int mid, int end)
 	arr[k] = RightArray[j];  
 	j++;  
 	k++;  
-	} 
-	return arr;
+	}  
 	}  
 	  
-	public static  int[]  sort(int a[],int f,int l)  
+	public void sort(int a[])  
 	{  
-	
+	int f=0;
+	int l=a.length-1;
 	if (f<l) {  
 	int mid = (f+l)/2;  
-	sort(a, f, mid);  
-	sort(a , mid+1, l);  
+	//sort(a, f, mid);  
+	//sort(a , mid+1, l);*/  
 	merge(a, f, mid, l);  
 	}
-	return a;
 	}
 }
