@@ -603,7 +603,7 @@ mysql> select * from employee_info;
 11 rows in set (0.00 sec)
 
 
-9)
+9)WAQTD all record of emp excluding whose salary range 50000,70000.
 
 mysql> select *
     ->  from employee_info
@@ -626,12 +626,14 @@ mysql> select *
 11 rows in set (0.00 sec)
 
 
-10)
+10)WAQTD all record of emp  whose salary  is null.
+
 mysql> select *
     ->  from employee_info
     -> where salary is null;
 Empty set (0.05 sec)
-11)
+11)WAQTD all record of emp  whose deptidis null.
+
 mysql> select *
     ->  from employee_info
     -> where deptid is null;
@@ -643,7 +645,8 @@ mysql> select *
 1 row in set (0.00 sec)
 
 
-13)
+13)WAQTD all record of emp  excluding whose salary  is null.
+
 mysql> select *
     ->  from employee_info
     -> where salary is not null;
@@ -664,7 +667,8 @@ mysql> select *
 +-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
 11 rows in set (0.00 sec)
 
-14)
+14)WAQTD all records where name starts with s
+
 mysql> select *
     ->  from employee_info
     -> where name like 'S%';
@@ -674,6 +678,9 @@ mysql> select *
 |  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |   22 |
 +-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
 1 row in set (0.06 sec)
+
+15)WAQTD name,salary where name contains one l.
+
 mysql> select name,emaiid
     ->  from employee_info
     -> where name like '%l%';
@@ -686,7 +693,7 @@ mysql> select name,emaiid
 2 rows in set (0.00 sec)
 
 
-17)
+17)WAQTD all records where name secon letter should be P.
 mysql> select name,emaiid
     ->  from employee_info
     -> where name like '_p%';
@@ -694,7 +701,7 @@ Empty set (0.00 sec)
 
 
 
-18)
+18)WAQTD all records who is having max  3 characters.
 mysql> select name,emaiid
     ->  from employee_info
     -> where name like '___';
@@ -704,6 +711,9 @@ mysql> select name,emaiid
 | dev  | dev@gmail.com |
 +------+---------------+
 1 row in set (0.00 sec)
+
+
+)WAQTD all records who is having minimum characters.
 
 mysql> select name,emaiid
     ->  from employee_info
@@ -726,7 +736,7 @@ mysql> select name,emaiid
 11 rows in set (0.00 sec)
 
 
-
+WAQTD all records who is emailid is having .com.
 
 
 mysql> select *
