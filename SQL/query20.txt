@@ -1,0 +1,981 @@
+20/12/2019 
+
+mysql> create table employee_info
+    -> (eid int(5) not null unique primary key,
+    -> name varchar(150) ,
+    -> mobile long ,
+    -> emaiid varchar(150),
+    -> dob date,
+    -> designation varchar(150),
+    -> salary double,
+    -> deptid int(5),
+    -> doj date,
+    -> bloodgroup varchar(150),
+    -> gender varchar(150)
+    -> );
+Query OK, 0 rows affected (0.27 sec)
+
+mysql> desc employee_info;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| eid         | int(5)       | NO   | PRI | NULL    |       |
+| name        | varchar(150) | YES  |     | NULL    |       |
+| mobile      | mediumtext   | YES  |     | NULL    |       |
+| emaiid      | varchar(150) | YES  |     | NULL    |       |
+| dob         | date         | YES  |     | NULL    |       |
+| designation | varchar(150) | YES  |     | NULL    |       |
+| salary      | double       | YES  |     | NULL    |       |
+| deptid      | int(5)       | YES  |     | NULL    |       |
+| doj         | date         | YES  |     | NULL    |       |
+| bloodgroup  | varchar(150) | YES  |     | NULL    |       |
+| gender      | varchar(150) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql>
+
+
+
+
+
+mysql> create table employee_info
+    -> (eid int(5) not null unique primary key,
+    -> name varchar(150) ,
+    -> mobile long ,
+    -> emaiid varchar(150),
+    -> dob date,
+    -> designation varchar(150),
+    -> salary double,
+    -> deptid int(5),
+    -> doj date,
+    -> bloodgroup varchar(150),
+    -> gender varchar(150)
+    -> );
+Query OK, 0 rows affected (0.27 sec)
+
+mysql> desc employee_info;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| eid         | int(5)       | NO   | PRI | NULL    |       |
+| name        | varchar(150) | YES  |     | NULL    |       |
+| mobile      | mediumtext   | YES  |     | NULL    |       |
+| emaiid      | varchar(150) | YES  |     | NULL    |       |
+| dob         | date         | YES  |     | NULL    |       |
+| designation | varchar(150) | YES  |     | NULL    |       |
+| salary      | double       | YES  |     | NULL    |       |
+| deptid      | int(5)       | YES  |     | NULL    |       |
+| doj         | date         | YES  |     | NULL    |       |
+| bloodgroup  | varchar(150) | YES  |     | NULL    |       |
+| gender      | varchar(150) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> insert into employee_info
+    -> values(10,'prashul',9901348957,'prashul@gmail.com','2000-01-01','develper',20000,10,'2019-02-01','o+','m');
+Query OK, 1 row affected (0.34 sec)
+
+mysql> insert into employee_info
+    -> values(20,'dev',9901348967,'dev@gmail.com','2000-01-02','develper',21000,10,'2019-02-02','o-','m');
+Query OK, 1 row affected (0.34 sec)
+
+mysql> insert into employee_info
+    -> values(30,'ashin',9801348967,'ashin@gmail.com','2000-01-02','develper',21000,10,'2019-02-02','o-','m');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into employee_info
+    -> values(40,'dinesh',9901348967,'dinesh@gmail.com','2010-21-02','develper',25000,10,'2018-02-02','a+','m');
+ERROR 1292 (22007): Incorrect date value: '2010-21-02' for column 'dob' at row 1
+mysql> insert into employee_info
+    -> values(40,'dinesh',9901348967,'dinesh@gmail.com','2010-01-22','develper',25000,10,'2018-02-02','a+','m');
+Query OK, 1 row affected (0.35 sec)
+
+mysql> insert into employee_info
+    -> values(50,'chaitra',9001348967,'chaitra@gmail.com','2001-01-22','tester',30000,20,'2018-01-02','a-','f');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into employee_info
+    -> values(60,'bhavya',9001358967,'bavya@gmail.com','1998-01-22','analyst',40000,20,'2019-01-02','o+','f');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into employee_info
+    -> values(70,'shwetha',9001358767,'shwetha@gmail.com','1995-01-22','hr',45000,30,'2019-01-10','o-','f');
+Query OK, 1 row affected (0.35 sec)
+
+mysql> insert into employee_info
+    -> values(80,'bhumika',9001358567,'bhumika@gmail.com','1996-01-22','manager',27000,40,'2019-01-20','o-','f');
+Query OK, 1 row affected (0.12 sec)
+
+mysql>
+mysql> insert into employee_info
+    -> values(90,'dinga',9001358227,'dinga@gmail.com','1999-07-22','clerk',17000,10,'2019-01-20','o-','m');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into employee_info
+    -> values(100,'dingi',9001353337,'dingi@gmail.com','2000-07-22','clerk',17000,10,'2019-05-20','b-','m');
+Query OK, 1 row affected (0.35 sec)
+
+mysql> select * from employee_info;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9901348967 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9801348967 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9901348967 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | m      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> update employee_info
+    -> set mobile =9922933884
+    -> where eid =20;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_info
+    -> set mobile =9922933888
+    -> where eid =30;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_info
+    -> set mobile =9922933800
+    -> where eid =20;
+Query OK, 1 row affected (0.36 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+ create table employee_info
+    -> (eid int(5) not null unique primary key,
+    -> name varchar(150) ,
+    -> mobile long ,
+    -> emaiid varchar(150),
+    -> dob date,
+    -> designation varchar(150),
+    -> salary double,
+    -> deptid int(5),
+    -> doj date,
+    -> bloodgroup varchar(150),
+    -> gender varchar(150)
+    -> );
+
+
+mysql> insert into employee_info
+    -> values(10,'prashul',9901348957,'prashul@gmail.com','2000-01-01','develper',20000,10,'2019-02-01','o+','m');
+Query OK, 1 row affected (0.34 sec)
+
+mysql> insert into employee_info
+    -> values(20,'dev',9901348967,'dev@gmail.com','2000-01-02','develper',21000,10,'2019-02-02','o-','m');
+Query OK, 1 row affected (0.34 sec)
+
+mysql> insert into employee_info
+    -> values(30,'ashin',9801348967,'ashin@gmail.com','2000-01-02','develper',21000,10,'2019-02-02','o-','m');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into employee_info
+    -> values(40,'dinesh',9901348967,'dinesh@gmail.com','2010-21-02','develper',25000,10,'2018-02-02','a+','m');
+ERROR 1292 (22007): Incorrect date value: '2010-21-02' for column 'dob' at row 1
+mysql> insert into employee_info
+    -> values(40,'dinesh',9901348967,'dinesh@gmail.com','2010-01-22','develper',25000,10,'2018-02-02','a+','m');
+Query OK, 1 row affected (0.35 sec)
+
+mysql> insert into employee_info
+    -> values(50,'chaitra',9001348967,'chaitra@gmail.com','2001-01-22','tester',30000,20,'2018-01-02','a-','f');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into employee_info
+    -> values(60,'bhavya',9001358967,'bavya@gmail.com','1998-01-22','analyst',40000,20,'2019-01-02','o+','f');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into employee_info
+    -> values(70,'shwetha',9001358767,'shwetha@gmail.com','1995-01-22','hr',45000,30,'2019-01-10','o-','f');
+Query OK, 1 row affected (0.35 sec)
+
+mysql> insert into employee_info
+    -> values(80,'bhumika',9001358567,'bhumika@gmail.com','1996-01-22','manager',27000,40,'2019-01-20','o-','f');
+Query OK, 1 row affected (0.12 sec)
+
+mysql>
+mysql> insert into employee_info
+    -> values(90,'dinga',9001358227,'dinga@gmail.com','1999-07-22','clerk',17000,10,'2019-01-20','o-','m');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into employee_info
+    -> values(100,'dingi',9001353337,'dingi@gmail.com','2000-07-22','clerk',17000,10,'2019-05-20','b-','m');
+Query OK, 1 row affected (0.35 sec)
+
+
+mysql> select * from employee_info;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employee_info where salary >2000 and eid >50;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+5 rows in set (0.07 sec)
+
+
+20/12/2019
+mysql> select * from employee_info where salary >2000 or  eid >50;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employee_info where not  eid >50;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+5 rows in set (0.00 sec)
+
+1)WAQTD unique deptid from employee_info table. 
+
+mysql> select distinct deptid from employee_info;
++--------+
+| deptid |
++--------+
+|     10 |
+|     20 |
+|     30 |
+|     40 |
++--------+     
+
+2)WAQTD unique deptid and job designation from employee_info table.    
+
+mysql> select distinct deptid ,designation  from employee_info;
++--------+-------------+
+| deptid | designation |
++--------+-------------+
+|     10 | develper    |
+|     20 | tester      |
+|     20 | analyst     |
+|     30 | hr          |
+|     40 | manager     |
+|     10 | clerk       |
++--------+-------------+
+6 rows in set (0.00 sec)
+
+3)WAQTD all the records  from employee_info table whose is working as a developer.
+
+
+mysql> select *  from employee_info where designation = 'develper';
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+4 rows in set (0.00 sec)
+
+
+3)WAQTD name and mobile  from employee_info table where salary greater than 15000.
+
+mysql> select name,mobile from employee_info where salary > 15000;
++---------+------------+
+| name    | mobile     |
++---------+------------+
+| prashul | 9901348957 |
+| dev     | 9922933800 |
+| ashin   | 9922933888 |
+| dinesh  | 9922900000 |
+| chaitra | 9001348967 |
+| bhavya  | 9001358967 |
+| shwetha | 9001358767 |
+| bhumika | 9001358567 |
+| dinga   | 9001358227 |
+| dingi   | 9001353337 |
++---------+------------+
+10 rows in set (0.00 sec)
+
+4)WAQTD name and mobile  from employee_info table where salary greater than 15000.
+
+mysql> select name,mobile,salary  from employee_info where salary > 15000;
++---------+------------+--------+
+| name    | mobile     | salary |
++---------+------------+--------+
+| prashul | 9901348957 |  20000 |
+| dev     | 9922933800 |  21000 |
+| ashin   | 9922933888 |  21000 |
+| dinesh  | 9922900000 |  25000 |
+| chaitra | 9001348967 |  30000 |
+| bhavya  | 9001358967 |  40000 |
+| shwetha | 9001358767 |  45000 |
+| bhumika | 9001358567 |  27000 |
+| dinga   | 9001358227 |  17000 |
+| dingi   | 9001353337 |  17000 |
++---------+------------+--------+
+10 rows in set (0.00 sec)
+
+
+5)WAQTD all employee details from employee_info table where salary less than or equals 25000.
+
+mysql> select * from employee_info where salary <= 25000;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+6 rows in set (0.00 sec)
+
+
+6)WAQTD all employee details from employee_info table except whose is working as a tester.
+
+mysql> select * from employee_info where designation <> 'tester';
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+9 rows in set (0.00 sec)
+
+
+
+7)WAQTD incremented salary from employee_info table by 5000.
+
+mysql> select salary+5000
+    -> from employee_info;
++-------------+
+| salary+5000 |
++-------------+
+|       25000 |
+|       26000 |
+|       26000 |
+|       30000 |
+|       35000 |
+|       45000 |
+|       50000 |
+|       32000 |
+|       22000 |
+|       22000 |
++-------------+
+10 rows in set (0.00 sec)
+
+7)WAQTD incremented salary from employee_info table by 5000 using alias name.
+
+mysql> select salary+5000 incremented
+    -> from employee_info;
++-------------+
+| incremented |
++-------------+
+|       25000 |
+|       26000 |
+|       26000 |
+|       30000 |
+|       35000 |
+|       45000 |
+|       50000 |
+|       32000 |
+|       22000 |
+|       22000 |
++-------------+
+10 rows in set (0.00 sec)
+
+8)WAQTD anual salary from employee_info table.
+
+mysql> select (salary+5000) *12  incremented
+    -> from employee_info;
++-------------+
+| incremented |
++-------------+
+|      300000 |
+|      312000 |
+|      312000 |
+|      360000 |
+|      420000 |
+|      540000 |
+|      600000 |
+|      384000 |
+|      264000 |
+|      264000 |
++-------------+
+10 rows in set (0.05 sec)
+
+9)WAQ TO DISPLAY ALL THE RECORD OF A EMPLOYEE WHO IS WORKING AS SOFTWARE DEVELOPER IN DEPTNO 10
+
+mysql> select *
+    -> from employee_info
+    -> where designation ='develper' and deptid=10;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+4 rows in set (0.00 sec)
+
+
+10)WAQ TO DISPLAY WHOSE JOB DESIGNATION IS TESTER AND HIRED AFTER 2015
+mysql> select *
+    -> from employee_info
+    -> where designation ='tester' and  doj > '2015-12-31';
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+
+11)WAQ TO DISPLAY MANAGER WHOSE IS WORKING IN DEPTNO 30 IF SAL>25000
+mysql> select *
+    -> from employee_info
+    -> where designation ='manager' and deptid=30
+    -> and salary >25000;
+Empty set (0.00 sec)
+
+
+11)WAQ TO DISPLAY ALL THE RECORD OF THE EMPLOYEE WHO IS WORKING IN DEPTNO 20 OR WHOSE JOB DESIG IS HR
+
+mysql> select *
+    -> from employee_info
+    -> where designation ='hr' or  deptid = 20;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+3 rows in set (0.00 sec)s
+
+
+12)WAQ TO DISPLAY ALL THE EMPLOYEE RECORDS WHOSE DOB<1995 AND BLOODGRP CAN BE O+
+mysql> select *
+    -> from employee_info
+    -> where bloodgroup ='o+' or  dob < '1995-01-01';
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+2 rows in set (0.00 sec)
+
+
+
+13)WAQ TO DISPLAY ALL THE RECORD OF A EMPLOYEE WHO ARE NOT WORKING IN DEPTNO 10,20,30
+mysql> select *
+    -> from employee_info
+    -> where deptid not in (10,20,30);
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+1 row in set (0.07 sec)
+
+
+
+mysql> select *
+    -> from employee_info
+    -> where not (designation ='tester' and  deptid =40);
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+10 rows in set (0.00 sec)
+
+
+mysql> select *
+    -> from employee_info
+    -> where not (deptid =10 or deptid =20 or deptid=30);
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+
+
+special operators
+
+
+
+
+mysql> select *
+    -> from employee_info
+    -> where  eid in (10,20,30);
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+3 rows in set (0.00 sec)
+
+
+mysql> select *
+    -> from employee_info
+    -> where  eid not in (10,20,30);
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+7 rows in set (0.00 sec)
+
+
+mysql> select *
+    -> from employee_info
+    -> where  deptid  in (10,20,30);
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+9 rows in set (0.00 sec)
+
+mysql> select *
+    -> from employee_info
+    -> where  deptid not  in (10,20,30);
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select *
+    -> from employee_info
+    -> where  salary between 20000 and 30000;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+6 rows in set (0.05 sec)
+
+mysql> select *
+    -> from employee_info
+    -> where  salary not between 20000 and 30000;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobile     | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+4 rows in set (0.00 sec)
+
+
+------------------------------------------------------------------------------------
+
+
+
+
+mysql> select * from employee_info;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
+| 110 | rahul   | 9992223331 | NULL              | NULL       | NULL        |  25000 |   NULL | NULL       | NULL       | NULL   |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+11 rows in set (0.00 sec)
+
+
+1) WAQTD all the details of employee who is working in deptid 20,30,40
+
+mysql> select * from employee_info where deptid in (20,30,10);
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+9 rows in set (0.00 sec)
+                                   
+
+
+2) WAQTD all the details of employee who is working as clerk ,salesman,develper,tester
+
+mysql> select *
+    -> from employee_info
+    -> where designation in('clerk','salesman','develper','tester');
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+7 rows in set (0.01 sec)        
+
+
+
+3) WAQTD all the details of employee who is working as clerk,hr ,salesman,develper,tester deptid 10,30,40 and salary>15000 
+
+mysql> select *
+    -> from employee_info
+    -> where designation in('clerk','salesman','develper','tester','hr')
+    -> and deptid in(10,30,40)
+    -> and salary>15000;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+7 rows in set (0.00 sec)   
+
+
+4) WAQTD all the details of employee excluding hr ,tester
+mysql> select *
+    -> from employee_info
+    -> where designation not in('hr','tester');
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+8 rows in set (0.00 sec)
+
+5)WAQTD all the details of employee deptid 20,30 excluding hr ,tester,analyst 
+
+mysql> select *
+    -> from employee_info
+    -> where deptid in (20,30)
+    -> and designation not in ('analyst','tester','hr');
+Empty set (0.00 sec)
+            
+
+
+6)WAQTD all the details of employee dept
+mysql> select *
+    -> from employee_info
+    -> where salary between 20000 and 25000;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |
+| 110 | rahul   | 9992223331 | NULL              | NULL       | NULL        |  25000 |   NULL | NULL       | NULL       | NULL   |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+
+5 rows in set (0.00 sec)
+
+
+
+
+mysql> select *
+    ->  from employee_info
+    -> where age between 20 and 30;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender | age  |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |   20 |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |   25 |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |   22 |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |   25 |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |   22 |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |   22 |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |   25 |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |   25 |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+10 rows in set (0.00 sec)
+
+8)Waqtd all records doj during 2015
+
+mysql> select *
+    -> from employee_info
+    -> where doj between 2015-01-01 and 2015-12-31;
+Empty set, 2 warnings (0.07 sec)
+
+mysql> select * from employee_info;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender | age  |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |   20 |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |   22 |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |   22 |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |   22 |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |   22 |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |   22 |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |   22 |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |   22 |
+| 110 | rahul   | 9992223331 | NULL              | NULL       | NULL        |  25000 |   NULL | NULL       | NULL       | NULL   | NULL |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+11 rows in set (0.00 sec)
+
+
+9)
+
+mysql> select *
+    ->  from employee_info
+    -> where salary not between 500000 and 70000;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender | age  |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |   20 |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |   25 |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |   22 |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |   25 |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |   22 |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |   22 |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |   25 |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |   25 |
+| 110 | rahul   | 9992223331 | NULL              | NULL       | NULL        |  25000 |   NULL | NULL       | NULL       | NULL   | NULL |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+11 rows in set (0.00 sec)
+
+
+10)
+mysql> select *
+    ->  from employee_info
+    -> where salary is null;
+Empty set (0.05 sec)
+11)
+mysql> select *
+    ->  from employee_info
+    -> where deptid is null;
++-----+-------+------------+--------+------+-------------+--------+--------+------+------------+--------+------+
+| eid | name  | mobileno   | emaiid | dob  | designation | salary | deptid | doj  | bloodgroup | gender | age  |
++-----+-------+------------+--------+------+-------------+--------+--------+------+------------+--------+------+
+| 110 | rahul | 9992223331 | NULL   | NULL | NULL        |  25000 |   NULL | NULL | NULL       | NULL   | NULL 
++-----+-------+------------+--------+------+-------------+--------+--------+------+------------+--------+------+
+1 row in set (0.00 sec)
+
+
+13)
+mysql> select *
+    ->  from employee_info
+    -> where salary is not null;
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender | age  |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |   20 |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |   25 |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |   22 |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |   25 |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |   22 |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |   22 |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |   25 |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |   25 |
+| 110 | rahul   | 9992223331 | NULL              | NULL       | NULL        |  25000 |   NULL | NULL       | NULL       | NULL   | NULL |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+11 rows in set (0.00 sec)
+
+14)
+mysql> select *
+    ->  from employee_info
+    -> where name like 'S%';
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender | age  |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |   22 |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+1 row in set (0.06 sec)
+mysql> select name,emaiid
+    ->  from employee_info
+    -> where name like '%l%';
++---------+-------------------+
+| name    | emaiid            |
++---------+-------------------+
+| prashul | prashul@gmail.com |
+| rahul   | NULL              |
++---------+-------------------+
+2 rows in set (0.00 sec)
+
+
+17)
+mysql> select name,emaiid
+    ->  from employee_info
+    -> where name like '_p%';
+Empty set (0.00 sec)
+
+
+
+18)
+mysql> select name,emaiid
+    ->  from employee_info
+    -> where name like '___';
++------+---------------+
+| name | emaiid        |
++------+---------------+
+| dev  | dev@gmail.com |
++------+---------------+
+1 row in set (0.00 sec)
+
+mysql> select name,emaiid
+    ->  from employee_info
+    -> where name like '___%';
++---------+-------------------+
+| name    | emaiid            |
++---------+-------------------+
+| prashul | prashul@gmail.com |
+| dev     | dev@gmail.com     |
+| ashin   | ashin@gmail.com   |
+| dinesh  | dinesh@gmail.com  |
+| chaitra | chaitra@gmail.com |
+| bhavya  | bavya@gmail.com   |
+| shwetha | shwetha@gmail.com |
+| bhumika | bhumika@gmail.com |
+| dinga   | dinga@gmail.com   |
+| dingi   | dingi@gmail.com   |
+| rahul   | NULL              |
++---------+-------------------+
+11 rows in set (0.00 sec)
+
+
+
+
+
+mysql> select *
+    ->  from employee_info
+    -> where emaiid like '%.com';
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+| eid | name    | mobileno   | emaiid            | dob        | designation | salary | deptid | doj        | bloodgroup | gender | age  |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+|  10 | prashul | 9901348957 | prashul@gmail.com | 2000-01-01 | develper    |  20000 |     10 | 2019-02-01 | o+         | m      |   20 |
+|  20 | dev     | 9922933800 | dev@gmail.com     | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  30 | ashin   | 9922933888 | ashin@gmail.com   | 2000-01-02 | develper    |  21000 |     10 | 2019-02-02 | o-         | m      |   22 |
+|  40 | dinesh  | 9922900000 | dinesh@gmail.com  | 2010-01-22 | develper    |  25000 |     10 | 2018-02-02 | a+         | m      |   25 |
+|  50 | chaitra | 9001348967 | chaitra@gmail.com | 2001-01-22 | tester      |  30000 |     20 | 2018-01-02 | a-         | f      |   22 |
+|  60 | bhavya  | 9001358967 | bavya@gmail.com   | 1998-01-22 | analyst     |  40000 |     20 | 2019-01-02 | o+         | f      |   25 |
+|  70 | shwetha | 9001358767 | shwetha@gmail.com | 1995-01-22 | hr          |  45000 |     30 | 2019-01-10 | o-         | f      |   22 |
+|  80 | bhumika | 9001358567 | bhumika@gmail.com | 1996-01-22 | manager     |  27000 |     40 | 2019-01-20 | o-         | f      |   22 |
+|  90 | dinga   | 9001358227 | dinga@gmail.com   | 1999-07-22 | clerk       |  17000 |     10 | 2019-01-20 | o-         | m      |   25 |
+| 100 | dingi   | 9001353337 | dingi@gmail.com   | 2000-07-22 | clerk       |  17000 |     10 | 2019-05-20 | b-         | f      |   25 |
++-----+---------+------------+-------------------+------------+-------------+--------+--------+------------+------------+--------+------+
+10 rows in set (0.00 sec)
+
