@@ -37,9 +37,12 @@ public class ArrayList1 {
 		int x =scanner.nextInt();
 		System.out.println("Enter the  position...");
 		int y =scanner.nextInt();
+		try {
 		System.out.println(arrayLists.get(x-1).get(y-1));
+		} catch (Exception e) {
+			System.err.println("Error.......please enter valid position...... ");
 		}
-
+		}
 	}
 
 }
