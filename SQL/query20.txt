@@ -1,4 +1,4 @@
-20/12/2019 
+
 
 mysql> create table employee_info
     -> (eid int(5) not null unique primary key,
