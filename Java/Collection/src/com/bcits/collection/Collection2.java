@@ -37,7 +37,6 @@ public class Collection2 {
 		c4.add(1);
 		c4.add(45);
 		c4.add(89);
-		c4.add(12);
 		System.out.println("c3 and c4 ");
 		System.out.println(c3);
 		System.out.println(c4);

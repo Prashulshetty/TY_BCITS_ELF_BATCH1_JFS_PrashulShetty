@@ -9,8 +9,6 @@ public class LinkedList1 {
      l1.add(88);
      l1.add(98);
      l1.add(77);
-     l1.add(77);
-     l1.add(null);
      System.out.println(l1);
      l1.remove(new Integer(77));
      System.out.println(l1);

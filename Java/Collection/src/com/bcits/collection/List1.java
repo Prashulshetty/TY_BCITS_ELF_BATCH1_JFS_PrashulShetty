@@ -39,18 +39,14 @@ public class List1 {
 		System.out.println(c1);
 		
 		c1.add(1, 100);
-		c1.add(200);
+		
 		System.out.println(c1);
-		System.out.println("sub");
-		//c1.subList(1, 3);
-		System.out.println(c1.subList(1, 3));
-		/*
-		 * List l = (List) c1.subList(1, 2); for (int i = 0; i < c1.size(); i++) {
-		 * System.out.println(c1.get(i));
-		 * 
-		 * 
-		 * }
-		 */
+		List l = (List) c1.subList(1, 2);
+		for (int i = 0; i < c1.size(); i++) {
+			System.out.println(c1.get(i));
+		
+		
+		}
 	}
 
 }

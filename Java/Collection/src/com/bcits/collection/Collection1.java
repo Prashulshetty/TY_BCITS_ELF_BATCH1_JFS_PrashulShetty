@@ -15,6 +15,5 @@ public class Collection1 {
 		System.out.println(c1.isEmpty());
 		System.out.println(c1.size());
 		System.out.println(c1.contains(78));
-		
 	}
 }
