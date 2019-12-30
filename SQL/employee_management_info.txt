@@ -1,0 +1,545 @@
+
+
+create database Employee_management_info;
+
+mysql> show databases;
++--------------------------+
+| Database                 |
++--------------------------+
+| employee_management_info |
+| information_schema       |
+| mysql                    |
+| performance_schema       |
+| sys                      |
++--------------------------+
+5 rows in set (0.07 sec)
+
+use Employee_management_info;
+
+===================================================================
+1)
+
+create table employee_primary_info (
+       emp_id int not null primary key,
+       emp_name varchar(200),
+       emp_mobileno bigint,
+       official_mailid varchar(300),
+       date_of_birth date,
+       date_of_join date ,
+       designation varchar(300),
+       blood_group varchar(300),
+       salary double,
+       dept_id int,
+       manager_id int);
+
+mysql> desc employee_primary_info;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| emp_id          | int(11)      | NO   | PRI | NULL    |       |
+| emp_name        | varchar(200) | YES  |     | NULL    |       |
+| emp_mobileno    | bigint(20)   | YES  |     | NULL    |       |
+| official_mailid | varchar(300) | YES  |     | NULL    |       |
+| date_of_birth   | date         | YES  |     | NULL    |       |
+| date_of_join    | date         | YES  |     | NULL    |       |
+| designation     | varchar(300) | YES  |     | NULL    |       |
+| blood_group     | varchar(300) | YES  |     | NULL    |       |
+| salary          | double       | YES  |     | NULL    |       |
+| dept_id         | int(11)      | YES  |     | NULL    |       |
+| manager_id      | int(11)      | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+11 rows in set (0.08 sec)
+
+insert into employee_primary_info
+values(10,'Ashin',9901704387,'ashin@gmail.com','1995-01-24','2019-02-11','Developer','O+',25000,10,40),
+(20,'dev',9901704388,'dev@gmail.com','1995-02-14','2019-02-12','Developer','O+',27000,10,40),
+(30,'Prashul',9901704229,'prashul@gmail.com','1995-03-24','2019-02-13','Developer','O-',25000,10,40),
+(40,'harshith',8800004300,'harshith@gmail.com','1995-04-04','2019-04-19','hr','O-',30000,30,90),
+(50,'chaitra',8881554387,'chaitra@gmail.com','1995-05-24','2018-09-11','Analyst','AB+',35000,20,40),
+(60,'vishwa',9901704311,'vishwa@gmail.com','1995-01-24','2019-02-11','tester','O+',20000,40,90),
+(70,'vinay',9901704487,'vinay@gmail.com','1994-07-04','2019-04-15','tester','O-',27000,40,90),
+(80,'bhavya',9901704300,'bavya@gmail.com','1997-01-07','2019-12-20','Analyst','AB-',34000,20,90),
+(90,'bhumika',8991224387,'bhumika@gmail.com','1996-05-24','2018-09-11','hr','AB+',33000,30,40),
+(100,'abhi',8900704387,'abhi@gmail.com','1996-09-03','2018-09-13','tester','B+',35000,40,90);
+
+
+mysql> select * from employee_primary_info;
++--------+----------+--------------+--------------------+---------------+--------------+-------------+-------------+--------+---------+------------+
+| emp_id | emp_name | emp_mobileno | official_mailid    | date_of_birth | date_of_join | designation | blood_group | salary | dept_id | manager_id |
++--------+----------+--------------+--------------------+---------------+--------------+-------------+-------------+--------+---------+------------+
+|     10 | Ashin    |   9901704387 | ashin@gmail.com    | 1995-01-24    | 2019-02-11   | Developer   | O+          |  25000 |      10 |         40 |
+|     20 | dev      |   9901704388 | dev@gmail.com      | 1995-02-14    | 2019-02-12   | Developer   | O+          |  27000 |      10 |         40 |
+|     30 | Prashul  |   9901704229 | prashul@gmail.com  | 1995-03-24    | 2019-02-13   | Developer   | O-          |  25000 |      10 |         40 |
+|     40 | harshith |   8800004300 | harshith@gmail.com | 1995-04-04    | 2019-04-19   | hr          | O-          |  30000 |      30 |         90 |
+|     50 | chaitra  |   8881554387 | chaitra@gmail.com  | 1995-05-24    | 2018-09-11   | Analyst     | AB+         |  35000 |      20 |         40 |
+|     60 | vishwa   |   9901704311 | vishwa@gmail.com   | 1995-01-24    | 2019-02-11   | tester      | O+          |  20000 |      40 |         90 |
+|     70 | vinay    |   9901704487 | vinay@gmail.com    | 1994-07-04    | 2019-04-15   | tester      | O-          |  27000 |      40 |         90 |
+|     80 | bhavya   |   9901704300 | bavya@gmail.com    | 1997-01-07    | 2019-12-20   | Analyst     | AB-         |  34000 |      20 |         90 |
+|     90 | bhumika  |   8991224387 | bhumika@gmail.com  | 1996-05-24    | 2018-09-11   | hr          | AB+         |  33000 |      30 |         40 |
+|    100 | abhi     |   8900704387 | abhi@gmail.com     | 1996-09-03    | 2018-09-13   | tester      | B+          |  35000 |      40 |         90 |
++--------+----------+--------------+--------------------+---------------+--------------+-------------+-------------+--------+---------+------------+
+10 rows in set (0.00 sec)
+
+=====================================================================================================================================================
+2)
+	create table employee_secondary_info 
+        (emp_id int not null primary key,
+        personal_mailid varchar(200),
+        gender varchar(200),
+        age int,
+        nationality varchar(200),
+	Ismarried varchar(200),
+	govid varchar(200),
+	guardian_name varchar(300),
+	guardian_contact bigint,
+	job_location varchar(200)
+	);
+
+mysql>    desc  employee_secondary_info;
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| emp_id           | int(11)      | NO   | PRI | NULL    |       |
+| personal_mailid  | varchar(200) | YES  |     | NULL    |       |
+| gender           | varchar(200) | YES  |     | NULL    |       |
+| age              | int(11)      | YES  |     | NULL    |       |
+| nationality      | varchar(200) | YES  |     | NULL    |       |
+| Ismarried        | varchar(200) | YES  |     | NULL    |       |
+| govid            | varchar(200) | YES  |     | NULL    |       |
+| guardian_name    | varchar(300) | YES  |     | NULL    |       |
+| guardian_contact | bigint(20)   | YES  |     | NULL    |       |
+| job_location     | varchar(200) | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+insert into employee_secondary_info
+values(10,'ashin11@gmail.com','male',24,'indian','no','Aadhaar','sisil',9999222211,'bangalore'),
+(20,'dev11@gmail.com','male',24,'indian','yes','Pancard','gangadar',9999222333,'mangalore'),
+(30,'prashul@gmail.com','male',24,'indian','no','Pancard','shekar',9999222444,'bangalore'),
+(40,'harshith11@gmail.com','male',24,'indian','yes','Voterid','bharath',9999222555,'mangalore'),
+(50,'chaitra11@gmail.com','female',24,'indian','no','Aadhaar','abhi',9999222666,'mumbai'),
+(60,'vishwa11@gmail.com','male',24,'indian','no','voterid','mahesh',9999225544,'pune'),
+(70,'vinay11@gmail.com','male',25,'indian','yes','Aadhaar','ramesh',9999222777,'chennai'),
+(80,'bavya11@gmail.com','female',22,'indian','no','Pancard','suresh',9999222888,'mumbai'),
+(90,'bhumika11@gmail.com','female',23,'indian','yes','Aadhaar','santhosh',9999222999,'mangalore'),
+(100,'abhi11@gmail.com','male',23,'indian','no','voterid','vinay',9999222000,'bangalore');
+
+mysql> select * from employee_secondary_info;
++--------+----------------------+--------+------+-------------+-----------+---------+---------------+------------------+--------------+
+| emp_id | personal_mailid      | gender | age  | nationality | Ismarried | govid   | guardian_name | guardian_contact | job_location |
++--------+----------------------+--------+------+-------------+-----------+---------+---------------+------------------+--------------+
+|     10 | ashin11@gmail.com    | male   |   24 | indian      | no        | Aadhaar | sisil         |       9999222211 | bangalore    |
+|     20 | dev11@gmail.com      | male   |   24 | indian      | yes       | Pancard | gangadar      |       9999222333 | mangalore    |
+|     30 | prashul@gmail.com    | male   |   24 | indian      | no        | Pancard | shekar        |       9999222444 | bangalore    |
+|     40 | harshith11@gmail.com | male   |   24 | indian      | yes       | Voterid | bharath       |       9999222555 | mangalore    |
+|     50 | chaitra11@gmail.com  | female |   24 | indian      | no        | Aadhaar | abhi          |       9999222666 | mumbai       |
+|     60 | vishwa11@gmail.com   | male   |   24 | indian      | no        | voterid | mahesh        |       9999225544 | pune         |
+|     70 | vinay11@gmail.com    | male   |   25 | indian      | yes       | Aadhaar | ramesh        |       9999222777 | chennai      |
+|     80 | bavya11@gmail.com    | female |   22 | indian      | no        | Pancard | suresh        |       9999222888 | mumbai       |
+|     90 | bhumika11@gmail.com  | female |   23 | indian      | yes       | Aadhaar | santhosh      |       9999222999 | mangalore    |
+|    100 | abhi11@gmail.com     | male   |   23 | indian      | no        | voterid | vinay         |       9999222000 | bangalore    |
++--------+----------------------+--------+------+-------------+-----------+---------+---------------+------------------+--------------+
+10 rows in set (0.00 sec)
+
+========================================================================================================================================
+3)
+
+create table department_info
+(dept_id int not null unique primary key,
+dept_name varchar(200),
+dept_managerid int
+);
+
+mysql> desc  department_info;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| dept_id        | int(11)      | NO   | PRI | NULL    |       |
+| dept_name      | varchar(200) | YES  |     | NULL    |       |
+| dept_managerid | int(11)      | YES  |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+insert into department_info
+values(10,'development',40),(20,'Analytic',40),(30,'management',90),(40,'testing',90);
+
+mysql> select * from department_info;
++---------+-------------+----------------+
+| dept_id | dept_name   | dept_managerid |
++---------+-------------+----------------+
+|      10 | development |             40 |
+|      20 | Analytic    |             40 |
+|      30 | management  |             90 |
+|      40 | testing     |             90 |
++---------+-------------+----------------+
+4 rows in set (0.00 sec)
+
+=========================================================================================================================================
+4)
+
+
+create table employee_bank_info 
+(emp_id int not null unique primary key, 
+Account_no bigint,
+bank_name varchar(200),
+branch_name varchar(200),
+IFSC_code varchar(200)
+);
+
+	
+mysql> desc employee_bank_info;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| emp_id      | int(11)      | NO   | PRI | NULL    |       |
+| Account_no  | bigint(20)   | YES  |     | NULL    |       |
+| bank_name   | varchar(200) | YES  |     | NULL    |       |
+| branch_name | varchar(200) | YES  |     | NULL    |       |
+| IFSC_code   | varchar(200) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+5 rows in set (0.07 sec)
+
+
+insert into employee_bank_info
+values(10,110002222,'SBI','basavanagudi','SBI000'),
+(20,110003333,'SYNDICATE','basavanagudi','SB0113'),
+(30,110003334,'SYNDICATE','hebbal','SB0114'),
+(40,110002223,'SBI','hebbal','SBI001'),
+(50,112233000,'CANARA','srinagar','CANARA550'),
+(60,119988111,'ICICI','marathalli','ICICI770'),
+(70,112233001,'CANARA','srinagar','CANARA550'),
+(80,119988112,'ICICI','marathalli','ICICI770'),
+(90,110003335,'SYNDICATE','basavanagudi','SB0113'),
+(100,110002224,'SBI','hebbal','SBI001');
+
+
+
+mysql> select * from  employee_bank_info;
++--------+------------+-----------+--------------+-----------+
+| emp_id | Account_no | bank_name | branch_name  | IFSC_code |
++--------+------------+-----------+--------------+-----------+
+|     10 |  110002222 | SBI       | basavanagudi | SBI000    |
+|     20 |  110003333 | SYNDICATE | basavanagudi | SB0113    |
+|     30 |  110003334 | SYNDICATE | hebbal       | SB0114    |
+|     40 |  110002223 | SBI       | hebbal       | SBI001    |
+|     50 |  112233000 | CANARA    | srinagar     | CANARA550 |
+|     60 |  119988111 | ICICI     | marathalli   | ICICI770  |
+|     70 |  112233001 | CANARA    | srinagar     | CANARA550 |
+|     80 |  119988112 | ICICI     | marathalli   | ICICI770  |
+|     90 |  110003335 | SYNDICATE | basavanagudi | SB0113    |
+|    100 |  110002224 | SBI       | hebbal       | SBI001    |
++--------+------------+-----------+--------------+-----------+
+10 rows in set (0.00 sec)
+
+=============================================================================
+5)
+
+create table employee_address_info
+(emp_id int,
+address_type varchar(200),
+address_1 varchar(200),
+address_2 varchar(300),
+landmark varchar(200),
+city varchar(200),
+pincode bigint,
+primary key(emp_id,address_type)
+);
+
+mysql> desc employee_address_info;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| emp_id       | int(11)      | NO   | PRI | NULL    |       |
+| address_type | varchar(200) | NO   | PRI | NULL    |       |
+| address_1    | varchar(200) | YES  |     | NULL    |       |
+| address_2    | varchar(300) | YES  |     | NULL    |       |
+| landmark     | varchar(200) | YES  |     | NULL    |       |
+| city         | varchar(200) | YES  |     | NULL    |       |
+| pincode      | bigint(20)   | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+7 rows in set (0.04 sec)
+
+
+insert into employee_address_info
+values(10,'permanent','HouseNo 510','TVD road','Thiruvambady','calicut',673603),
+(10,'current','HouseNo 520','TR road','srinivasnagar','bangalore',673633),
+(20,'permanent','HouseNo 600','DR road','manipal','udupi',673000),
+(20,'current','HouseNo 620','DVD road','srinivasnagar','bangalore',673633),
+(30,'permanent','HouseNo 710','Parkala ','manipal','udupi',673000),
+(30,'current','HouseNo 720','TR road','srinivasnagar','bangalore',673633),
+(40,'permanent','HouseNo 110','TVD road','bailur','udupi',673000),
+(40,'current','HouseNo 120','TR road','ashoknagar','bangalore',673600),
+(50,'permanent','HouseNo 230','malpe','manipal','udupi',673000),
+(50,'current','HouseNo 220','','marathalli','bangalore',673111),
+(60,'permanent','HouseNo 001','kR road','Thiruvambady','calicut',673603),
+(60,'current','HouseNo 002','VR road','srinivasnagar','bangalore',673633),
+(70,'permanent','HouseNo 400','PVR road','mannur','mandya',673603),
+(70,'current','HouseNo 300','MN road','ashoknagar','bangalore',673633),
+(80,'permanent','HouseNo 010','AR road','Thiruvambady','calicut',673603),
+(80,'current','HouseNo 020','AB road','basavanagudi','bangalore',673633),
+(90,'permanent','HouseNo 210','SQ road ','Thiruvambady','kerala',673555),
+(90,'current','HouseNo 022','AC road','basavanagudi','bangalore',673633),
+(100,'permanent','HouseNo 900','TVR road','Ashoknagar','udupi',673000),
+(100,'current','HouseNo 801','TR road','basavanagudi','bangalore',673633);
+
+
+mysql> select * from employee_address_info;
++--------+--------------+-------------+-----------+---------------+-----------+---------+
+| emp_id | address_type | address_1   | address_2 | landmark      | city      | pincode |
++--------+--------------+-------------+-----------+---------------+-----------+---------+
+|     10 | current      | HouseNo 520 | TR road   | srinivasnagar | bangalore |  673633 |
+|     10 | permanent    | HouseNo 510 | TVD road  | Thiruvambady  | calicut   |  673603 |
+|     20 | current      | HouseNo 620 | DVD road  | srinivasnagar | bangalore |  673633 |
+|     20 | permanent    | HouseNo 600 | DR road   | manipal       | udupi     |  673000 |
+|     30 | current      | HouseNo 720 | TR road   | srinivasnagar | bangalore |  673633 |
+|     30 | permanent    | HouseNo 710 | Parkala   | manipal       | udupi     |  673000 |
+|     40 | current      | HouseNo 120 | TR road   | ashoknagar    | bangalore |  673600 |
+|     40 | permanent    | HouseNo 110 | TVD road  | bailur        | udupi     |  673000 |
+|     50 | current      | HouseNo 220 |           | marathalli    | bangalore |  673111 |
+|     50 | permanent    | HouseNo 230 | malpe     | manipal       | udupi     |  673000 |
+|     60 | current      | HouseNo 002 | VR road   | srinivasnagar | bangalore |  673633 |
+|     60 | permanent    | HouseNo 001 | kR road   | Thiruvambady  | calicut   |  673603 |
+|     70 | current      | HouseNo 300 | MN road   | ashoknagar    | bangalore |  673633 |
+|     70 | permanent    | HouseNo 400 | PVR road  | mannur        | mandya    |  673603 |
+|     80 | current      | HouseNo 020 | AB road   | basavanagudi  | bangalore |  673633 |
+|     80 | permanent    | HouseNo 010 | AR road   | Thiruvambady  | calicut   |  673603 |
+|     90 | current      | HouseNo 022 | AC road   | basavanagudi  | bangalore |  673633 |
+|     90 | permanent    | HouseNo 210 | SQ road   | Thiruvambady  | kerala    |  673555 |
+|    100 | current      | HouseNo 801 | TR road   | basavanagudi  | bangalore |  673633 |
+|    100 | permanent    | HouseNo 900 | TVR road  | Ashoknagar    | udupi     |  673000 |
++--------+--------------+-------------+-----------+---------------+-----------+---------+
+20 rows in set (0.00 sec)
+
+=============================================================================================================
+6)
+
+
+create table employee_education_info
+(emp_id int not null,
+education_type varchar(200),
+college_name varchar(200),
+YOP date,
+stream varchar(200),
+percentage double,
+university_name varchar(200),
+primary key (emp_id,education_type)
+);
+
+
+mysql> desc  employee_education_info;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| emp_id          | int(11)      | NO   | PRI | NULL    |       |
+| education_type  | varchar(200) | NO   | PRI | NULL    |       |
+| college_name    | varchar(200) | YES  |     | NULL    |       |
+| YOP             | date         | YES  |     | NULL    |       |
+| stream          | varchar(200) | YES  |     | NULL    |       |
+| percentage      | double       | YES  |     | NULL    |       |
+| university_name | varchar(200) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+
+insert into employee_education_info
+values(10,'SSLC','MJC Manipal','2013-04-04','CBSC',79,'MAHE Manipal'),
+(10,'PUC','MJC Manipal','2015-04-04','Science',75,'MAHE Manipal'),
+(10,'BTECH','MIT Manipal','2019-04-05','EC',79,'MAHE Manipal'),
+(20,'SSLC','MJC Manipal','2013-04-04','CBSC',70,'MAHE Manipal'),
+(20,'PUC','MJC Manipal','2015-04-04','Science',73,'MAHE Manipal'),
+(20,'BTECH','MIT Manipal','2019-04-05','EC',80,'MAHE Manipal'),
+(30,'SSLC','MJC Manipal','2013-04-04','CBSC',65,'MAHE Manipal'),
+(30,'PUC','MJC Manipal','2015-04-04','Science',68,'MAHE Manipal'),
+(30,'BTECH','MIT Manipal','2019-04-05','EC',66,'MAHE Manipal'),
+(40,'SSLC','GHS Bailur','2013-04-04','CBSC',90,'MAHE Manipal'),
+(40,'PUC','GPC Bailur','2015-04-05','Science',89,'MAHE Manipal'),
+(40,'BTECH','MIT Manipal','2019-04-05','EC',91,'MAHE Manipal'),
+(50,'SSLC','MGM Udupi','2013-04-07','CBSC',79,'MAHE Manipal'),
+(50,'PUC','MGM Udupi','2015-04-03','Science',75,'MAHE Manipal'),
+(50,'BTECH','MIT Manipal','2019-04-05','CS',79,'MAHE Manipal'),
+(60,'SSLC','MJC Mandya','2013-04-11','CBSC',79,'MAHE Mandya'),
+(60,'PUC','MJC Mandya','2015-04-12','Science',72,'MAHE Mandya'),
+(60,'BTECH','MIT Mandya','2019-04-13','EE',71,'MAHE Mandya'),
+(70,'SSLC','MJC Mysore','2013-04-01','CBSC',77,'MAHE Mysore'),
+(70,'PUC','MJC Mysore','2015-04-01','Science',85,'MAHE Mysore'),
+(70,'BTECH','MIT Mysore','2019-04-01','CS',89,'MAHE Mysore'),
+(80,'SSLC','MJC Mangalore','2013-04-03','CBSC',69,'MAHE Mangalore'),
+(80,'PUC','MJC Mangalore','2015-04-03','Science',65,'MAHE Mangalore'),
+(80,'BTECH','MIT Mangalore','2019-04-03','EC',69,'MAHE Mangalore'),
+(90,'SSLC','BJC Bangalore','2013-04-07','CBSC',79,'karnataka university'),
+(90,'PUC','BJC Bangalore','2015-04-07','Science',75,'Bangalore university'),
+(90,'BTECH','BIT Bangalore','2019-04-07','EC',79,'Bangalore university'),
+(100,'SSLC','BM Bangalore','2013-04-09','CBSC',69,'karnataka university'),
+(100,'PUC','BJC Bangalore','2015-04-09','Science',65,'Bangalore university'),
+(100,'BTECH','BIT Bangalore','2019-04-09','EC',69,'Bangalore university');
+
+mysql> select * from employee_education_info;
++--------+----------------+---------------+------------+---------+------------+----------------------+
+| emp_id | education_type | college_name  | YOP        | stream  | percentage | university_name      |
++--------+----------------+---------------+------------+---------+------------+----------------------+
+|     10 | BTECH          | MIT Manipal   | 2019-04-05 | EC      |         79 | MAHE Manipal         |
+|     10 | PUC            | MJC Manipal   | 2015-04-04 | Science |         75 | MAHE Manipal         |
+|     10 | SSLC           | MJC Manipal   | 2013-04-04 | CBSC    |         79 | MAHE Manipal         |
+|     20 | BTECH          | MIT Manipal   | 2019-04-05 | EC      |         80 | MAHE Manipal         |
+|     20 | PUC            | MJC Manipal   | 2015-04-04 | Science |         73 | MAHE Manipal         |
+|     20 | SSLC           | MJC Manipal   | 2013-04-04 | CBSC    |         70 | MAHE Manipal         |
+|     30 | BTECH          | MIT Manipal   | 2019-04-05 | EC      |         66 | MAHE Manipal         |
+|     30 | PUC            | MJC Manipal   | 2015-04-04 | Science |         68 | MAHE Manipal         |
+|     30 | SSLC           | MJC Manipal   | 2013-04-04 | CBSC    |         65 | MAHE Manipal         |
+|     40 | BTECH          | MIT Manipal   | 2019-04-05 | EC      |         91 | MAHE Manipal         |
+|     40 | PUC            | GPC Bailur    | 2015-04-05 | Science |         89 | MAHE Manipal         |
+|     40 | SSLC           | GHS Bailur    | 2013-04-04 | CBSC    |         90 | MAHE Manipal         |
+|     50 | BTECH          | MIT Manipal   | 2019-04-05 | CS      |         79 | MAHE Manipal         |
+|     50 | PUC            | MGM Udupi     | 2015-04-03 | Science |         75 | MAHE Manipal         |
+|     50 | SSLC           | MGM Udupi     | 2013-04-07 | CBSC    |         79 | MAHE Manipal         |
+|     60 | BTECH          | MIT Mandya    | 2019-04-13 | EE      |         71 | MAHE Mandya          |
+|     60 | PUC            | MJC Mandya    | 2015-04-12 | Science |         72 | MAHE Mandya          |
+|     60 | SSLC           | MJC Mandya    | 2013-04-11 | CBSC    |         79 | MAHE Mandya          |
+|     70 | BTECH          | MIT Mysore    | 2019-04-01 | CS      |         89 | MAHE Mysore          |
+|     70 | PUC            | MJC Mysore    | 2015-04-01 | Science |         85 | MAHE Mysore          |
+|     70 | SSLC           | MJC Mysore    | 2013-04-01 | CBSC    |         77 | MAHE Mysore          |
+|     80 | BTECH          | MIT Mangalore | 2019-04-03 | EC      |         69 | MAHE Mangalore       |
+|     80 | PUC            | MJC Mangalore | 2015-04-03 | Science |         65 | MAHE Mangalore       |
+|     80 | SSLC           | MJC Mangalore | 2013-04-03 | CBSC    |         69 | MAHE Mangalore       |
+|     90 | BTECH          | BIT Bangalore | 2019-04-07 | EC      |         79 | Bangalore university |
+|     90 | PUC            | BJC Bangalore | 2015-04-07 | Science |         75 | Bangalore university |
+|     90 | SSLC           | BJC Bangalore | 2013-04-07 | CBSC    |         79 | karnataka university |
+|    100 | BTECH          | BIT Bangalore | 2019-04-09 | EC      |         69 | Bangalore university |
+|    100 | PUC            | BJC Bangalore | 2015-04-09 | Science |         65 | Bangalore university |
+|    100 | SSLC           | BM Bangalore  | 2013-04-09 | CBSC    |         69 | karnataka university |
++--------+----------------+---------------+------------+---------+------------+----------------------+
+30 rows in set (0.00 sec)
+
+========================================================================================================================================
+
+7)
+
+create table project_info
+(project_id int unique not null primary key,
+project_name varchar(200),
+technology varchar(200),
+start_date date,
+end_date date,
+location varchar(200)
+);
+
+
+mysql> desc project_info;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| project_id   | int(11)      | NO   | PRI | NULL    |       |
+| project_name | varchar(200) | YES  |     | NULL    |       |
+| technology   | varchar(200) | YES  |     | NULL    |       |
+| start_date   | date         | YES  |     | NULL    |       |
+| end_date     | date         | YES  |     | NULL    |       |
+| location     | varchar(200) | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+insert into project_info 
+values(100,'ORMS','java','2019-05-01','2019-06-02','bangalore'),
+(200,'E2E','j2ee','2019-05-02','2019-06-05','Mumbai'),
+(300,'MDM','springs','2019-06-03','2019-08-07','Pune'),
+(400,'GIS','java','2019-06-04','2019-08-09','Andrapradesh'),
+(500,'BiLLing Service','j2ee','2019-07-05','2019-09-02','bangalore');
+
+mysql> select * from project_info;
++------------+-----------------+------------+------------+------------+--------------+
+| project_id | project_name    | technology | start_date | end_date   | location     |
++------------+-----------------+------------+------------+------------+--------------+
+|        100 | ORMS            | java       | 2019-05-01 | 2019-06-02 | bangalore    |
+|        200 | E2E             | j2ee       | 2019-05-02 | 2019-06-05 | Mumbai       |
+|        300 | MDM             | springs    | 2019-06-03 | 2019-08-07 | Pune         |
+|        400 | GIS             | java       | 2019-06-04 | 2019-08-09 | Andrapradesh |
+|        500 | BiLLing Service | j2ee       | 2019-07-05 | 2019-09-02 | bangalore    |
++------------+-----------------+------------+------------+------------+--------------+
+
+=================================================================================================
+8)
+
+create table employee_project_info
+(emp_id int,
+project_id int,
+primary key(emp_id,project_id)
+);
+
+mysql> desc employee_project_info;
++------------+---------+------+-----+---------+-------+
+| Field      | Type    | Null | Key | Default | Extra |
++------------+---------+------+-----+---------+-------+
+| emp_id     | int(11) | NO   | PRI | NULL    |       |
+| project_id | int(11) | NO   | PRI | NULL    |       |
++------------+---------+------+-----+---------+-------+
+2 rows in set (0.03 sec)
+
+insert into employee_project_info
+values(10,100),(20,200),(30,300),(40,400),(50,500),(60,100),(70,200),(80,300),(90,400),(100,500),(10,500),(20,300),(30,100),(40,100),(50,200);
+
+mysql> select * from employee_project_info;
++--------+------------+
+| emp_id | project_id |
++--------+------------+
+|     10 |        100 |
+|     10 |        500 |
+|     20 |        200 |
+|     20 |        300 |
+|     30 |        100 |
+|     30 |        300 |
+|     40 |        100 |
+|     40 |        400 |
+|     50 |        200 |
+|     50 |        500 |
+|     60 |        100 |
+|     70 |        200 |
+|     80 |        300 |
+|     90 |        400 |
+|    100 |        500 |
++--------+------------+
+=================================================================================================================================================
+
+mysql> show tables;
++------------------------------------+
+| Tables_in_employee_management_info |
++------------------------------------+
+| department_info                    |
+| employee_address_info              |
+| employee_bank_info                 |
+| employee_education_info            |
+| employee_primary_info              |
+| employee_project_info              |
+| employee_secondary_info            |
+| project_info                       |
++------------------------------------+
+8 rows in set (0.01 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

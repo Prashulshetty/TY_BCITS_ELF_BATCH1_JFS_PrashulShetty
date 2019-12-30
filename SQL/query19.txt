@@ -3,20 +3,6 @@ mysql> create database practice;
 Query OK, 1 row affected (0.05 sec)
 
 
-
-mysql> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| bcits              |
-| mysql              |
-| performance_schema |
-| practice           |
-| sys                |
-+--------------------+
-6 rows in set (0.08 sec)
-
 mysql> use practice;
 Database changed
 
@@ -28,6 +14,7 @@ mysql> create table student
     -> email varchar(150) not null
     -> );
 Query OK, 0 rows affected (0.31 sec)
+
 
  insert into student
     -> values(10,'prashul',66.3,990134897,'prashul@gmail.com');
@@ -50,25 +37,12 @@ mysql> insert into student
 Query OK, 1 row affected (0.08 sec)
 
 
+ delete from student;
 
 mysql> select * from student;
-+----+---------+-------+-----------+-------------------+
-| id | name    | marks | mobile    | email             |
-+----+---------+-------+-----------+-------------------+
-| 10 | prashul |  66.3 | 990134897 | prashul@gmail.com |
-| 20 | dev     |    76 | 995348957 | dev@gmail.com     |
-| 30 | shetty  |    66 | 991148957 | shetty@gmail.com  |
-| 40 | ashin   |    69 | 999134897 | ashin@gmail.com   |
-| 50 | shul    |    46 | 995348957 | shul@gmail.com    |
-+----+---------+-------+-----------+-------------------+
-5 rows in set (0.00 sec)
 
-mysql> delete from student
-    -> ;
-Query OK, 5 rows affected (0.11 sec)
 
-mysql> select * from student;
-Empty set (0.00 sec)
+
 
 
 mysql> insert into student
@@ -96,7 +70,8 @@ mysql> select * from student;
 | 30 | shetty  |    66 | 991148957 | shetty@gmail.com  |
 | 40 | ashin   |    69 | 999134897 | ashin@gmail.com   |
 +----+---------+-------+-----------+-------------------+
-4 rows in set (0.00 sec)
+
+
 
 mysql> update student
     -> set id = 50
@@ -113,7 +88,8 @@ mysql> select * from student;
 | 30 | shetty  |    66 | 991148957 | shetty@gmail.com  |
 | 50 | ashin   |    69 | 999134897 | ashin@gmail.com   |
 +----+---------+-------+-----------+-------------------+
-4 rows in set (0.00 sec)
+
+
  alter table student1
     -> drop column marks;
 
@@ -128,6 +104,7 @@ mysql> select * from student1;
 +----+-------+-----------+----------------+
 3 rows in set (0.00 sec)
 
+
 mysql> desc student1;
 +--------+--------------+------+-----+---------+-------+
 | Field  | Type         | Null | Key | Default | Extra |
@@ -137,7 +114,8 @@ mysql> desc student1;
 | mobile | int(10)      | NO   |     | NULL    |       |
 | email  | varchar(150) | NO   |     | NULL    |       |
 +--------+--------------+------+-----+---------+-------+
-4 rows in set (0.00 sec)
+
+
 mysql> create database newdata;
 Query OK, 1 row affected (0.01 sec)
 
