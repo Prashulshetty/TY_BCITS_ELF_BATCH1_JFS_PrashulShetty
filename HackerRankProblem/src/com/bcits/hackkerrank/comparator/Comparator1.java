@@ -13,7 +13,7 @@ public class Comparator1 {
 
 		Player[] arr = new Player[num];
 		for (int i = 1; i <= num; i++) {
-			System.out.println("Enter the " + i + "th Player name and score!");
+			System.out.println("Enter the " + i + " th Player name and score!");
 			System.out.println("Enter the Player name  :");
 			String name = scanner.nextLine();
 			System.out.println("Enter the score : ");
