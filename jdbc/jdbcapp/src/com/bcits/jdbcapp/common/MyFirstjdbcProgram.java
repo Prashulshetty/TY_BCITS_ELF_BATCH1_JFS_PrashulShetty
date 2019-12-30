@@ -19,46 +19,53 @@ public class MyFirstjdbcProgram {
 
 			// 1. load the Driver
 
-			Driver driverRef = new Driver();
-			DriverManager.registerDriver(driverRef);
+			/*
+			 * Driver driverRef = new Driver(); DriverManager.registerDriver(driverRef);
+			 */
 
+			 Class.forName("com.mysql.jdbc.Driver").newInstance();
 			// 2.Establish the DB connectivity via driver
-			String dburl = "jdbc:mysql://localhost:3306/employee_management_info?user=root&password=root";
-			con = DriverManager.getConnection(dburl);
-			 
-			//
+			//String dburl = "jdbc:mysql://localhost:3306/employee_management_info?user=root&password=root";
+			String dburl = "jdbc:mysql://localhost:3306/employee_management_info";
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            //con = DriverManager.getConnection(dburl); 
+		con = DriverManager.getConnection(dburl,"root","root"); 
+			
+			
+			
 			String query = "select * from employee_primary_info";
 			 stmt = con.createStatement();
 			 rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				int employeeid = rs.getInt("empid");
-				String employeename = rs.getString("name");
-				long employeesmobile = rs.getLong("mobileno");
-				String employeemailid = rs.getString("officialmailid");
-				Date employeedob = rs.getDate("dateofbirth");
-				Date employeedoj = rs.getDate("dateofjoining");
-				String empdesignation = rs.getString("designation");
-				String empBloodgroup = rs.getString("bloodgroup");
-				double empsalary = rs.getDouble("salary");
-				int deptid = rs.getInt("deptid");
-				int managerid = rs.getInt("managerid");
-
-				System.out.println("employee id ==" + employeeid);
-				System.out.println("employeename== " + employeename);
-				System.out.println("employee mobile ==" + employeesmobile);
-				System.out.println("employee mail id ==" + employeemailid);
-				System.out.println("employee dob ==" + employeedob);
-				System.out.println("employee doj ==" + employeedoj);
-				System.out.println("employeedesignation ==" + empdesignation);
-				System.out.println("employeeblood ==" + empBloodgroup);
-				System.out.println("empsalary ==" + empsalary);
-				System.out.println("deptid ==" + deptid);
-				System.out.println("managerid==" + managerid);
-
+				int emp_id = rs.getInt("emp_id");
+				String emp_name = rs.getString("emp_name");
+				long emp_mobileno = rs.getLong("emp_mobileno");
+				String official_mailid = rs.getString("official_mailid");
+				Date date_of_birth = rs.getDate("date_of_birth");
+				Date date_of_joining = rs.getDate("date_of_join");
+				String designation = rs.getString("designation");
+				String blood_group = rs.getString("blood_group");
+				double salary = rs.getDouble("salary");
+				int dept_id = rs.getInt("dept_id");
+				
+				
+				int manager_id = rs.getInt("manager_id");
+				System.out.println("emp_id ==" + emp_id);
+				System.out.println("emp_name == " + emp_name);
+				System.out.println("emp_mobile ==" + emp_mobileno);
+				System.out.println("official_mailid ==" + official_mailid);
+				System.out.println("date of birth ==" + date_of_birth);
+				System.out.println("date of joing ==" + date_of_joining);
+				System.out.println("designation ==" + designation);
+				System.out.println("blood_group==" + blood_group);
+				System.out.println("salary==" + salary);
+				System.out.println("dept_id==" + dept_id);
+				System.out.println("manger_id==" + manager_id);
+				System.out.println("===============================================");
 			}
 
 		} catch (Exception e) {
+			System.out.println("3333333333333333333333333");
 			e.printStackTrace();
 			
 		} finally {
@@ -80,3 +87,4 @@ public class MyFirstjdbcProgram {
 
 	}// End of main
 }// End of Class
+ 
