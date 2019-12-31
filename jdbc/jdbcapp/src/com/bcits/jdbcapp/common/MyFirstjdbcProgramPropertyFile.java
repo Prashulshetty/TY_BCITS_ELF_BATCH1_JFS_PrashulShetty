@@ -1,45 +1,39 @@
 package com.bcits.jdbcapp.common;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Properties;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Driver;
 
-public class MyFirstjdbcProgram {
+public class MyFirstjdbcProgramPropertyFile {
 
 	public static void main(String[] args) {
-		Connection con =null;
-		ResultSet rs=null;
+		Connection con = null;
+		ResultSet rs = null;
 		Statement stmt = null;
-		
-		//java.beans.Statement stmt =null;
-		
 		try {
+			
+		
 
-			// 1. load the Driver
-
-			/*
-			 * Driver driverRef = new Driver(); DriverManager.registerDriver(driverRef);
-			 */
-
-			 Class.forName("com.mysql.jdbc.Driver").newInstance();
-			// 2.Establish the DB connectivity via driver
-			//String dburl = "jdbc:mysql://localhost:3306/employee_management_info?user=root&password=root";
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			
 			String dburl = "jdbc:mysql://localhost:3306/employee_management_info";
-		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            //con = DriverManager.getConnection(dburl); 
-		con = DriverManager.getConnection("dburl","root","root"); 
-		//DriverManager dref = new DriverManager();
+			FileInputStream file = new FileInputStream("db.properties");
+			Properties prop = new Properties();
+			prop.load(file);
 			
-			
-			
-		                                                 
+			con = DriverManager.getConnection(dburl, prop);
+		
+
 			String query = "select * from employee_primary_info";
-			 stmt = con.createStatement();
-			 rs = stmt.executeQuery(query);
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
 				int emp_id = rs.getInt("emp_id");
@@ -52,8 +46,7 @@ public class MyFirstjdbcProgram {
 				String blood_group = rs.getString("blood_group");
 				double salary = rs.getDouble("salary");
 				int dept_id = rs.getInt("dept_id");
-				
-				
+
 				int manager_id = rs.getInt("manager_id");
 				System.out.println("emp_id ==" + emp_id);
 				System.out.println("emp_name == " + emp_name);
@@ -72,18 +65,18 @@ public class MyFirstjdbcProgram {
 		} catch (Exception e) {
 			System.out.println("3333333333333333333333333");
 			e.printStackTrace();
-			
+
 		} finally {
 			// 5.close all jdbc objects
 			try {
-				if(con!=null) {
-				con.close();
+				if (con != null) {
+					con.close();
 				}
-				if(rs!=null) {
-				rs.close();
+				if (rs != null) {
+					rs.close();
 				}
-				if(stmt!=null) {
-				stmt.close();
+				if (stmt != null) {
+					stmt.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -92,4 +85,4 @@ public class MyFirstjdbcProgram {
 
 	}// End of main
 
-} 
+}
