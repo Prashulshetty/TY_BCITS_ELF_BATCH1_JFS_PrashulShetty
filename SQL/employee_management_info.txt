@@ -252,13 +252,14 @@ mysql> desc employee_address_info;
 +--------------+--------------+------+-----+---------+-------+
 | emp_id       | int(11)      | NO   | PRI | NULL    |       |
 | address_type | varchar(200) | NO   | PRI | NULL    |       |
+| HouseNo      | int(11)      | YES  |     | NULL    |       |
 | address_1    | varchar(200) | YES  |     | NULL    |       |
 | address_2    | varchar(300) | YES  |     | NULL    |       |
 | landmark     | varchar(200) | YES  |     | NULL    |       |
 | city         | varchar(200) | YES  |     | NULL    |       |
 | pincode      | bigint(20)   | YES  |     | NULL    |       |
 +--------------+--------------+------+-----+---------+-------+
-7 rows in set (0.04 sec)
+8 rows in set (0.08 sec)
 
 insert into employee_address_info
 values(10,'permanent',510,'TVD road','kannur','Thiruvambady','calicut',673603),
@@ -281,35 +282,37 @@ values(10,'permanent',510,'TVD road','kannur','Thiruvambady','calicut',673603),
 (90,'current',220,'AC road','ashoknagar','basavanagudi','bangalore',673633),
 (100,'permanent',900,'TVR road','vidyapeeta','Ashoknagar','udupi',673000),
 (100,'current',801,'TR road','srinagar','basavanagudi','bangalore',673633);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 120009620210b96003f1e20e60f071f9fec1ee29
 
 
 mysql> select * from employee_address_info;
-+--------+--------------+-------------+-----------+---------------+-----------+---------+
-| emp_id | address_type | address_1   | address_2 | landmark      | city      | pincode |
-+--------+--------------+-------------+-----------+---------------+-----------+---------+
-|     10 | current      | HouseNo 520 | TR road   | srinivasnagar | bangalore |  673633 |
-|     10 | permanent    | HouseNo 510 | TVD road  | Thiruvambady  | calicut   |  673603 |
-|     20 | current      | HouseNo 620 | DVD road  | srinivasnagar | bangalore |  673633 |
-|     20 | permanent    | HouseNo 600 | DR road   | manipal       | udupi     |  673000 |
-|     30 | current      | HouseNo 720 | TR road   | srinivasnagar | bangalore |  673633 |
-|     30 | permanent    | HouseNo 710 | Parkala   | manipal       | udupi     |  673000 |
-|     40 | current      | HouseNo 120 | TR road   | ashoknagar    | bangalore |  673600 |
-|     40 | permanent    | HouseNo 110 | TVD road  | bailur        | udupi     |  673000 |
-|     50 | current      | HouseNo 220 |           | marathalli    | bangalore |  673111 |
-|     50 | permanent    | HouseNo 230 | malpe     | manipal       | udupi     |  673000 |
-|     60 | current      | HouseNo 002 | VR road   | srinivasnagar | bangalore |  673633 |
-|     60 | permanent    | HouseNo 001 | kR road   | Thiruvambady  | calicut   |  673603 |
-|     70 | current      | HouseNo 300 | MN road   | ashoknagar    | bangalore |  673633 |
-|     70 | permanent    | HouseNo 400 | PVR road  | mannur        | mandya    |  673603 |
-|     80 | current      | HouseNo 020 | AB road   | basavanagudi  | bangalore |  673633 |
-|     80 | permanent    | HouseNo 010 | AR road   | Thiruvambady  | calicut   |  673603 |
-|     90 | current      | HouseNo 022 | AC road   | basavanagudi  | bangalore |  673633 |
-|     90 | permanent    | HouseNo 210 | SQ road   | Thiruvambady  | kerala    |  673555 |
-|    100 | current      | HouseNo 801 | TR road   | basavanagudi  | bangalore |  673633 |
-|    100 | permanent    | HouseNo 900 | TVR road  | Ashoknagar    | udupi     |  673000 |
-+--------+--------------+-------------+-----------+---------------+-----------+---------+
-20 rows in set (0.00 sec)
++--------+--------------+---------+-----------+--------------+---------------+-----------+---------+
+| emp_id | address_type | HouseNo | address_1 | address_2    | landmark      | city      | pincode |
++--------+--------------+---------+-----------+--------------+---------------+-----------+---------+
+|     10 | current      |     520 | TR road   | bankcolony   | srinivasnagar | bangalore |  673633 |
+|     10 | permanent    |     510 | TVD road  | kannur       | Thiruvambady  | calicut   |  673603 |
+|     20 | current      |     620 | DVD road  | ashoknagar   | srinivasnagar | bangalore |  673633 |
+|     20 | permanent    |     600 | DR road   | parkala      | manipal       | udupi     |  673000 |
+|     30 | current      |     720 | TR road   | bankcolony   | srinivasnagar | bangalore |  673633 |
+|     30 | permanent    |     710 | MN road   | Parkala      | manipal       | udupi     |  673000 |
+|     40 | current      |     120 | TR road   | vidyapeeta   | ashoknagar    | bangalore |  673600 |
+|     40 | permanent    |     110 | TVD road  | bailur       | hiriyadka     | udupi     |  673000 |
+|     50 | current      |     220 | EC road   | ashoknagar   | marathalli    | bangalore |  673111 |
+|     50 | permanent    |     230 | MB road   | malpe        | manipal       | udupi     |  673000 |
+|     60 | current      |     102 | VR road   | bankcolony   | srinivasnagar | bangalore |  673633 |
+|     60 | permanent    |     601 | kR road   | kannur       | Thiruvambady  | calicut   |  673603 |
+|     70 | current      |     300 | MN road   | vidyapeeta   | ashoknagar    | bangalore |  673633 |
+|     70 | permanent    |     400 | PVR road  | srinagara    | mannur        | mandya    |  673603 |
+|     80 | current      |     820 | AB road   | ashoknagar   | basavanagudi  | bangalore |  673633 |
+|     80 | permanent    |     910 | AR road   | kannur       | Thiruvambady  | calicut   |  673603 |
+|     90 | current      |     220 | AC road   | ashoknagar   | basavanagudi  | bangalore |  673633 |
+|     90 | permanent    |     210 | SQ road   | Thiruvambady | kannur        | kerala    |  673555 |
+|    100 | current      |     801 | TR road   | srinagar     | basavanagudi  | bangalore |  673633 |
+|    100 | permanent    |     900 | TVR road  | vidyapeeta   | Ashoknagar    | udupi     |  673000 |
++--------+--------------+---------+-----------+--------------+---------------+-----------+---------+
 
 =============================================================================================================
 6)
