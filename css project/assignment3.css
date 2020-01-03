@@ -1,0 +1,38 @@
+form{
+    background-color:rgb(57, 92, 133);
+   width: 412px;
+   height: 338px;
+    margin:auto;
+    color: white;
+    padding : 30px;
+    outline: none;
+  
+}
+input[type="button"]{
+    background-color:lightseagreen;
+    text-align: center;
+    width: 403px;
+    height: 50px;
+    color: white;
+}
+ input[type="email"], input[type="password"]{
+    width: 400px;
+    border-color: black;    
+   
+}
+input[type="text"]{
+    width: 196px;
+}
+input[type="button"][value="Sign Up"]{
+    width: 202px;
+}
+input[type="button"][value="Log In"]{
+    width: 202px;
+    background-color: #3675bd;
+    margin-left: -9px;
+   
+}
+h2{
+    text-align: center;
+}
+

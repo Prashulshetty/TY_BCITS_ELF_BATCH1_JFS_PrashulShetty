@@ -1,0 +1,15 @@
+img{
+    width: 346px;
+    height: 250px;
+    border: 1px solid black;
+    padding:10px;
+    transition: all 2s;
+}
+img:hover{
+    /* transform: scale(1.2); */
+    /* transform: rotate(360deg); */
+    /* transform: skew(180deg); */
+    /* transform: rotateX(90deg); */
+ transform: translate(50px,50px);
+    cursor: pointer;
+}

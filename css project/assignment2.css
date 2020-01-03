@@ -1,0 +1,22 @@
+form{
+    background-color: rgba(10,44,95);
+   width: 466px;
+   height: 364px;
+    
+    margin:auto;
+    color: white;
+    padding-left: 62px;
+    padding-top: 48px;
+  
+}
+input[type="button2"]{
+    background-color:rgb(0, 174, 255);
+    text-align: center;
+    width: 400px;
+}
+input[type="text"], input[type="email"], input[type="password"]{
+    width: 400px;
+    background-color: black;
+    
+   
+}

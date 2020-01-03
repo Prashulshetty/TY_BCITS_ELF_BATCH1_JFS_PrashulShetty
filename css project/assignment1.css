@@ -1,0 +1,20 @@
+form{
+    
+    height: 363px;
+    width:625px;
+    background-color: darkorange;
+    text-align: center;
+    padding-top: 75px;
+    color : white;
+    margin: auto;
+}
+input[type="button"]{
+    background-color:plum;
+    color : white; 
+    margin-left: -9px;  
+}
+input[type="email"] ,input[type="button"]{
+font-size: 20px;
+padding: 10px;
+}
+
