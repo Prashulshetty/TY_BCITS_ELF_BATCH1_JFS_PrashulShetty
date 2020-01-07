@@ -5,29 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Event</title>
+
 <style>
-    .prop{
-        display:none;
-    }
+
+  #disp{
+      display:none;
+  }  
 
 </style>
-
-    
 </head>
 <body>
-    
-    <button onclick="showalert()">Click me !!!!!!</button>
-    <button  onclick="showelement()">Click to create Element</button>
-    <h1 id="disp" class="prop">display Properties</h1>
-    <button  id="myBtn" onclick="displayelement()">click this to show h1 element...</button> 
 
-    <p onmouseover="changecolorblue()" onmouseout="changecolorwhite()" id="change"> color change</p>
+    <button onclick="showAlert()"> Click Here..</button> <br> <br><br>
+    <button id="create" onclick="showCreatedElement()">Click here to create elements..</button><br><br>
+    <h2 id="disp" class="prop">Prashul Shetty</h2>
+    <button id="Display" onclick="showName()">Click here to display name..</button>
+
+
+     <p onmouseover="changecolorblue()" onmouseout="changecolorwhite()" id="change"> color change</p>
 
     <input onkeyup="showData()" onkeydown="showMessage()" id="myipt"/>
+
 <br><br><br>
     <input id="inp" onkeyup="getinputvalue()">
-    <p id ='hidetext' > </p>
+    
+    <p id ='hidetext' > </p> 
 
+  
     <script src="/Events/event.js"></script>
 </body>
 </html>
