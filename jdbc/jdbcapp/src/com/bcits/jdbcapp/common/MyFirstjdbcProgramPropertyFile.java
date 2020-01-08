@@ -18,18 +18,15 @@ public class MyFirstjdbcProgramPropertyFile {
 		ResultSet rs = null;
 		Statement stmt = null;
 		try {
-			
-		
 
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			
+
 			String dburl = "jdbc:mysql://localhost:3306/employee_management_info";
 			FileInputStream file = new FileInputStream("db.properties");
 			Properties prop = new Properties();
 			prop.load(file);
-			
+
 			con = DriverManager.getConnection(dburl, prop);
-		
 
 			String query = "select * from employee_primary_info";
 			stmt = con.createStatement();

@@ -9,26 +9,22 @@ import java.sql.Statement;
 
 import com.mysql.jdbc.Driver;
 
-public class FindEmployee  {
+public class FindEmployee {
 
 	public static void main(String[] args) {
 		Connection con = null;
-		ResultSet rs = null;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+		ResultSet rs = null;
 		Statement stmt = null;
 
-		try {                                                                                                                                                                                                                        
+		try {
 
-			
-			  Driver driverRef = new Driver();
-			  DriverManager.registerDriver(driverRef);
-			 
-			  
+			Driver driverRef = new Driver();
+			DriverManager.registerDriver(driverRef);
+
 			String dburl = "jdbc:mysql://localhost:3306/employee_management_info?user=root&password=root";
 			con = DriverManager.getConnection(dburl);
 
-			
-			String query = " select * from employee_primary_info "
-					+ " where emp_id = 20";
+			String query = " select * from employee_primary_info " + " where emp_id = 20";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 
@@ -43,8 +39,7 @@ public class FindEmployee  {
 				String blood_group = rs.getString("blood_group");
 				double salary = rs.getDouble("salary");
 				int dept_id = rs.getInt("dept_id");
-				
-				
+
 				int manager_id = rs.getInt("manager_id");
 				System.out.println("emp_id ==" + emp_id);
 				System.out.println("emp_name == " + emp_name);

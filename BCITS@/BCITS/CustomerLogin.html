@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.12.0-web/fontawesome-free-5.12.0-web/css/all.css">
+    <link rel="stylesheet" href="/BCITS/CustomerLogin.css">
+</head>
+<body>      
+          <h1 id="title">Welcome to DISCOM </h1>
+      
+    <form name="loginForm" onsubmit="validateForm();return false">
+
+        <b>User Name:<sup>*</sup></b>
+        <br>
+        <input id="userName" type="text" name="userName" placeholder="Enter a username">
+
+        <p id="userNError" style="color: red;font-size: 20px;  display: none;">
+            user name is invalid</p>
+        <br> <br>
+
+
+        <b>Password:<sup>*</sup></b>
+        <br>
+        <input type="password" name="userPwd" placeholder="Enter a password" id="userPassword">
+
+        <p id="userpwdError"
+            style="color: red;font-size: 20px;  display: none;">password is invalid</p>
+        <br><br>
+
+        <input id="UserLogin"  type="submit" onmouseover="changecolorblue()" onmouseout="changecolorwhite()" value="Login"><br><br>
+     <div>
+        <span>
+            <h6>New User?</h6>
+            
+            <!-- <a id="signup" href="/BCITS/SignUp.html">SignUp</a> -->
+            <a id="signup" class="btn btn-outline-dark" href="/BCITS/SignUp.html" role="button">SignUp</a>
+        </span>
+    </div>
+    </form>
+    <script src="/BCITS/CustomerLogin.js"></script>
+</body>
+
+</html>
