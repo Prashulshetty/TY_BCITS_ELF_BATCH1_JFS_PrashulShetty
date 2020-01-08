@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assignment/LoginPage.css">
+    <style>
+        #hidenP{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="loginForm" onsubmit="validateForm();return false">
+        <b>Email:<sup>*</sup></b>
+        <br>
+        <input id="userN" type="text" name="userName" placeholder="Enter your username">
+
+        <p id="userNError" style="color: red;font-size: 20px; border:2px solid orangered; width: 150px; display: none;">
+            userName is invalid</p>
+        <br> <br>
+        <b> Password:<sup>*</sup></b>
+        <br>
+        <span>
+        <input type="password" name="userPwd" placeholder="Enter your password" id="userP">
+        <input type="password" name="userPwd" placeholder="Enter your password" id="hidenP">
+        <button type="showP" onclick="showpassword">SP</button>
+    </span>
+        <p id="userpwdError"
+            style="color: red;font-size: 20px; border:2px solid orangered; width: 150px; display: none;">password is
+            invalid</p>
+        <br>
+        <div>
+            <input type="checkbox" name="chk" id="">
+            <label for="">Save my password</label>
+        </div> <br>
+        <input id="userL" type="submit" value="Login">
+    </form>
+    <script src="/assignment/LoginPage.js"></script>
+</body>
+
+</html>

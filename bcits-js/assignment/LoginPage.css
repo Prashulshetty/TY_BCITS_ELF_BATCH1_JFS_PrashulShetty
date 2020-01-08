@@ -1,0 +1,22 @@
+form{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-top: 120px;
+    padding-top: 50px;
+}
+#userN,#userP{
+ width : 274px;
+ height : 22px;
+ padding-left: 3px;
+}
+#userL{
+    width: 111px;
+    height: 26px;
+    margin-left: 85px;
+    
+
+}
+sup{
+    color: red;
+}
