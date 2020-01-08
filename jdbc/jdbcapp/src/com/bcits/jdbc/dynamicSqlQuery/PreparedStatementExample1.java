@@ -1,4 +1,4 @@
-package com.bcits.jdbcapp.common;
+package com.bcits.jdbc.dynamicSqlQuery;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -7,33 +7,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-public class PreparedStatementExample {
+public class PreparedStatementExample1 {
 
 	public static void main(String[] args) {
-		Connection con =null;
-		ResultSet rs=null;
-		PreparedStatement pstmt= null;
+		Connection con = null;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
 		try {
 
-			//load driver
+			// load driver
 			Class.forName("com.mysql.jdbc.Driver");
 
-			//get DB connection
-			String dburl="jdbc:mysql://localhost:3306/employee_management_info";
-			con =DriverManager.getConnection(dburl, "root","root");
+			// get DB connection
+			String dburl = "jdbc:mysql://localhost:3306/employee_management_info";
+			con = DriverManager.getConnection(dburl, "root", "root");
 
-			//Issue sql query
-			String query = " select * from employee_primary_info "
-					+" where emp_id =?";
+			// Issue sql query
+			String query = " select * from employee_primary_info " + " where emp_id=? ";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1,Integer.parseInt(args[0]));
-
+			pstmt.setInt(1, Integer.parseInt(args[0]));
 			rs = pstmt.executeQuery();
 
-			//Process the result returned by sql query
+			// Process the result returned by sql query
 
-			if(rs.next()) {
+			if (rs.next()) {
 				int emp_id = rs.getInt("emp_id");
 				String emp_name = rs.getString("emp_name");
 				long emp_mobileno = rs.getLong("emp_mobileno");
@@ -44,7 +41,6 @@ public class PreparedStatementExample {
 				String blood_group = rs.getString("blood_group");
 				double salary = rs.getDouble("salary");
 				int dept_id = rs.getInt("dept_id");
-
 
 				int manager_id = rs.getInt("manager_id");
 				System.out.println("emp_id ==" + emp_id);
@@ -70,13 +66,13 @@ public class PreparedStatementExample {
 		} finally {
 			// 5.close all jdbc objects
 			try {
-				if(con!=null) {               
+				if (con != null) {
 					con.close();
 				}
-				if(rs!=null) {
+				if (rs != null) {
 					rs.close();
 				}
-				if(pstmt!=null) {
+				if (pstmt != null) {
 					pstmt.close();
 				}
 			} catch (SQLException e) {
@@ -84,6 +80,6 @@ public class PreparedStatementExample {
 			}
 		}
 
-	}//end of main
+	}// end of main
 
-}//end of class
+}// end of class
