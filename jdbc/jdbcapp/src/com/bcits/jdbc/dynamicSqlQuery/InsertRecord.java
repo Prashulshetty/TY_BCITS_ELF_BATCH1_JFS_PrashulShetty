@@ -23,7 +23,7 @@ public class InsertRecord {
 			con = DriverManager.getConnection(dburl, "root", "root");
 
 			// Issue sql query
-			String query = " insert into shetty(id,name) values(?,'?') ";
+			String query = " insert into shetty(id,name) values(?,?) ";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(args[0]));
 			pstmt.setString(2,(args[1]));

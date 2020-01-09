@@ -1,10 +1,8 @@
 package com.bcits.jdbc.dynamicSqlQuery;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DeleteRecord {
@@ -16,21 +14,21 @@ public class DeleteRecord {
 		try {
 
 			// load driver
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 			// get DB connection
 			String dburl = "jdbc:mysql://localhost:3306/employee_management_info";
 			con = DriverManager.getConnection(dburl, "root", "root");
 
 			// Issue sql query
-			String query = " delete from employee_primary_info " + " where emp_id = ?";
+			String query = " delete from employee_primary_info " + " where emp_id =? ";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(args[0]));
 			rs = pstmt.executeUpdate();
 
 			// Process the result returned by sql query
 			if (rs != 0) {
-				System.out.println("number of rows affected " + rs);
+				System.out.println("Profile Updated");
 			} else {
 				System.err.println("Employee data is not found in DB");
 			}
