@@ -30,8 +30,9 @@ public class UpdateRecord {
 			String query =  " update employee_primary_info set emp_name ='?' "
 					+ " where emp_id=?";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, Integer.parseInt(args[0]));
-			pstmt.setString(2, args[1]);
+			pstmt.setString(1, args[0]);
+			pstmt.setInt(2, Integer.parseInt(args[1]));
+		
 			rs = pstmt.executeUpdate();
 
 			// Process the result returned by sql query
