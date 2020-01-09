@@ -19,14 +19,15 @@ public class InsertRecord {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			// get DB connection
-			String dburl = "jdbc:mysql://localhost:3306/prashul";
+			String dburl = "jdbc:mysql://localhost:3306/employee_management_info";
 			con = DriverManager.getConnection(dburl, "root", "root");
 
 			// Issue sql query
-			String query = " insert into shetty(id,name) values(?,?) ";
+			String query = " insert into department_info values(?,?,?) ";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, Integer.parseInt(args[0]));
 			pstmt.setString(2,(args[1]));
+			pstmt.setInt(3, Integer.parseInt(args[2]));
 			rs = pstmt.executeUpdate();
 
 			// Process the result returned by sql query
