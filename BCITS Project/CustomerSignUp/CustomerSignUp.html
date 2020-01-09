@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.12.0-web/fontawesome-free-5.12.0-web/css/all.css">
+    <link rel="stylesheet" href="/CustomerSignUp/CustomerSignUp.css">
+</head>
+
+<body>      
+          <h1 id="title">Welcome to DISCOM </h1>
+      
+    <form name="loginForm" onsubmit="validateForm();return false">
+       
+        
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          
+
+
+        <!-- <b>User Name:<sup>*</sup></b>
+        <br>
+        <input id="userName" type="text" name="userName" placeholder="Enter a username">
+
+        <p id="userNError" style="color: red;font-size: 20px;  display: none;">
+            user name is invalid</p>
+        <br> <br>
+
+
+        <b>Create a Password:<sup>*</sup></b>
+        <br>
+        <input type="password" name="userPwd" placeholder="Enter a password" id="userPassword">
+
+        <p id="userpwdError"
+            style="color: red;font-size: 20px;  display: none;">password is invalid</p>
+        <br><br>
+
+        <b>Mobile Number:<sup>*</sup></b>
+        <br>
+        <input id="MobileNumber" type="tel" name="userMobileNumber" placeholder="Enter a Mobile Number">
+
+        <p id="MobileNumberError" style="color: red;font-size: 20px;  display: none;">
+            Mobile Number is invalid</p>
+        <br> <br>
+
+        <b>Enter Valid meter number/rr number:<sup>*</sup></b>
+        <br> 
+        <input type="text" name="userMeterNumber" placeholder="Enter a meter number or rr number" id="userMeterNumber">
+        
+        <p id="userMeterNumberError"
+        style="color: red;font-size: 20px;  display: none;">Meter number is invalid</p>
+    <br><br> -->
+
+        <!-- <input id="UserSubmit"  type="submit" onmouseover="changecolorblue()" onmouseout="changecolorwhite()" value="Sign Up"> -->
+    </form>
+    <script src="/CustomerSignUp/CustomerSignUp.js"></script>
+</body>
+
+</html>
