@@ -23,8 +23,7 @@ public class UpdateRecord {
 
 			// Issue sql query                                                              
 			/*
-			 * String query = " update employee_primary_info set emp_name ='bhumika' " +
-			 * " where emp_id=?";
+			 * String query = " update employee_primary_info set emp_name ='bhumika'  where emp_id=?";
 			 * 
 			 */
 			String query = " update employee_primary_info set emp_name = ? where emp_id= ? ";

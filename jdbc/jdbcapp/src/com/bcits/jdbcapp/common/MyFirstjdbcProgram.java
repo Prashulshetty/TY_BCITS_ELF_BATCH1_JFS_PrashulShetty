@@ -16,8 +16,6 @@ public class MyFirstjdbcProgram {
 		ResultSet rs = null;
 		Statement stmt = null;
 
-		// java.beans.Statement stmt =null;
-
 		try {
 
 			// 1. load the Driver
