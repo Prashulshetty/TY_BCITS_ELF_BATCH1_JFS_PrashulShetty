@@ -21,7 +21,7 @@ public class ManytoMany {
 		ProjectInfo projectinfo=new ProjectInfo();
 		ProjectInfo projectinfo1=new ProjectInfo();
 		
-		primary.setEmp_id(687);
+		primary.setEmp_id(909);
 		primary.setEmp_name("Ram");
 		primary.setEmp_mobileno(999222555);
 		primary.setOfficial_mailid("ram@gmail.com");
@@ -34,7 +34,7 @@ public class ManytoMany {
 		primary.setManager_id(90);
 		
 		
-		primary2.setEmp_id(787);
+		primary2.setEmp_id(809);
 		primary2.setEmp_name("Dev");
 		primary2.setEmp_mobileno(999222444);
 		primary2.setOfficial_mailid("dev@gmail.com");
@@ -46,15 +46,16 @@ public class ManytoMany {
 		primary2.setDept_id(40);
 		primary2.setManager_id(50);
 		alEmployeePrimaryInfos.add(primary2);
+		alEmployeePrimaryInfos.add(primary);
 		
-		projectinfo.setProject_id(101);
+		projectinfo.setProject_id(133);
 		projectinfo.setProject_name("jdbc");
 		projectinfo.setTechnology("jpawithhibernate");
 		projectinfo.setStart_date(java.sql.Date.valueOf("2019-12-08"));
 		projectinfo.setEnd_date(java.sql.Date.valueOf("2020-12-08"));
 		projectinfo.setPrimary(alEmployeePrimaryInfos);
 		
-		projectinfo1.setProject_id(107);
+		projectinfo1.setProject_id(144);
 		projectinfo1.setProject_name("j2ee");
 		projectinfo1.setTechnology("jpawithhibernate");
 		projectinfo1.setStart_date(java.sql.Date.valueOf("2019-12-08"));
