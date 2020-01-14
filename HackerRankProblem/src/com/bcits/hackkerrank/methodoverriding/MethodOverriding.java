@@ -1,4 +1,4 @@
-package om.bcits.hacckerrank.methodoverriding;
+package com.bcits.hackkerrank.methodoverriding;
 class Sports {
 
 	String getName() {
