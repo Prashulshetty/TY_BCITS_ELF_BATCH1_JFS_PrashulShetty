@@ -1,4 +1,4 @@
-package com.bcits.hackerrank.Interface1;
+package com.bcits.hackkerrank.Interface1;
 
 
 class MyCalculator implements AdvancedArithmetic {
