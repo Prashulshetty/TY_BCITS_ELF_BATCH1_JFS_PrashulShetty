@@ -15,7 +15,7 @@ public class DateServlet extends HttpServlet {
 		//java code for system current date and time (dynamic)
 		Date date =new Date();
 		resp.setContentType("text/html");
-		//resp.setHeader("refresh", "1");
+		resp.setHeader("refresh", "1");
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
 		out.println("<body>");
