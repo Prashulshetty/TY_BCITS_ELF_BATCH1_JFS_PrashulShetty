@@ -1,4 +1,4 @@
-package com.bcits.hackerrank.instanceOf;
+package com.bcits.hackkerrank.instanceOf;
 
 import java.util.ArrayList;
 import java.util.Scanner;

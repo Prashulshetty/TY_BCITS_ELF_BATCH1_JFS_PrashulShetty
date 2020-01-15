@@ -1,4 +1,4 @@
-package com.bcits.hackerrank.Interface1;
+package com.bcits.hackkerrank.Interface1;
 
 public interface AdvancedArithmetic {
 	  int divisor_sum(int n);
