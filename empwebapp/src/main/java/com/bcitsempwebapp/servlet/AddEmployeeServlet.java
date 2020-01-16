@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bcits.empwebapp.beans.EmployeePrimary;
+import com.bcits.empwebapp.beans.EmployeePrimaryInfo;
 
 @WebServlet("/addEmployee")
 public class AddEmployeeServlet extends HttpServlet {
@@ -38,7 +38,7 @@ public class AddEmployeeServlet extends HttpServlet {
 			e1.printStackTrace();
 		}
 
-		EmployeePrimary emp = new EmployeePrimary();
+		EmployeePrimaryInfo emp = new EmployeePrimaryInfo();
 		emp.setEmp_id(Integer.parseInt(empIdVal));
 		emp.setEmp_name(empNameVal);
 		emp.setDesignation(DesignationVal);

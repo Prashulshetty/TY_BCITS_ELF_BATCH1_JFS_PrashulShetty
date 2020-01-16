@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bcits.empwebapp.beans.EmployeePrimary;
+import com.bcits.empwebapp.beans.EmployeePrimaryInfo;
 
 @WebServlet("/deleteEmployee")
 public class deleteEmployee extends HttpServlet {
@@ -27,7 +27,7 @@ public class deleteEmployee extends HttpServlet {
 
 		EntityTransaction transaction = manager.getTransaction();
 		transaction.begin();
-		EmployeePrimary employeePrimaryInfo = manager.find(EmployeePrimary.class, empId);
+		EmployeePrimaryInfo employeePrimaryInfo = manager.find(EmployeePrimaryInfo.class, empId);
 
 		resp.setContentType("text/html");
 

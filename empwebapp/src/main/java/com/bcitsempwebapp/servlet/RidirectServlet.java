@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 public class RidirectServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//String url ="https://www.youtube.com"; // to external resource
+		String url ="https://www.youtube.com"; // to external resource
 		
 		//String url ="http://localhost:8080/empwebapp/currentDate";  // to internal resource(dynamic)
 		
-		String url ="http://localhost:8080/empwebapp/addEmployee.html";  // to internal resource(static)
+		//String url ="http://localhost:8080/empwebapp/addEmployee.html";  // to internal resource(static)
 		resp.sendRedirect(url);
 	}
 
