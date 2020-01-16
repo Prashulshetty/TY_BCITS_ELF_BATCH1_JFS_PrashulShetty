@@ -3,26 +3,30 @@ package com.bcitsempwebapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-public class SearchEmployeeServlet extends HttpServlet {
+@WebServlet("/createCookie")
+public class CreateCookieServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		String empIdval = req.getParameter("empId");
-		resp.setContentType("text/html");
+		Cookie myCookie = new Cookie("empName","Prashul");
+		myCookie.setMaxAge(7*24*60*60);
+		resp.addCookie(myCookie);
+		
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
 		out.println("<body>");
-		out.println("<h1>Empp ID:- " + empIdval + "</h1>");
-		out.println("Name is = dev");
-		out.println("age is = 60");
-		out.println("salary = 20000");
+		out.println("<h1 style='color:green'>Cookie created successfully<h1>");
 		out.println("</body>");
 		out.println("</html>");
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("./cookiePage.html");
+		dispatcher.include(req,resp);
 	}
 
-}// end of class
+}
