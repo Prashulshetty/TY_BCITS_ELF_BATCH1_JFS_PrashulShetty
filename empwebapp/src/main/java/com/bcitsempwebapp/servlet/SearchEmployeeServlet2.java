@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +30,8 @@ public class SearchEmployeeServlet2 extends HttpServlet {
 		EntityManager manager = entityManagerFactory.createEntityManager();
 		EmployeePrimary employeePrimaryInfo = manager.find(EmployeePrimary.class, empId);
 
+		
+		
 		resp.setContentType("text/html");
 
 		PrintWriter out = resp.getWriter();
