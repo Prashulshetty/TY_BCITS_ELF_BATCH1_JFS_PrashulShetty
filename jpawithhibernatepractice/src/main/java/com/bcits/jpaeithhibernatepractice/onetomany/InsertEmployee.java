@@ -26,7 +26,7 @@ public class InsertEmployee {
 		primary.setMgrId(20);
 
 		try {
-			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
+			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primaryDetails");
 			manager = entityManagerFactory.createEntityManager();
 			transaction = manager.getTransaction();
 			transaction.begin();

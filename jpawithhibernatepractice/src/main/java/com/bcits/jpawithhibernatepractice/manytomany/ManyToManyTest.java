@@ -1,6 +1,7 @@
 package com.bcits.jpawithhibernatepractice.manytomany;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,18 +19,15 @@ public class ManyToManyTest {
 		EntityTransaction transaction = null;
 
 		EmployeePrimaryInfo primary1 = new EmployeePrimaryInfo();
-		EmployeePrimaryInfo primary2 = new EmployeePrimaryInfo();
 
 		ProjectInfo info1 = new ProjectInfo();
 		ProjectInfo info2 = new ProjectInfo();
 		
-		ArrayList<ProjectInfo> projectsInfos = new ArrayList<ProjectInfo>();
+		List<ProjectInfo> projectsInfos = new ArrayList<ProjectInfo>();
 		
-		ArrayList<EmployeePrimaryInfo> primaryInfo = new ArrayList<EmployeePrimaryInfo>();
+		List<EmployeePrimaryInfo> primaryInfo = new ArrayList<EmployeePrimaryInfo>();
 		
-		primaryInfo.add(primary1);
-		primaryInfo.add(primary2);
-		
+	
 		
 
 		info1.setPid(100);
@@ -48,8 +46,7 @@ public class ManyToManyTest {
 		info2.setLocation("banglore");
 		info2.setList(primaryInfo);
 
-		projectsInfos.add(info1);
-		projectsInfos.add(info2);
+		
 
 		primary1.setEmpId(300);
 		primary1.setName("Arjun");
@@ -62,27 +59,21 @@ public class ManyToManyTest {
 		primary1.setSalary(45000);
 		primary1.setDeptId(30);
 		primary1.setMgrId(10);
+
+		
+		
+		projectsInfos.add(info1);
+		projectsInfos.add(info2);
+		
+		primaryInfo.add(primary1);
 		primary1.setProject(projectsInfos);
 
-		primary2.setEmpId(200);
-		primary2.setName("karan");
-		primary2.setMobileNo(8990085632L);
-		primary2.setMaildId("karanarjun@bcits.com");
-		primary2.setBirthDate(java.sql.Date.valueOf("1993-11-11"));
-		primary2.setJoiningDate(java.sql.Date.valueOf("2018-11-20"));
-		primary2.setDesignation("Tester");
-		primary2.setBloodGroup("B+");
-		primary2.setSalary(25000);
-		primary2.setDeptId(20);
-		primary2.setMgrId(20);
-		primary2.setProject(projectsInfos);
-
 		try {
-			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
+			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primaryDetails");
 			manager = entityManagerFactory.createEntityManager();
 			transaction = manager.getTransaction();
 			transaction.begin();
-			manager.persist(info);
+		manager.persist(primary1);
 			transaction.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

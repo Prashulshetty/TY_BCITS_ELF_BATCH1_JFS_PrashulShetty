@@ -17,7 +17,7 @@ public class UsingPrimarySetBank {
 		EmployeePrimaryInfo primary = new EmployeePrimaryInfo();
 		EmployeeBankInfo bankInfo = new EmployeeBankInfo();
 
-		primary.setEmpId(10);
+		primary.setEmpId(210);
 		primary.setName("Prashul");
 		primary.setMobileNo(9998886664L);
 		primary.setMaildId("prashul@bcits.com");

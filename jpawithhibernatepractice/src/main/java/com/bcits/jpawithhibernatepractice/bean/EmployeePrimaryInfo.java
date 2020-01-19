@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -20,6 +21,7 @@ import com.bcits.jpawithhibernatepractice.EmployeeAddressInfo;
 import com.bcits.jpawithhibernatepractice.EmployeeAddressPK;
 import com.bcits.jpawithhibernatepractice.EmployeeBankInfo;
 import com.bcits.jpawithhibernatepractice.EmployeeSecondaryInfo;
+import com.bcits.jpawithhibernatepractice.ProjectInfo;
 
 import lombok.Data;
 import lombok.ToString.Exclude;
@@ -66,4 +68,8 @@ public class EmployeePrimaryInfo implements Serializable {
 	@Exclude
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "primaryInfo")
 	private List<EmployeeAddressInfo> address;
+	
+	@Exclude
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "list")
+	private List<ProjectInfo> project;
 }

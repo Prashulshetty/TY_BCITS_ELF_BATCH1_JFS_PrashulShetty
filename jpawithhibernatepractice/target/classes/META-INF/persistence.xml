@@ -8,7 +8,7 @@
 		<class>com.bcits.jpawithhibernatepractice.bean.EmployeePrimaryInfo</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.jdbc.Driver" />
+				value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/ems_mapping?createDatabaseIfNotExist=true" />
 			<property name="javax.persistence.jdbc.user" value="root" />
@@ -17,6 +17,7 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" />
 		</properties>
 	</persistence-unit>
 </persistence>
