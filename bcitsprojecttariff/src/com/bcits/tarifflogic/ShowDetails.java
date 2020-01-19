@@ -9,6 +9,7 @@ public class ShowDetails {
 		System.out.println("----------DETAILS---------------");
 		Set keys = ConsumerBill.map.keySet();
 		Iterator itr = keys.iterator();
+		
 		while (itr.hasNext()) {
 			ConsumerDetails consumer = ConsumerBill.map.get(itr.next());
 			System.out.println("Name : " + consumer.getConsumerName());
