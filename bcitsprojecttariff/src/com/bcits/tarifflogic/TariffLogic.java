@@ -7,7 +7,7 @@ public class TariffLogic {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to DISCOME\n") ;
+		System.err.println("Welcome to DISCOME\n") ;
 		employeeLogin();
 		}
 		
@@ -30,7 +30,7 @@ public class TariffLogic {
 				case 1:
 					int records = ShowDetails.show();
 					if (records == 0) {
-						System.err.println("First generate the bill and see customer details...!!");
+						System.err.println("First generate the bill and see consumer details...!!");
 					}
 					break;
 
