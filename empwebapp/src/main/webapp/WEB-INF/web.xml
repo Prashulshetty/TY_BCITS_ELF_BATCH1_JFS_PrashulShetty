@@ -10,36 +10,31 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
- <context-param>
- <param-name>appName</param-name>
- <param-value>empwebapp</param-value>
- </context-param>
- 
-  <servlet>
-  <servlet-name>currentDate</servlet-name>
-  <servlet-class>com.bcitsempwebapp.servlet.DateServlet</servlet-class>
-  <init-param>
-  <param-name>servletName</param-name>
-  <param-value>Date Servlet</param-value>
-  </init-param>
-  </servlet>
+  <context-param>
+  	<param-name>appName</param-name>
+  	<param-value>empwebapp</param-value>
+  </context-param>
   
+  	<servlet>
+    	<servlet-name>searchEmployee</servlet-name>
+    	<servlet-class>com.bcits.empwebapp.servlet.SearchEmployeeServlet</servlet-class>
+  	</servlet>
   <servlet-mapping>
-  <servlet-name>currentDate</servlet-name>
-  <url-pattern>/currentDate</url-pattern>
+  <servlet-name>searchEmployee</servlet-name>
+  <url-pattern>/searchEmp</url-pattern>	
   </servlet-mapping>
   
   <servlet>
-  <servlet-name>searchEmp</servlet-name>
-  <servlet-class>com.bcitsempwebapp.servlet.SearchEmployeeServlet</servlet-class>
-  </servlet>
-  
+    	<servlet-name>currentDate</servlet-name>
+    	<servlet-class>com.bcits.empwebapp.servlet.ServletDate</servlet-class>
+    	<init-param>
+    		<param-name>ServletName</param-name>
+    		<param-value>Date Servlet</param-value>
+    	</init-param>
+  	</servlet>
   <servlet-mapping>
-  <servlet-name>searchEmp</servlet-name>
- <url-pattern>/searchEmp</url-pattern>
+  <servlet-name>currentDate</servlet-name>
+  <url-pattern>/currentDate</url-pattern>	
   </servlet-mapping>
-  
-  
-  
   
 </web-app>
