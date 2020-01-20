@@ -1,36 +1,9 @@
-form{
-    width: 318px;
-    height: 200px;
-    margin: auto;
-    margin-top: 52px;
-    padding-top: 50px;
-
-}
-h1{
-   
-    padding-top: 30px;
-    padding-bottom: 30px;
-    background-color:cornflowerblue;
-    text-align: center;
-    font-family:Arial, Helvetica, sans-serif  
-}
-body{
-    background-position: center;
-    background-size: cover;
-    background-image: url(/image/electricity.jpg);
+.my-card{
+    box-shadow: 0 0 20px;
 }
 
-#userName,#userPassword,#userMeterNumber,#MobileNumber{
- width : 274px;
- height : 34px;
- padding-left: 3px;
-}
-#UserSubmit{
-    width: 111px;
-    height: 34px;
-    margin-left: 85px;
-    background-color: cyan;
-}
-sup{
-    color: red;
+.my-text:hover{
+   color: red;
+   text-decoration: none;
+
 }

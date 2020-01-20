@@ -1,72 +1,102 @@
-function validateForm() {
-    var loginForm = document.forms['loginForm']
-    var userN = loginForm['userName'].value
-    var userP = loginForm['userPassword'].value
-    var userMN = loginForm['userMeterNumber'].value
-    var userMobile = loginForm['userMobileNumber'].value
 
-    console.log(loginForm);
-    console.log('user Name', userN);
-    console.log('user password', userP);
-    console.log('user password', userMN);
-    console.log('user password', userMobile);
 
-    if (userN.trim().length > 10) {
-        console.log('user name is valid');
-        document.getElementById('userNError').style.display = 'none'
-        document.getElementById('userN').style.border='1px solid black'
-    } else {
-        console.log('user name is invalid');
-        document.getElementById('userNError').style.display='block'
-        document.getElementById('userN').style.border='1px solid red'
+    var fName=document.getElementById("fName");
+    var lName=document.getElementById("lName");
+    var email=document.getElementById("email");
+    var Mobile=document.getElementById("Mobile");
+    var password=document.getElementById("password");
+    var cPassword=document.getElementById("cpassword");
+    var mNumber=document.getElementById("MNumber");
+    var PinCode=document.getElementById("PinCode");
+
+    var fNameI=document.getElementById("fNameI");
+    var lNameI=document.getElementById("lNameI");
+    var emailI=document.getElementById("emailI");
+    var MobileI=document.getElementById("MobileI");
+    var pele=document.getElementById("pele");
+    var cPasswordI=document.getElementById("cpasswordI");
+    var mNumberI=document.getElementById("MNumberI");
+    var PinCodeI=document.getElementById("PinCodeI");
+    
+    function passwordValidation(password) {
+
+        let valid = true;
+        console.log(password);
+        let upperV = password.match(/[A-Z]/)
+        let lowerV = password.match(/[a-z]/)
+        let numberV = password.match(/[0-9]/)
+        let special = password.match(/[!-=]/) //'!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+        console.log(special);
+        if (numberV !== null && upperV !== null && lowerV !== null && special !== null) {
+            valid = false
+        }
+    
+        return valid
     }
 
-        
+var success = document.getElementById("success");
+var pTag = document.getElementById("pele");
 
-//     if (userP.trim().length > 5) {
-//         console.log('password is valid');
-//         document.getElementById('userpwdError').style.display = 'none'
-//         document.getElementById('userP').style.border='1px solid black'
+function validateForm() {
+    let valid = true
 
-//     } else {
-//         console.log('password is invalid');
-//         document.getElementById('userpwdError').style.display = 'block'
-//         document.getElementById('userP').style.border='1px solid red'
+    if (fName.value.match(/[0-9]/) !== null) {
+        fNameI.style.display = "block";
+        fName.style.border = "2px solid red";
 
-//      }
+        valid = false
 
-//      if (userMobile.trim().length > 10) {
-//       console.log(' Mobile number is valid');
-//       document.getElementById('userMobileNumberError').style.display = 'none'
-//       document.getElementById('userMobile').style.border='1px solid black'
-//   } else {
-//       console.log('Mobile number is invalid');
-//       document.getElementById('userMobileNumberError').style.display='block'
-//       document.getElementById('userMobile').style.border='1px solid red'
-//   }
+    } else {
+        fNameI.style.display = "none";
+        fName.style.border = "1px solid black";
+    }
+    if (lNamelname.value.match(/[0-9]/) !== null) {
+        lNameI.style.display = "block";
+        lName.style.border = "2px solid red";
+        valid = false
 
-//      if (userMN.trim().length > 10) {
-//       console.log(' Meter number is valid');
-//       document.getElementById('userMeterNumberError').style.display = 'none'
-//       document.getElementById('userMN').style.border='1px solid black'
-//   } else {
-//       console.log('Meter number is invalid');
-//       document.getElementById('userMeterNumberError').style.display='block'
-//       document.getElementById('userMN').style.border='1px solid red'
-//   }
+    } else {
+        lNameI.style.display = "none";
+        lName.style.border = "1px solid black";
+    }
+    if (Mobile.value.trim().length !== 10) {
+        MobileI.style.display = "block";
+        Mobile.style.border = "2px solid red";
+        valid = false
 
-//   function changecolorblue() {
-//     var changeblue = document.getElementById('UserSubmit')
-//     changeblue.style.backgroundColor='blue'
-   
+    } else {
+        MobileI.style.display = "none";
+        Mobile.style.border = "1px solid black";
+    }
+    if (mNumber.value.trim().length !== 8) {
+        mNumberI.style.display = "block";
+        mNumber.style.border = "2px solid red";
+        valid = false
 
-// }
-// function changecolorwhite() {
-//     var changeW = document.getElementById('UserSubmit')
-//     changeW.style.backgroundColor='white'
-  
-
-// }
-
+    } else {
+        mNumberI.style.display = "none";
+        mNumber.style.border = "1px solid black";
+    }
+    if (passwordValidation(password.value)) {
+        pTag.style.display = "block";
+        password.style.border = "2px solid red";
+        valid = false
+    } else {
+        pTag.style.display = "none";
+        password.style.border = "1px solid black";  
+    } if (password.value!==cPassword.value) {
+        cPasswordI.style.display = "block";
+        cPassword.style.border = "2px solid red";
+        valid = false
+    } else {
+        cPasswordI.style.display = "none";
+        cPassword.style.border = "1px solid black";  
+    }
+    return valid;
 
 }
+
+
+
+
+
