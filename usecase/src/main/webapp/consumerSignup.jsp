@@ -7,49 +7,58 @@
 <title>Insert title here</title>
 </head>
 <body>
-<fieldset>
-		<legend>Consumer Details</legend>
-		<form action="./consumerSignup" method="post">
-			<label>First Name :</label>
-			<input type="text" name="fName" required><br>
-			<label>Last Name:</label>
-			<input type="text" name="lName" required><br>
-			<label>Email address :</label>
-			<input type="email" name="email" required><br>
-			<label>Mobile Number :</label>
-			<input type="tel" name="Mobile" required><br>
-			<label>Password :</label>
-			<input type="password" name="password" required><br>
-			<label>Confirm Password :</label>
-			<input type="password" name="cPassword" required><br>
-			<label>Meter Number/RR Number :</label>
-			<input type="number" name="mNumber" required><br>
-			 <label>Type of Consumer :</label>
-			  <select name="typeOfConsumer" class="custom-select">
+  <h1 align="center" style="color: blue;" >DISCOM ELECTRICITY PRIVATE LIMITED</h1>
+  <h1 align="center" style="color: blue;"  >Customer SignUp</h1>
+ 
+<div style="width: 250px ;height: 850px;
+
+margin-top: 36px;
+font-size: larger;
+margin: auto;"
+ >
+<div>
+    <form action="/ConsumerHome/ConsumerHome.html" method="post" onsubmit="return validateForm()" >
+			<label>First Name :</label><br>
+			<input style="width: 250px;" type="text" name="fName" required><br><br>
+			<label>Last Name:</label><br>
+			<input style="width: 250px;"type="text" name="lName" required><br><br>
+			<label>Email address :</label><br>
+			<input style="width: 250px;" type="email" name="email" required><br><br>
+			<label>Mobile Number :</label><br>
+			<input style="width: 250px;"  type="tel" name="Mobile" required><br><br>
+			<label>Password :</label><br>
+			<input style="width: 250px;"  type="password" name="password" required><br><br>
+			<label>Confirm Password :</label><br>
+			<input style="width: 250px;"  type="password" name="cPassword" required><br><br>
+			<label>Meter/RR Number :</label><br>
+			<input style="width: 250px;" type="number" name="mNumber" required><br><br>
+			
+			 <label>Type of Consumer :</label><br>
+			  <select style="width: 250px;"  class="custom-select"><br>
         <option  value="0" selected disabled>Select Consumer Type</option>
         <option value="1">Residential</option>
         <option value="2">Commercial</option>
         <option value="3">Industries</option>
-      </select><br>
-       <label for="">Region</label>
-      <select name="region" class="custom-select">
+      </select><br><br>
+       <label for="">Region</label><br>
+      <select style="width: 250px;"  style="width: 250px;"  class="custom-select"><br>
         <option value="0" selected disabled>Select Region</option>
         <option value="1">Bangalore South</option>
         <option value="2">Bangalore North</option>
       </select><br>
-			<div class="form-group">
-        <label for="">Address</label>
-        <input id="Address1" type="text" placeholder="Address Line 1 " class="form-control" id=""><br>
-        <input id="Address2" type="text" placeholder="Address Line 2 " class="form-control" id=""><br>
-        <label for="">Pincode</label>
-        <input id="PinCodeI" type="number" placeholder="Enter Pincode" class="form-control" id="">
-      </div>
-<input type="checkbox" name="Cbox" id="">&nbsp;<label for="">By Signing up.I agree the terms and condition.</label><br>
-      <button type="submit"  class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">SignUp</button>
+			<div class="form-group"><br>
+        <label for="">House Number :</label><br>
+        <input style="width: 250px;" id="hNumber" type="text" placeholder="Address Line 1 " class="form-control" id=""><br><br>
+       <label for="">Area :</label><br>
+        <input style="width: 250px;"  id="Area" type="text" placeholder="Address Line 2 " class="form-control" id=""><br><br>
+        <label style="width: 250px;"  for="">Pincode</label><br>
+        <input style="width: 250px;"  id="PinCodeI" type="number" placeholder="Enter Pincode" class="form-control" id=""><br>
+      </div><br>
+<input type="checkbox" name="Cbox" id="">&nbsp;<label for="">By Signing up.I agree the terms and condition.</label><br><br>
+      <button  style="width: 250px;" type="submit"  class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">SignUp</button><br><br>
      
     </form>
-			
-			
-	</fieldset>
+  </div>
+</div>
 </body>
 </html>

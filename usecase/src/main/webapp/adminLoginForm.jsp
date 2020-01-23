@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <%  boolean done = (boolean) request.getAttribute("msg"); %>
+   <%  boolean done = (boolean) request.getAttribute("msg"); %>
     
 <!DOCTYPE html>
 <html>

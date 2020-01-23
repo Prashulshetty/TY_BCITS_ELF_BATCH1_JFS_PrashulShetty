@@ -36,15 +36,16 @@ public class ConsumerSignupServlet extends HttpServlet {
 
 		if (session != null) {
 		// Get the data form
-		String empIdVal = req.getParameter("fName");
-		String nameVal = req.getParameter("lName");
-		String mobileVal = req.getParameter("Mobile");
-		String mailVal = req.getParameter("email");
-		
-		String designationVal = req.getParameter("password");
-		String bloodGroupVal = req.getParameter("cPassword");
-		String salaryVal =	req.getParameter("mNumber");
-		String deptIdval =	req.getParameter("typeOfConsumer");
+		String empIdVal = req.getParameter("empId");
+		String nameVal = req.getParameter("name");
+		String mobileVal = req.getParameter("mobileNum");
+		String mailVal = req.getParameter("maildId");
+		String birthDateVal = req.getParameter("birthDate");
+		String JoinDateVal = req.getParameter("joiningDate");
+		String designationVal = req.getParameter("designation");
+		String bloodGroupVal = req.getParameter("bloodGroup");
+		String salaryVal =	req.getParameter("salary");
+		String deptIdval =	req.getParameter("deptId");
 		String mgrIdval =	req.getParameter("mgrId");
 		String passwordVal=req.getParameter("password");
 		

@@ -30,9 +30,9 @@ public class ConsumerMaster implements Serializable {
 	@Column
 	private String region;
 	@Column
-	private String address1;
+	private int houseNumber;
 	@Column
-	private String address2;
+	private String area;
 	@Column
 	private int pincode;
 		
