@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- 
+     <bean id="dev" class="com.bcits.beans.DepartmentBean" primary="true">
+    <property name="deptid" value ="10"></property>
+      <property name="deptName" value ="dev"></property>
+    </bean>
+    
+  <bean id="hr" class="com.bcits.beans.DepartmentBean" >
+    <property name="deptid" value ="20"></property>
+      <property name="deptName" value ="SD"></property>
+    </bean>
+    
+    <bean id="ts" class="com.bcits.beans.DepartmentBean">
+    <property name="deptid" value ="30"></property>
+      <property name="deptName" value ="ts"></property>
+    </bean> -->
+    
+    
+     <bean id="dev" class="com.bcits.beans.DepartmentBean" autowire-candidate="default">
+    <property name="deptid" value ="10"></property>
+      <property name="deptName" value ="dev"></property>
+    </bean>
+    
+  <bean id="hr" class="com.bcits.beans.DepartmentBean" autowire-candidate="false" >
+    <property name="deptid" value ="20"></property>
+      <property name="deptName" value ="SD"></property>
+    </bean>
+    
+    <bean id="departmentBean" class="com.bcits.beans.DepartmentBean">
+    <property name="deptid" value ="30"></property>
+      <property name="deptName" value ="ts"></property>
+    </bean>
+    
+    
+</beans>
