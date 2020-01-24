@@ -23,15 +23,19 @@ public class AdminLogin  extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//validation of form data
+		
 		int adminId = Integer.parseInt(req.getParameter("adminId"));
 		String adminpassword = req.getParameter("adminPassword");
-		if(( adminpassword.equals("discom")) & (adminId==100)){	
-			
-			req.getRequestDispatcher("./addEmployee.jsp").include(req, resp);
+		if(( adminpassword.equals("discom")) & (adminId == 100)) {	
+			 
+			//creating the session
+			//HttpSession session = req.getSession(true);
+			req.getRequestDispatcher("./addEmployees").include(req, resp);
 		} else {
-			req.getRequestDispatcher("./adminLoginForm.jsp").include(req, resp);
+			req.setAttribute("msg", "Invalid EmpID or passward");
+			 req.getRequestDispatcher("./addEmployees").forward(req, resp);
+	
 		}
 
-	
 	}// end of post
 }// end of class

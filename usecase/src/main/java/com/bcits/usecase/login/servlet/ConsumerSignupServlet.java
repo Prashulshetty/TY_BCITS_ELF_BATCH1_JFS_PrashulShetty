@@ -23,7 +23,7 @@ import com.bcits.usecase.beans.ConsumerMaster;
 
 
 
-@WebServlet("/consumerLogin")
+@WebServlet("/consumerSignupServlet")
 public class ConsumerSignupServlet extends HttpServlet {
 
 	@Override
@@ -36,45 +36,39 @@ public class ConsumerSignupServlet extends HttpServlet {
 
 		if (session != null) {
 		// Get the data form
-		String empIdVal = req.getParameter("empId");
-		String nameVal = req.getParameter("name");
-		String mobileVal = req.getParameter("mobileNum");
-		String mailVal = req.getParameter("maildId");
-		String birthDateVal = req.getParameter("birthDate");
-		String JoinDateVal = req.getParameter("joiningDate");
-		String designationVal = req.getParameter("designation");
-		String bloodGroupVal = req.getParameter("bloodGroup");
-		String salaryVal =	req.getParameter("salary");
-		String deptIdval =	req.getParameter("deptId");
-		String mgrIdval =	req.getParameter("mgrId");
+		String empIdVal = req.getParameter("fName");
+		String nameVal = req.getParameter("lName");
+		Long mobileVal = Long.parseLong(req.getParameter("Mobile"));
+		String mailVal = req.getParameter("email");
 		String passwordVal=req.getParameter("password");
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date birthDate = null;
-		Date joiningDate =null;
-		try {
-			birthDate = dateFormat.parse(birthDateVal);
-			joiningDate = dateFormat.parse(JoinDateVal);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		int mNumberVal = Integer.parseInt(req.getParameter("mNumber"));
+		String consumertypeVal=req.getParameter("consumertype");
+		String regionVal=req.getParameter("region");
+	    int houseNoVal=Integer.parseInt(req.getParameter("houseNo"));
+	    String areaVal=req.getParameter("area");
+	    int pinVal=Integer.parseInt(req.getParameter("pin"));
+
+	
 
 		ConsumerMaster info = new ConsumerMaster();
-		info.setEmpId(Integer.parseInt(empIdVal));
-		info.setName(nameVal);
-		info.setMobileNum(Long.parseLong(mobileVal));
-		info.setMaildId(mailVal);
-		info.setBirthDate(birthDate);
-		info.setJoiningDate(joiningDate);
-		info.setDesignation(designationVal);
-		info.setBloodGroup(bloodGroupVal);
-		info.setSalary(Double.parseDouble(salaryVal));
-		info.setDeptId(Integer.parseInt(deptIdval));
-		info.setMgrId(Integer.parseInt(mgrIdval));
-		info.setPassword(passwordVal);
 		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("emsPeristenceUnit");
+		info.setArea(areaVal);
+		info.setEmailId(mailVal);
+		info.setFirstName(empIdVal);
+		info.setLastName(nameVal);
+		info.setArea(areaVal);
+		info.setTypeOfConsumer(consumertypeVal);
+		info.setPassword(passwordVal);
+		info.setPincode(pinVal);
+		info.setRrNUmber(mNumberVal);
+		info.setHouseNumber(houseNoVal);
+		info.setRegion(regionVal);
+		
+		
+		
+		
+		
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("bcitsPeristenceUnit");
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		boolean isAdded = false;
