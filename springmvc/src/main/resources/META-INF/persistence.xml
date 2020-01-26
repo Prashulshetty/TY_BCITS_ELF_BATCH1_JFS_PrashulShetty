@@ -6,11 +6,13 @@
 	<persistence-unit name="emsPeristenceUnit"
 		transaction-type="RESOURCE_LOCAL">
 		<!-- <class></class> -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/springmvc_db?createDatabaseIfNotExist=true" />
+				value="jdbc:mysql://localhost:3306/ems_webapp_db?createDatabaseIfNotExist=true" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password"
 				value="root" />
