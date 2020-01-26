@@ -1,16 +1,18 @@
 package com.bcits.tarifflogic;
 
+import java.util.Date;
+
 public class ConsumerDetails {
 
 	private String consumerName;
-	private int consumerId;
+	private int rrNumber;
 	private String typeOfConsumer;
 	private double bill;
 
-	public ConsumerDetails(String consumerName, int consumerId, String typeOfConsumer, double bill) {
+	public ConsumerDetails(String consumerName, int rrNumber, String typeOfConsumer, double bill) {
 		super();
 		this.consumerName = consumerName;
-		this.consumerId = consumerId;
+		this.rrNumber = rrNumber;
 		this.typeOfConsumer = typeOfConsumer;
 		this.bill = bill;
 	}
@@ -23,12 +25,12 @@ public class ConsumerDetails {
 		this.consumerName = consumerName;
 	}
 
-	public int getConsumerId() {
-		return consumerId;
+	public int getRrNumber() {
+		return rrNumber;
 	}
 
-	public void setConsumerId(int consumerId) {
-		this.consumerId = consumerId;
+	public void setRrNumber(int rrNumber) {
+		this.rrNumber = rrNumber;
 	}
 
 	public String getTypeOfConsumer() {
@@ -49,7 +51,7 @@ public class ConsumerDetails {
 
 	@Override
 	public String toString() {
-		return "ConsumerDetails [consumerName=" + consumerName + ", consumerId=" + consumerId + ", typeOfConsumer="
+		return "ConsumerDetails [consumerName=" + consumerName + ", rrNumber=" + rrNumber + ", typeOfConsumer="
 				+ typeOfConsumer + ", bill=" + bill + "]";
 	}
 
