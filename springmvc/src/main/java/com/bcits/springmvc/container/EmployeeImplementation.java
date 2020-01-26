@@ -61,12 +61,17 @@ public class EmployeeImplementation implements EmployeeDAO {
 		int empId = bean.getEmpId();
 		String empName =bean.getName();
 		double salary = bean.getSalary();
+		long mobileNum = bean.getMobileNum();
+		String designation =bean.getDesignation();
 		EmployeeInfoBean employeeInfoBean = manager.find(EmployeeInfoBean.class, empId);
 		if (employeeInfoBean != null) {
 			try {
 				transaction.begin();
 				employeeInfoBean.setName(empName);
 				employeeInfoBean.setSalary(salary);
+				employeeInfoBean.setDesignation(designation);
+				employeeInfoBean.setMobileNum(mobileNum);
+			
 				transaction.commit();
 				return true;
 
@@ -112,4 +117,5 @@ public class EmployeeImplementation implements EmployeeDAO {
 	}
 	
 	}
+	
 }

@@ -145,9 +145,9 @@ public class EmployeeController {
 			@SessionAttribute(name = "loggedInEmpInfo", required = false) EmployeeInfoBean employeeBean, ModelMap modelMap) {
 		if (employeeBean != null) {
 			if (service.addEmployee(info)) {
-				modelMap.addAttribute("msg", "added successfully");
+				modelMap.addAttribute("msg", "added ");
 			} else {
-				modelMap.addAttribute("errMsg", "this Employee Record Already exists!");
+				modelMap.addAttribute("errMsg", " Record Already exists!");
 			}
 			return "addEmpForm";
 		} else {
@@ -181,5 +181,6 @@ public class EmployeeController {
 		  // Invalid session 
 	modelMap.addAttribute("errMsg", "Please Login First..");
 	  return "empLoginForm"; } return "updateEmpForm"; }
+
 
 }
