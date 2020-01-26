@@ -21,7 +21,6 @@ public class EmployeeImplementation implements EmployeeDAO {
 
 	@Override
 	public boolean addEmployee(EmployeeInfoBean bean) {
-		//EntityManagerFactory emf = (EntityManagerFactory) EntityManagerDAOFactory.getDAOInstance();
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		boolean isAdded = false;
@@ -32,6 +31,7 @@ public class EmployeeImplementation implements EmployeeDAO {
 			isAdded = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			isAdded=false;
 		}
 		return isAdded;
 	}
@@ -42,7 +42,6 @@ public class EmployeeImplementation implements EmployeeDAO {
 		boolean isDeleted =false;
 		EntityManager manager = factory.createEntityManager();
 		EmployeeInfoBean employeeInfoBean = manager.find(EmployeeInfoBean.class, empId);
-		
 		if (employeeInfoBean != null) {
 			EntityTransaction transaction = manager.getTransaction();
 			transaction.begin();
@@ -56,7 +55,27 @@ public class EmployeeImplementation implements EmployeeDAO {
 	
 	@Override
 	public boolean updateEmployee(EmployeeInfoBean bean) {
-		
+	
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		int empId = bean.getEmpId();
+		String empName =bean.getName();
+		double salary = bean.getSalary();
+		EmployeeInfoBean employeeInfoBean = manager.find(EmployeeInfoBean.class, empId);
+		if (employeeInfoBean != null) {
+			try {
+				transaction.begin();
+				employeeInfoBean.setName(empName);
+				employeeInfoBean.setSalary(salary);
+				transaction.commit();
+				return true;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				manager.close();
+			}
+		}
 		return false;
 	}
 
@@ -73,12 +92,12 @@ public class EmployeeImplementation implements EmployeeDAO {
 	public List<EmployeeInfoBean> getAllEmployee() {
   EntityManager manager = factory.createEntityManager();	
 		
-		String jpql = " from PrimaryInfo ";
+		String jpql = " from EmployeeInfoBean ";
 		Query query =manager.createQuery(jpql);
 		@SuppressWarnings("unchecked")
 		List <EmployeeInfoBean> list=query.getResultList();
 		manager.close();
-		return null;
+		return list;
 	}
 
 

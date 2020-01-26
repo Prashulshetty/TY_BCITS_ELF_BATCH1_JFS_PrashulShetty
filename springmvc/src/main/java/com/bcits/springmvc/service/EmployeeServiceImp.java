@@ -30,7 +30,8 @@ public class EmployeeServiceImp implements EmployeeService {
 
 	@Override
 	public boolean addEmployee(EmployeeInfoBean bean) {
-		return dao.addEmployee(bean);	}
+		return dao.addEmployee(bean);	
+		}
 
 	
 

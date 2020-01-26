@@ -9,11 +9,11 @@
 <body>
 <table border="1" style="width: 100%">
 <tr>
-<th><a href="/addEmployee">addEmployee</a></th>
+<th><a href="./addEmpForm">addEmployee</a></th>
 <th><a href="./deleteEmpForm">deletEmployee</a></th>
-<th><a href="/updateEmployee">updateEmployee</a></th>
+<th><a href="./updateEmpForm">updateEmployee</a></th>
 <th><a href="./searchEmpForm">searchEmployee</a></th>
-<th><a href="/getAllEmployee">getAllEmployee</a></th>
+<th><a href="./seeAllEmployee">getAllEmployee</a></th>
 </tr>
 
 </table>
