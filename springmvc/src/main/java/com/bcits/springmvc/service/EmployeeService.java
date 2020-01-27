@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.bcits.springmvc.beans.EmployeeInfoBean;
 
+
+
 public interface EmployeeService {
 	public EmployeeInfoBean authenticate(int empId,String password);
 	public boolean addEmployee(EmployeeInfoBean bean);

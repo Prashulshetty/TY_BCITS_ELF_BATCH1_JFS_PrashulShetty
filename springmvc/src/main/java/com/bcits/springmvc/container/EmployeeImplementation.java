@@ -1,11 +1,13 @@
 package com.bcits.springmvc.container;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
@@ -13,11 +15,16 @@ import org.springframework.stereotype.Repository;
 
 import com.bcits.springmvc.beans.EmployeeInfoBean;
 
+
+
 @Repository
 public class EmployeeImplementation implements EmployeeDAO {
 	
 	@PersistenceUnit
 	EntityManagerFactory factory ;
+	
+	//@PersistenceContext
+	//private EntityManager manager;
 
 	@Override
 	public boolean addEmployee(EmployeeInfoBean bean) {
@@ -58,28 +65,68 @@ public class EmployeeImplementation implements EmployeeDAO {
 	
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
-		int empId = bean.getEmpId();
+		Integer empId = bean.getEmpId();
 		String empName =bean.getName();
-		double salary = bean.getSalary();
-		long mobileNum = bean.getMobileNum();
+		Double salary = bean.getSalary();
+		Long mobileNum = bean.getMobileNum();
 		String designation =bean.getDesignation();
+		Date birthDate =bean.getBirthDate();
+		Date joiningDate =bean.getJoiningDate();
+		String maildId =bean.getMaildId();
+		String password =bean.getPassword();
+		String bloodGroup =bean.getBloodGroup();
+		Integer deptId =bean.getDeptId();
+		Integer mgrId =bean.getMgrId();		
+				
+		
 		EmployeeInfoBean employeeInfoBean = manager.find(EmployeeInfoBean.class, empId);
 		if (employeeInfoBean != null) {
 			try {
 				transaction.begin();
-				employeeInfoBean.setName(empName);
-				employeeInfoBean.setSalary(salary);
-				employeeInfoBean.setDesignation(designation);
-				employeeInfoBean.setMobileNum(mobileNum);
-			
+				
+				
+				if (empName != null) {
+					employeeInfoBean.setName(empName);
+				}
+				if (salary != null && salary > 0) {
+					employeeInfoBean.setSalary(salary);
+				}
+				if (designation != null) {
+					employeeInfoBean.setDesignation(designation);
+				}
+				if (mobileNum != null) {
+					employeeInfoBean.setMobileNum(mobileNum);
+				}
+				if (joiningDate != null) {
+					employeeInfoBean.setJoiningDate(joiningDate);
+				}
+				if (birthDate != null) {
+					employeeInfoBean.setBirthDate(birthDate);
+				}
+				if (bloodGroup != null) {
+					employeeInfoBean.setBloodGroup(bloodGroup);
+				}
+				if (deptId != null) {
+					employeeInfoBean.setDeptId(deptId);
+				}
+				if (!maildId.isEmpty()) {
+					employeeInfoBean.setMaildId(maildId);
+				}
+				if (mgrId != null) {
+					employeeInfoBean.setMgrId(mgrId);
+				}
+				if (!password.isEmpty()) {
+					employeeInfoBean.setPassword(password);
+				}
+				
 				transaction.commit();
 				return true;
 
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				manager.close();
-			}
+			} 
+				  finally { manager.close(); }
+				 
 		}
 		return false;
 	}

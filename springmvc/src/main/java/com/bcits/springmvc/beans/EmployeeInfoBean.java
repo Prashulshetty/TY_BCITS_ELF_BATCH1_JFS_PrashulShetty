@@ -19,15 +19,15 @@ import lombok.Data;
 public class EmployeeInfoBean implements Serializable {
 	@Id
 	@Column(name = "emp_id")
-	private int empId;
+	private Integer empId;
 	@Column
 	private String name;
 	@Column(name = "mobile")
-	private long mobileNum;
+	private Long mobileNum;
 	@Column(name = "official_maildid")
 	private String maildId;
 	@Column(name = "date_of_birth")
-	@DateTimeFormat(iso = ISO.DATE)
+	/* @DateTimeFormat(iso = ISO.DATE) */
 	private Date birthDate;
 	@Column(name = "date_of_joining")
 	private Date joiningDate;
@@ -36,11 +36,11 @@ public class EmployeeInfoBean implements Serializable {
 	@Column(name = "blood_group")
 	private String bloodGroup;
 	@Column
-	private double salary;
+	private Double salary;
 	@Column(name = "dept_id")
-	private int deptId;
+	private Integer deptId;
 	@Column(name = "mgr_id")
-	private int mgrId;
+	private Integer mgrId;
 	@Column
 	private String password;
 

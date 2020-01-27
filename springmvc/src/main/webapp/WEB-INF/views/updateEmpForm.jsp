@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	        <jsp:include page="header.jsp"></jsp:include>
-	       <jsp:include page="getAllEmpForm.jsp"></jsp:include> 
+	       
 	<%String msg =(String) request.getAttribute("msg");
     String errMsg =(String) request.getAttribute("errMsg");%>
 	  
@@ -13,18 +13,32 @@
 <title>Insert title here</title>
 <body>
 <fieldset>
-		<legend>Employee Details</legend>
+		<legend>Employee Update</legend>
 		<form action="./updateEmployee" method="post" >
 		<label>Id :</label>
-        <input type="number" name="empId" required><br><br>
+        <input type="number" name="empId" ><br><br>
         <label>Name :</label>
-        <input type="text" name="name" required><br><br>
+        <input type="text" name="name" ><br><br>
         <label>Mobile Number :</label>
-        <input type="tel" name="mobileNum" required><br><br>     
+        <input type="tel" name="mobileNum" ><br><br>     
         <label>Designation :</label>
-        <input type="text" name="designation" required><br><br>
+        <input type="text" name="designation"  ><br><br>
         <label>salary :</label>
-        <input type="number" name="salary" required><br><br>
+        <input type="number" name="salary"  ><br><br>
+        <label>birthDate :</label>
+        <input type="date" name="birthDate"  ><br><br>
+        <label>joiningDate :</label>
+        <input type="date" name="joiningDate" ><br><br>
+        <label>mailId :</label>
+        <input type="email" name="maildId"  ><br><br>
+         <label>password :</label>
+        <input type="password" name="password"  ><br><br>
+        <label>bloodGroup :</label>
+        <input type="text" name="bloodGroup" ><br><br>
+        <label>deptId :</label>
+        <input type="number" name="deptId" ><br><br>
+     <label>mgrId :</label>
+        <input type="number" name="mgrId"  ><br><br>
          <br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="submit" value="Update" >		

@@ -34,7 +34,7 @@
 				<th><%=employeeInfoBean.getName()%></th>
 				<th><%=employeeInfoBean.getDesignation()%></th>
 				<th><%=employeeInfoBean.getSalary()%></th>
-				<th><%=employeeInfoBean.getJoiningDate()%></th>
+				<th><%=employeeInfoBean.getBirthDate()%></th>
 				<th><%=employeeInfoBean.getJoiningDate()%></th>
 				<th><%=employeeInfoBean.getMobileNum()%></th>
 
