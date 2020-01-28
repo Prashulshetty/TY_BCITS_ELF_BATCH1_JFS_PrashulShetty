@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Employee-Info>
+    <employee-id>100</employee-id>
+    <name>Dev</name>
+    <mobileNum>999888000</mobileNum>
+    <maildId>dev@devraj</maildId>
+    <birthDate>2020-01-28T12:27:00.547+05:30</birthDate>
+    <joiningDate>2020-01-28T12:27:00.547+05:30</joiningDate>
+    <designation>HR</designation>
+    <bloodGroup>O+</bloodGroup>
+    <salary>25000.0</salary>
+    <dept-id>10</dept-id>
+    <mgrId>10</mgrId>
+    <password>123</password>
+</Employee-Info>

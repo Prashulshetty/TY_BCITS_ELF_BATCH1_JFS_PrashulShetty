@@ -1,0 +1,14 @@
+{
+	"name": "DevaRaja",
+	"mobileNum": 999888000,
+	"maildId": "dev@devraj",
+	"birthDate": 1580207599571,
+	"joiningDate": 1580207599571,
+	"designation": "HR",
+	"bloodGroup": "O+",
+	"salary": 25000.0,
+	"mgrId": 10,
+	"password": "123",
+	"employeeId": 100,
+	"departmentId": 10
+}

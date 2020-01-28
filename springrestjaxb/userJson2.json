@@ -1,0 +1,17 @@
+{
+	"userId": 100,
+	"userName": "Dev",
+	"mobileNum": 999888000,
+	"maildId": "dev@devraj",
+	"birthDate": 1580209461628,
+	"joiningDate": 1580209461628,
+	"designation": "HR",
+	"bloodGroup": "O+",
+	"salary": 25000.0,
+	"deptId": 10,
+	"mgrId": 10,
+	"userOtherInfoBean": {
+		"gender": "male",
+		"adhaarNumber": 666666666
+	}
+}

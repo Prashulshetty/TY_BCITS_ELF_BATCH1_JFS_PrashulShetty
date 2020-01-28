@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<User-Info user-id="100">
+    <name>Dev</name>
+    <mobileNum>999888000</mobileNum>
+    <maildId>dev@devraj</maildId>
+    <birthDate>2020-01-28T13:43:20.459+05:30</birthDate>
+    <joiningDate>2020-01-28T13:43:20.460+05:30</joiningDate>
+    <designation>HR</designation>
+    <bloodGroup>O+</bloodGroup>
+    <salary>25000.0</salary>
+    <dept-id>10</dept-id>
+    <mgrId>10</mgrId>
+    <password>123</password>
+    <user-other-info>
+        <gender>male</gender>
+        <adhaar>666666666</adhaar>
+    </user-other-info>
+    <user-addresses-list>
+        <userAddressList>
+            <house-No>11</house-No>
+            <street>Athrdi</street>
+            <city>udupi</city>
+            <address-type>112</address-type>
+        </userAddressList>
+        <userAddressList>
+            <house-No>11</house-No>
+            <street>Athrdi</street>
+            <city>udupi</city>
+            <address-type>116</address-type>
+        </userAddressList>
+    </user-addresses-list>
+</User-Info>
