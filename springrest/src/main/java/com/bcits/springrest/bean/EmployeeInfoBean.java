@@ -7,16 +7,31 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 import lombok.Data;
+//@XmlRootElement(name="employee-info")
+//@XmlAccessorType(XmlAccessType.FIELD)
+@JsonRootName("EmployeeInfo")
+@JsonPropertyOrder("empId")
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @Entity
 @Table(name = "employee_primary_info")
 public class EmployeeInfoBean implements Serializable {
+	@JsonProperty("employeeID")
 	@Id
 	@Column(name = "emp_id")
+	//@XmlElement(name="emp-id")
 	private Integer empId;
 	@Column
 	private String name;
@@ -25,7 +40,6 @@ public class EmployeeInfoBean implements Serializable {
 	@Column(name = "official_maildid")
 	private String maildId;
 	@Column(name = "date_of_birth")
-	/* @DateTimeFormat(iso = ISO.DATE) */
 	private Date birthDate;
 	@Column(name = "date_of_joining")
 	private Date joiningDate;

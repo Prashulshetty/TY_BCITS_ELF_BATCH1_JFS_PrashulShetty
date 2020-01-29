@@ -46,10 +46,12 @@ public class EmployeeServiceImp implements EmployeeService {
 	@Override
 	public EmployeeInfoBean getEmployee(int empId) {
 		if(empId<1) {
+			//return null;
 			throw new EmployeeException("Invalid Id.....");
 		}
 		EmployeeInfoBean employeeInfoBean =dao.getEmployee(empId);
 		if(employeeInfoBean==null) {
+			//return null;
 			throw new EmployeeException("EmpId not found....");
 		}
 		return employeeInfoBean;
