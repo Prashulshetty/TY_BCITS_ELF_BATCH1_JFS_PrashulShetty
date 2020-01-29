@@ -1,0 +1,9 @@
+.my-card{
+    box-shadow: 0 0 20px;
+}
+
+.my-text:hover{
+   color: red;
+   text-decoration: none;
+
+}

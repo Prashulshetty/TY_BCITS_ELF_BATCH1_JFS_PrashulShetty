@@ -1,0 +1,99 @@
+
+            <!DOCTYPE html>
+            <html lang="en">
+            
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>payment page</title>
+                    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+                
+                <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+                <link rel="stylesheet" href="/payment/payment.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+            </head>
+            
+            <body>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <img height="50px"
+            src="./download.jpg"
+            alt="">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav offset-md-3 pl-5">
+                            <li class="nav-item active">
+                                <h3 class=" active"><a class="nav-link" href="#">DISCOM ELECTRICITY LIMITED <span
+                                            class="sr-only">(current)</span></a></h3>
+                            </li>
+            
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link active" href="/DISCOM/Discom.html"><i class="fas fa-home"></i>Home</a>
+                                 </li>
+                                 <li class="nav-item active">
+                                    <a class="nav-link active" href="/AboutUs/AboutUs.html">AboutUs</a>
+                                 </li>
+                            </ul>
+            
+                    </div>
+                </nav>
+                <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
+        
+                    <form action="/payment/paymentSuccess.html" onsubmit="return validateForm()" >
+                        <div id="success" class="alert alert-success" style="display: none;">
+                            Payment
+                            <strong>Success!</strong>
+                          </div>
+                        <div class="text-primary offset-md-5 ">
+                        </div>
+                        <h2 class="text-center">Pay Online </h2>
+                        <div class="form-group">
+                            <img src="/payment/images/mastercard.jpg" alt="">
+                           <img src="/payment/images/amex.jpg" alt=""> 
+                     <img src="/payment/images/visa.jpg" alt="">
+                           <img src="/payment/images/amex.jpg" alt=""> 
+                           <img src="/payment/images/mastercard.jpg" alt="">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Card Number</label>
+                            <input  id="cNumber" type="number" placeholder="Enter 16-digit card number" required class="form-control" id="exampleInputPassword1">
+                            <p id="pele" style="color: red; display:none; font-size: 12px;">Invalid number</p>
+            
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Card Holder Name</label>
+                            <input id="Name" type="text" placeholder="Enter Card Holder Name" required class="form-control" id=""
+                                aria-describedby="">
+                            <p id="eele" style="color: red; display:none; font-size: 12px;">Invalid Name</p>
+                        </div>
+                        <span>
+                            <label for="">Expire Date</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="">CVV</label>
+                        </span>
+                        <span>
+                            <input type="date"placeholder="dd/MM">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="number">
+                        </span>
+                      
+                        <button type="submit" class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">Pay</button>
+                    </button>
+                    
+                    </form>
+                   
+                </div>
+               
+                <script src="/payment/payment.js"></script>
+            </body>
+            
+            </html>

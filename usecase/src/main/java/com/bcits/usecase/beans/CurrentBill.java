@@ -26,7 +26,5 @@ public class CurrentBill implements Serializable {
     @Column
 	private double billAmount;
     @Column
-    private Date Date;
-    @Column
     private Date dueDate;
 }

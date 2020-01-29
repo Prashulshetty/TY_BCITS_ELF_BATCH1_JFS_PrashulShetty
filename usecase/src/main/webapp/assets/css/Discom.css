@@ -1,0 +1,10 @@
+.my-btn{
+    position: fixed;
+    left: 35%;
+    top: 50%;
+    transform: scale(2);
+}
+button{
+    box-shadow: 0 0 15px;
+    
+}
