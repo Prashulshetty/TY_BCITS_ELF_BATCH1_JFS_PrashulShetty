@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bcits.usecase.beans.ConsumerMaster;
+import com.bcits.usecase.beans.ConsumerMasterBean;
 
 
 
@@ -41,7 +41,7 @@ public class ConsumerSignupServlet extends HttpServlet {
 		Long mobileVal = Long.parseLong(req.getParameter("Mobile"));
 		String mailVal = req.getParameter("email");
 		String passwordVal=req.getParameter("password");
-		int mNumberVal = Integer.parseInt(req.getParameter("mNumber"));
+		String mNumberVal = req.getParameter("mNumber")   ;
 		String consumertypeVal=req.getParameter("consumertype");
 		String regionVal=req.getParameter("region");
 	    int houseNoVal=Integer.parseInt(req.getParameter("houseNo"));
@@ -50,7 +50,7 @@ public class ConsumerSignupServlet extends HttpServlet {
 
 	
 
-		ConsumerMaster info = new ConsumerMaster();
+		ConsumerMasterBean info = new ConsumerMasterBean();
 		
 		info.setArea(areaVal);
 		info.setEmailId(mailVal);

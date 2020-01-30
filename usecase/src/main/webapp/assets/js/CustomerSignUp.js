@@ -1,6 +1,4 @@
 
-
-    
     function passwordValidation(password) {
 
         let valid = true;

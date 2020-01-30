@@ -14,8 +14,7 @@
 <title>SignUp page</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="./resources/fontawesome-free-5.12.0-web/css/all.css">
+<link rel="stylesheet" href="./resources/fontawesome-free-5.12.0-web/css/all.css">
 <link rel="stylesheet" href="${css}/CustomerSignUp.css">
 
 </head>
@@ -145,8 +144,6 @@
 		</form>
 
 	</div>
-
-	<script src="CustomerSignUp.js"></script>
 	<script src="${js}/jquery-3.4.1.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
 	<script src="${js}/signup.js"></script>

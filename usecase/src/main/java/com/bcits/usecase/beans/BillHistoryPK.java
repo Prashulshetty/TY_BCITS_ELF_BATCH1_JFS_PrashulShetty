@@ -11,6 +11,6 @@ import lombok.Data;
 @Data
 @Embeddable
 public class BillHistoryPK implements Serializable {
-	private int rrNumber;
+	private String rrNumber;
 	private Date Date;
 }

@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bcits.usecase.beans.ConsumerMaster;
-import com.bcits.usecase.beans.EmployeeMaster;
+import com.bcits.usecase.beans.ConsumerMasterBean;
+import com.bcits.usecase.beans.EmployeeMasterBean;
 
 @WebServlet("/adminLogin")
 public class AdminLogin  extends HttpServlet {

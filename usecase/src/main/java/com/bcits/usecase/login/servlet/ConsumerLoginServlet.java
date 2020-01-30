@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bcits.usecase.beans.ConsumerMaster;
+import com.bcits.usecase.beans.ConsumerMasterBean;
 
 
 
@@ -31,9 +31,9 @@ Query query = manager.createQuery(jpql);
 query.setParameter("cId", consumerIdVal);
 query.setParameter("psw", password);
 
-ConsumerMaster consumerInfo = null;
+ConsumerMasterBean consumerInfo = null;
 try {
-consumerInfo = (ConsumerMaster) query.getSingleResult();
+consumerInfo = (ConsumerMasterBean) query.getSingleResult();
 } catch (Exception e) {
 e.printStackTrace();
 }

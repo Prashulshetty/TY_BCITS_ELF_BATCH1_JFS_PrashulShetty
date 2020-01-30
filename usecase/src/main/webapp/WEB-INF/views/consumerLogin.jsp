@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:url var="css" value="/resources/css" />
+<spring:url var="js" value="/resources/js" />
+<spring:url var="images" value="/resources/images" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,14 +14,15 @@
     <title>Customer Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/CustomerLogin.css">
+    <link rel="stylesheet" href="${css}/CustomerLogin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <img height="50px"
-            src="./download.jpg"
+          src="${images}/download.jpg"
+
             alt="">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,8 +95,10 @@
 
         </p>
     </div>
-   
-    <script src="./CustomerLogin.js"></script>
+  
+	<script src="${js}/jquery-3.4.1.js"></script>
+	<script src="${js}/bootstrap.min.js"></script>
+    <script src="${js}/CustomerLogin.js"></script>
 </body>
 
 </html>
