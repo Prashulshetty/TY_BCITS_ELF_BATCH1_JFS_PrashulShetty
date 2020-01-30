@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<spring:url var="css" value="/resources/css" />
-<spring:url var="js" value="/resources/js" />
+	<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="images" value="/resources/images" />
 <!DOCTYPE html>
 <html lang="en">
@@ -14,18 +12,11 @@
     <title >Header Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
     <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
-    <%-- <link rel="stylesheet" href="${css}/Discom.css"> --%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-</head>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <img height="50px"
+        <img height="80px" width="110px"
       src="${images}/download.jpg"
             alt="">
 
@@ -38,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav offset-md-3 pl-5">
                 <li class="nav-item active">
-                    <h3 class=" active"><a class="nav-link" href="#">DISCOM ELECTRICITY LIMITED <span
+                    <h3 class=" active"><a class="nav-link" href="#"> DISCOM ELECTRICITY PRIVATE LIMITED <span
                                 class="sr-only">(current)</span></a></h3>
                 </li>
 

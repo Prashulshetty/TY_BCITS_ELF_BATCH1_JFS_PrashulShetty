@@ -4,6 +4,7 @@
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
 <spring:url var="images" value="/resources/images" />
+ <jsp:include page="header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,40 +17,10 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="./resources/fontawesome-free-5.12.0-web/css/all.css">
 <link rel="stylesheet" href="${css}/CustomerSignUp.css">
-
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<img height="50px"
-			src="${images}/download.jpg"
-			alt="">
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav offset-md-3 pl-5">
-				<li class="nav-item active">
-					<h3 class=" active">
-						<a class="nav-link" href="#">DISCOM ELECTRICITY LIMITED <span
-							class="sr-only">(current)</span></a>
-					</h3>
-				</li>
-
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link active"
-					href="/DISCOM/Discom.html"><i class="fas fa-home"></i>Home</a></li>
-				<li class="nav-item active"><a class="nav-link active"
-					href="/AboutUs/AboutUs.html">AboutUs</a></li>
-			</ul>
-
-		</div>
-	</nav>
 	<div id="screen"
 		class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
 
