@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<% String errMsg = (String) request.getAttribute("errMsg");
+ String msg = (String) request.getAttribute("msg"); %>
+ 
+	
+
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
 <spring:url var="images" value="/resources/images" />
@@ -17,41 +22,17 @@
     <link rel="stylesheet" href="${css}/CustomerLogin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <img height="50px"
-          src="${images}/download.jpg"
-
-            alt="">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav offset-md-3 pl-5">
-                <li class="nav-item active">
-                    <h3 class=" active"><a class="nav-link" href="#">DISCOM ELECTRICITY LIMITED <span
-                                class="sr-only">(current)</span></a></h3>
-                </li>
-
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link active" href="/DISCOM/Discom.html"><i class="fas fa-home"></i>Home</a>
-                     </li>
-                     <li class="nav-item active">
-                        <a class="nav-link active" href="/AboutUs/AboutUs.html">AboutUs</a>
-                     </li>
-                </ul>
-
-        </div>
-    </nav>
+ <jsp:include page="header.jsp"></jsp:include>
+<body style=" background-color : lightblue">
+ <% if(errMsg != null && !errMsg.isEmpty()){ %>
+<h2 style="color: red;" align="center"><%= errMsg %></h2>
+<%} %>
+<% if(msg != null && !msg.isEmpty()){ %>
+<h2 style="color: red;" align="center"><%= msg %></h2>
+<%} %>
     <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
         
-        <form action="/ConsumerHome/ConsumerHome.html" onsubmit="return validateForm()" >
+        <form action="./consumerHomePage"  >
             <div id="success" class="alert alert-success" style="display: none;">
                 login
                 <strong>Success!</strong>
@@ -61,10 +42,10 @@
             </div>
             <h2 class="text-center">User Login</h2>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input id="email" type="email" placeholder="Enter email address" class="form-control" id="exampleInputEmail1"
+                <label for="exampleInputEmail1">rrNumber</label>
+                <input id="email" type="text" placeholder="Enter rrNumber" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp">
-                <p id="eele" style="color: red; display:none; font-size: 12px;">Invalid email</p>
+                <p id="eele" style="color: red; display:none; font-size: 12px;">Invalid rrNumber</p>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
@@ -91,11 +72,11 @@
         </form>
         <p class="text-center mt-1">
             New user ?
-            <a class="my-text" href="../CustomerSignUp/CustomerSignUp.html">Register</a>
+            <a class="my-text" href="./consumerSignUpPage">Register</a>
 
         </p>
     </div>
-  
+  <jsp:include page="footer.jsp"></jsp:include>
 	<script src="${js}/jquery-3.4.1.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
     <script src="${js}/CustomerLogin.js"></script>

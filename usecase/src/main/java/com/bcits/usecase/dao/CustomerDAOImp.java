@@ -21,20 +21,21 @@ public class CustomerDAOImp implements CustomerDAO {
 	EntityManagerFactory factory ;
 	
 	@Override
-	public boolean consumerSignUp(ConsumerMasterBean consumerBean, String confirmPassword) {
+	public boolean consumerSignUp(ConsumerMasterBean consumerBean) {
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
+		boolean isAdded = false;
 		try {
 			transaction.begin();
 			manager.persist(consumerBean);
 			transaction.commit();
-			return true;
+			isAdded = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			manager.close();
 		}
-		return false;
+		return isAdded;
 	}//end of consumerSignUp method
 
 	@Override

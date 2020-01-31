@@ -24,7 +24,7 @@
 	<div id="screen"
 		class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
 
-		<form id="f1" action="/" onsubmit="return validateForm()">
+		<form id="f1" action="./signUpPage"  method="post">
 			<div id="success" class="alert alert-success" style="display: none;">
 				SignUp <strong>Success!</strong>
 			</div>
@@ -35,37 +35,37 @@
 			</div>
 			<h2 class="text-center">User SignUp</h2>
 			<div class="form-group">
-				<label for="">First Name</label> <input id="fName" type="text"
+				<label for="">First Name</label> <input id="firstName" type="text" name="firstName"
 					placeholder="Enter First Name " required class="form-control"
 					id="exampleInputFirst Name" aria-describedby="">
 				<p id="fNameI" style="color: red; display: none; font-size: 12px;">Invalid
 					First Name</p>
 			</div>
 			<div class="form-group">
-				<label for="">Last Name</label> <input id="lName" type="text"
+				<label for="">Last Name</label> <input id="lastName" type="text" name="lastName"
 					placeholder="Enter Last Name " class="form-control"
 					id="exampleInputLast Name" aria-describedby="emailHelp">
 				<p id="lNameI" style="color: red; display: none; font-size: 12px;">Invalid
 					Last Name</p>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Email address</label> <input
-					id="email" type="email" placeholder="Enter email address"
+				<label for="exampleInputEmail1">Email address</label> <input name="emailId"
+					id="emailId" type="email" placeholder="Enter email address"
 					class="form-control" id="exampleInputEmail1"
 					aria-describedby="emailHelp">
 				<p id="emailI" style="color: red; display: none; font-size: 12px;">Invalid
 					email</p>
 			</div>
 			<div class="form-group">
-				<label for="exampleMobileNumber">Mobile Number</label> <input
-					id="Mobile " type="number" placeholder="Enter Mobile Number"
+				<label for="exampleMobileNumber">Mobile Number</label> <input name="phoneNumber"
+					id="phoneNumber " type="number" placeholder="Enter Mobile Number"
 					class="form-control" id="exampleInputMobile Number"
 					aria-describedby="Mobile Number">
 				<p id="MobileI" style="color: red; display: none; font-size: 12px;">Invalid
 					Mobile Number</p>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">Password</label> <input
+				<label for="exampleInputPassword1">Password</label> <input name="password"
 					id="password" type="password" placeholder="Enter password"
 					class="form-control" id="exampleInputPassword1">
 				<p id="pele" style="color: red; display: none; font-size: 12px;">Invalid
@@ -73,8 +73,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="exampleInputPassword2">Confirm Password</label> <input
-					id="cPassword" type="password" placeholder="Confirm Password"
+				<label for="exampleInputPassword2">Confirm Password</label> <input name="conPwd"
+					id="conPwd" type="password" placeholder="Confirm Password" name="conPwd"
 					class="form-control" id="exampleInputPassword2">
 				<p id="cPasswordI"
 					style="color: red; display: none; font-size: 12px;">Password
@@ -82,29 +82,29 @@
 			</div>
 
 			<div class="form-group">
-				<label for="">Meter Number/RR Number Region</label> <input
-					id="mNumber" type="number"
+				<label for="">Meter Number/RR Number Region</label> <input name="rrNUmber"
+					id="rrNUmber" type="number"
 					placeholder="Enter Meter Number/RR Number Region"
 					class="form-control" id="" aria-describedby="">
 				<p id="mNumberI" style="color: red; display: none; font-size: 12px;">Invalid
 					Meter Number/RR Number Region</p>
 			</div>
-			<label for="">Type of Consumer</label> <select class="custom-select">
+			<label for="">Type of Consumer</label> <select class="custom-select" name="typeOfConsumer">
 				<option value="0" selected disabled>Select Consumer Type</option>
 				<option value="1">Residential</option>
 				<option value="2">Commercial</option>
 				<option value="3">Industries</option>
-			</select> <label for="">Region</label> <select class="custom-select">
+			</select> <label for="">Region</label> <select class="custom-select" name="region">
 				<option value="0" selected disabled>Select Region</option>
 				<option value="1">Bangalore South</option>
 				<option value="2">Bangalore North</option>
 			</select>
 			<div class="form-group">
-				<label for="">Address</label> <input id="Address1" type="text"
-					placeholder="Address Line 1 " class="form-control" id=""><br>
-				<input id="Address2" type="text" placeholder="Address Line 2 "
+				<label for="">Address</label> <input id="houseNumber" type="text" name="houseNumber"
+					placeholder="House Number" class="form-control" id=""><br>
+				<input id="Address2" type="text" placeholder="Area" name="Area"
 					class="form-control" id=""><br> <label for="">Pincode</label>
-				<input id="PinCodeI" type="number" placeholder="Enter Pincode"
+				<input id="pincode" type="number" placeholder="Enter Pincode"  name="pincode"
 					class="form-control" id="">
 			</div>
 			<input type="checkbox" name="Cbox" id="">&nbsp;<label for="">By
@@ -113,6 +113,8 @@
 				class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">SignUp</button>
 
 		</form>
+		</div>
+  <jsp:include page="footer.jsp"></jsp:include>
 
 	</div>
 	<script src="${js}/jquery-3.4.1.js"></script>

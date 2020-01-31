@@ -1,0 +1,38 @@
+ <div class="customerDetails"> <br>
+            <table style="font-size: 20px">
+             <tr>
+                    <td><strong>Consumer Details</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Name</strong></td>
+                    <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><strong><%= consumerBean.getFirstName()+" "+consumerBean.getLastName() %></strong></td>
+                </tr>
+                <tr>
+                    <td><strong>RR Number</strong></td>
+                    <td>:</td>
+                    <td><strong><%= consumerBean.getRrNUmber() %></strong></td>
+                </tr>
+                <tr>
+                    <td><Strong>PhoneNumber</Strong></td>
+                    <td>:</td>
+                    <td><strong><%= consumerBean.getPhoneNumber() %></strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Email</strong></td>
+                    <td>:</td>
+                    <td><strong><%= consumerBean.getEmailId() %></strong></td>
+                </tr>
+                <tr>
+                    <td><Strong>Region</Strong></td>
+                    <td>:</td>
+                    <td><strong><%= consumerBean.getRegion()%></strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Type Of Consumer</strong></td>
+                    <td>:</td>
+                    <td><strong><%= consumerBean.getTypeOfConsumer() %></strong></td>
+                </tr>
+            </table>
+  	  </div>
+  	  

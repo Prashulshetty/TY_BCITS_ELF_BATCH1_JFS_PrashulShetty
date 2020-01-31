@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title >Header Page</title>
+    <title ></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
     <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav offset-md-3 pl-5">
                 <li class="nav-item active">
-                    <h3 class=" active"><a class="nav-link" href="#"> DISCOM ELECTRICITY PRIVATE LIMITED <span
+                    <h3 class=" active"><a class="nav-link" href="#">DISCOM ELECTRICITY PRIVATE LIMITED<span
                                 class="sr-only">(current)</span></a></h3>
                 </li>
 
@@ -37,13 +37,13 @@
             <ul class="navbar-nav ml-auto">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link active" href="/DISCOM/Discom.html"><i class="fas fa-home"></i>Home</a>
+                        <a class="nav-link active" href="./homePage"><i class="fas fa-home"></i>Home</a>
                      </li>
                      <li class="nav-item active">
-                        <a class="nav-link active" href="/AboutUs/AboutUs.html">AboutUs</a>
+                        <a class="nav-link active" href="./aboutUsPage">AboutUs</a>
                      </li>
                       <li class="nav-item active">
-                        <a class="nav-link active" href=" ">logout</a>
+                        <a class="nav-link active" href="./consumerLogout">logout</a>
                      </li>
                 </ul>
                    

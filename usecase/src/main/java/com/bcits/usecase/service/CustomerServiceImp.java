@@ -20,10 +20,10 @@ public class CustomerServiceImp implements CustomerService {
 
 	@Override
 	public boolean consumerSignUp(ConsumerMasterBean consumerBean, String confirmPassword) {
-		if (!consumerBean.getPassword().equals(confirmPassword)) {
-			return false;
+		if (consumerBean.getPassword().equals(confirmPassword)) {
+			return dao.consumerSignUp(consumerBean);
 		}
-		return dao.consumerSignUp(null, confirmPassword);
+		return false;
 	}
 
 	@Override

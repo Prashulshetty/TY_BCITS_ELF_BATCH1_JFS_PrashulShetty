@@ -5,16 +5,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
-@RequestMapping("/employee")
+//@RequestMapping("/employee")
 public class EmployeeController {
-
+	@GetMapping("/adminLoginPage")
+	public String displayAdminLoginPage() {
+		return "adminLogin";
+	}
 	@GetMapping("/employeeLoginPage")
-	public String displayConsumerSignUpPage() {
+	public String displayEmployeeLoginPage() {
 		return "employeeLogin";
 	}
 	
 	@GetMapping("/employeeHomePage")
-	public String displayConsumerLoginPage() {
+	public String displayConsumerHomePage() {
 		return "employeeHome";
 	}
 
