@@ -28,8 +28,10 @@ public class CustomerServiceImp implements CustomerService {
 
 	@Override
 	public ConsumerMasterBean consumerLogin(String rrNumber, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		if(rrNumber.isEmpty() && password.isEmpty()) {
+			return null;
+		}
+		return dao.consumerLogin(rrNumber, password);
 	}
 
 	@Override

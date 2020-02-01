@@ -14,7 +14,7 @@ import lombok.Data;
 public class ConsumerMasterBean implements Serializable {
 	@Id
 	@Column
-	private String rrNUmber;
+	private String rrNumber;
 	@Column
 	private String firstName;
 	@Column

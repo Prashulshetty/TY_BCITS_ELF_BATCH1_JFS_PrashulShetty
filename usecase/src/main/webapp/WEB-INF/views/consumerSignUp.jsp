@@ -82,8 +82,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="">Meter Number/RR Number Region</label> <input name="rrNUmber"
-					id="rrNUmber" type="number"
+				<label for="">Meter Number/RR Number Region</label> <input name="rrNumber"
+					id="rrNumber" type="number"
 					placeholder="Enter Meter Number/RR Number Region"
 					class="form-control" id="" aria-describedby="">
 				<p id="mNumberI" style="color: red; display: none; font-size: 12px;">Invalid

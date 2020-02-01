@@ -4,11 +4,11 @@
 <% String errMsg = (String) request.getAttribute("errMsg");
  String msg = (String) request.getAttribute("msg"); %>
  
-	
-
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
 <spring:url var="images" value="/resources/images" />
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,55 +22,58 @@
     <link rel="stylesheet" href="${css}/CustomerLogin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
- <jsp:include page="header.jsp"></jsp:include>
+
+<jsp:include page="header.jsp"></jsp:include>
 <body style=" background-color : lightblue">
+
  <% if(errMsg != null && !errMsg.isEmpty()){ %>
 <h2 style="color: red;" align="center"><%= errMsg %></h2>
 <%} %>
 <% if(msg != null && !msg.isEmpty()){ %>
 <h2 style="color: red;" align="center"><%= msg %></h2>
 <%} %>
-    <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
-        
-        <form action="./consumerHomePage"  >
-            <div id="success" class="alert alert-success" style="display: none;">
-                login
-                <strong>Success!</strong>
-              </div>
-            <div class="text-primary offset-md-5 ">
-                <h1><i class="fas fa-user-alt "></i></h1>
-            </div>
-            <h2 class="text-center">User Login</h2>
-            <div class="form-group">
-                <label for="exampleInputEmail1">rrNumber</label>
-                <input id="email" type="text" placeholder="Enter rrNumber" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp">
-                <p id="eele" style="color: red; display:none; font-size: 12px;">Invalid rrNumber</p>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input  id="password" type="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1">
-                <p id="pele" style="color: red; display:none; font-size: 12px;">Invalid password</p>
 
-            </div>
+    <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
+
+
+		<form onsubmit="validation();return false" action="./LoginPage"
+			id="formData" method="post">
+			<div id="success" class="alert alert-success" style="display: none;">
+				login <strong>Success!</strong>
+			</div>
+			<div class="text-primary offset-md-5 ">
+				<h1>
+					<i class="fas fa-user-alt "></i>
+				</h1>
+			</div>
+			<h2 class="text-center">User Login</h2>
+			<div class="form-group">
+				<label for="exampleInputEmail1">rrNumber</label>
+				 <input id="rrNum" name="rrNumber" type="text" placeholder="Enter rrNumber"
+					class="form-control" id="exampleInputEmail1"
+					aria-describedby="emailHelp">
+				
+				<SPAN ID="UNAME" STYLE="COLOR: RED;"></SPAN>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Password</label> <input id="password" name="password" type="password"
+					placeholder="Enter password" class="form-control" id="exampleInputPassword1">
+					  <span id="uPsw" style="color: red;"></span><br>
+			</div>
             <div class="form-group form-check ">
              <p>
                 <div class="float-left">
                     <input onclick="checkBox()" id="checkbox" type="checkbox" class="form-check-input">
                 <label class="form-check-label" for="exampleCheck1">Show Password</label>
                 </div>
-
-                <div class="float-left offset-md-4">
-                    <input id="savebox"  type="checkbox" class="form-check-input ">
-                <label class="form-check-label" for="exampleCheck1">Save Password</label>
-                </div>
              </p>
             </div>
-            <button type="submit" class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">login</button>
-        </button>
-        
-        </form>
-        <p class="text-center mt-1">
+			<button type="submit"
+				class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">login</button>
+			</button>
+
+		</form>
+		<p class="text-center mt-1">
             New user ?
             <a class="my-text" href="./consumerSignUpPage">Register</a>
 

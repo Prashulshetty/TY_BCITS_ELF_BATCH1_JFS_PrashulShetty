@@ -1,13 +1,19 @@
 package com.bcits.usecase.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,6 +28,13 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerService service;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		CustomDateEditor dateEditor = new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true);
+		binder.registerCustomEditor(Date.class, dateEditor);
+	}
+	
 	
 	@GetMapping("/headerPage")
 	public String headerPage() {
@@ -72,7 +85,7 @@ public class CustomerController {
 	public String consumerLogOut(ModelMap modelMap, HttpSession session) {
 		session.invalidate();
 		modelMap.addAttribute("errMsg", "You Are Sucessfully Logged Out !!");
-		return "consumerLogin";
+		return "home";
 	}
 	
 	

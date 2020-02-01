@@ -60,7 +60,7 @@ public class ConsumerSignupServlet extends HttpServlet {
 		info.setTypeOfConsumer(consumertypeVal);
 		info.setPassword(passwordVal);
 		info.setPincode(pinVal);
-		info.setRrNUmber(mNumberVal);
+		info.setRrNumber(mNumberVal);
 		info.setHouseNumber(houseNoVal);
 		info.setRegion(regionVal);
 		

@@ -40,8 +40,14 @@ public class CustomerDAOImp implements CustomerDAO {
 
 	@Override
 	public ConsumerMasterBean consumerLogin(String rrNumber, String password) {
+	
+		EntityManager manager = factory.createEntityManager();
+		ConsumerMasterBean InfoBean = manager.find(ConsumerMasterBean.class, rrNumber);
+		if(InfoBean != null && InfoBean.getPassword().equals(password)) {
+			return InfoBean;
+		}
 		return null;
-	}//end of consumerLogin  method
+	}
 
 	@Override
 	public boolean payment(PaymentDetailsBean paymentBean) {

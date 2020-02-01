@@ -1,81 +1,52 @@
-var uName=document.getElementById("email");
-var uPassword=document.getElementById("password");
-var uCheck=document.getElementById("checkbox");
-var savebox=document.getElementById("savebox");
-var pTag=document.getElementById("pele");
-var pTag2=document.getElementById("eele");
-var success=document.getElementById("success");
 
-function passwordValidation(password) {
+ var uCheck=document.getElementById("checkbox");
+ var rrNum = document.getElementById("rrNum").value;
+ var password = document.getElementById("password").value;
+ var userValue = false; 
+ var passwordValue=false;
+ var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-z]+/;
+ 
+function validation() {
+    
+    if (rrNum == "") {
+        document.getElementById("uName").innerHTML = " *Please fill the RR Number";
+        return false;
+    } else if ((rrNum.length < 6) || (rrNum.length > 9)) {
+        document.getElementById("uName").innerHTML = "*Invalid RR Number";
+        return false;
+    } else if (format.test(rrNum)){
+        document.getElementById("uName").innerHTML = "*Invalid RR Number";
+        return false;
+    } else {
+        document.getElementById("uName").style.display = 'none';
+        userValue = true;
+    }   
 
-    let valid = true;
-    console.log(password);
-    let upperV = password.match(/[A-Z]/)
-    let lowerV = password.match(/[a-z]/)
-    let numberV = password.match(/[0-9]/)
-    let special = password.match(/[!-=]/) //'!@#$%^&*()_+~`|}{[]\:;?><,./-=';
-    console.log(special);
-    if (numberV !== null && upperV !== null && lowerV !== null && special !== null) {
-        valid = false
+    if (password == "") {
+        document.getElementById("uPsw").innerHTML = " *Please fill password field";
+        return false;
+    }else if( password.length <=5 ){
+        document.getElementById("uPsw").innerHTML = " *Password Contains At list 5 character";
+        return false;
+    }else{
+        document.getElementById("uPsw").style.display = 'none';
+        passwordValue = true;
+
+    }   
+    if(passwordValue && userValue ){
+    	document.body.appendChild(form);
+    	
+		form.submit();
+		return true;
     }
-
-    return valid
 }
 
-function validateForm() {
-
-   if (uPassword.value.trim().length<5&&uName.value.trim().length<5) {
-        pTag2.style.display="block";
-        pTag.style.display="block";
-        uName.style.border="2px solid red";
-        uPassword.style.border="2px solid red";
-        return false;
-        
-    }else if(passwordValidation(uPassword.value)){
-        pTag.style.display="block";
-        uPassword.style.border="2px solid red"; 
-        return false;
-    }else if(uName.value.trim().length<5){
-        pTag2.style.display="block";
-        uName.style.border="2px solid red";
-        return false;
-    }
-   else{
-    pTag2.style.display="none";
-    pTag.style.display="none";
-    uName.style.border="1px solid black";
-    uPassword.style.border="1px solid black";
-    success.style.display="block";
-    if(savebox.checked){
-        alert("Saved")
-    }
-   
-    return true;
-    }
-    
-}
-function clearData() {
-
-        pTag2.style.display="none";
-        pTag.style.display="none";
-        uName.style.border="1px solid black";
-        uPassword.style.border="1px solid black";
-    
-    
-}
 function checkBox() {
 
     console.log(uCheck.checked);
     if(uCheck.checked){
-        uPassword.type="text";
+    	password.type="text";
     }else{
-        uPassword.type="password";
+    	password.type="password";
     }
-    
-    
 }
-checkBox();
-
-
-
-
