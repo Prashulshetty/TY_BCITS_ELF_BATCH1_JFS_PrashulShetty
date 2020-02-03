@@ -6,30 +6,22 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
-import lombok.Data;
 
+import lombok.Data;
 @Data
 @Entity
-@Table(name="employee_master")
-public class EmployeeMasterBean implements Serializable {
-	
+@Table(name="admin")
+public class AdminBean implements Serializable {	
 	@Id
 	@Column
-	private Integer  empId;
+	private int  adminId;
 	@Column
-	private String empName;
-	@Column
-	private String designation;
-	@Column
-	private String region;
+	private String name;
 	@Column
 	private String password;
-	
 	
 }

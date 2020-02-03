@@ -12,29 +12,28 @@ import lombok.Data;
 @Entity
 @Table(name = "consumer_master")
 public class ConsumerMasterBean implements Serializable {
+	
 	@Id
-	@Column
+	@Column(name = "rr_number")
 	private String rrNumber;
-	@Column
+	@Column(name = "first_name")
 	private String firstName;
-	@Column
+	@Column(name = "last_name")
 	private String lastName;
 	@Column
-	private String password;
-	@Column
-	private String emailId;
-	@Column
+	private String email;
+	@Column(name = "phone_number")
 	private long phoneNumber;
-	@Column
+	@Column(name = "type_of_consumer")
 	private String typeOfConsumer;
 	@Column
 	private String region;
 	@Column
-	private int houseNumber;
+	private String password;
+	@Column(name="house_number")
+	private String houseNumber;
 	@Column
 	private String area;
 	@Column
-	private int pincode;
-		
-	
+	private String pincode;
 }

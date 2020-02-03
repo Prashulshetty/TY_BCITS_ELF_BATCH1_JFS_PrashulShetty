@@ -1,7 +1,9 @@
+<%@page import="com.bcits.usecase.beans.EmployeeMasterBean"%>
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<% EmployeeMasterBean employeeBean = (EmployeeMasterBean) session.getAttribute("Info"); %>
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
@@ -28,9 +30,43 @@
 
 </div>
   </div>
-
-	</div>
-
+	<div class="col-8">
+  
+  <div class="consumerDetails"> <br>
+           
+            <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Consumer Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+                    <tr>
+                    <td><strong style="color: white">Employee ID</strong></td>
+                    <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><strong style="color: white"><%=employeeBean.getEmpId()%></strong></td>
+                </tr>
+                <tr>
+                    <td><strong style="color: white">Employee Name</strong></td>
+                    <td>:</td>
+                    <td><strong style="color: white"><%= employeeBean.getEmpName() %></strong></td>
+                </tr>
+                <tr>
+                    <td><Strong style="color: white">Designation</Strong></td>
+                    <td>:</td>
+                    <td><strong style="color: white"><%= employeeBean.getDesignation()%></strong></td>
+                </tr>
+                <tr>
+                    <td><Strong style="color: white">Region</Strong></td>
+                    <td>:</td>
+                    <td><strong style="color: white"><%= employeeBean.getRegion()%></strong></td>
+                </tr>
+                
+  </tbody>
+</table>
+  	  
+</div>
 	 <jsp:include page="footer.jsp"></jsp:include>
 	
 </body>

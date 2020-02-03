@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bcits.usecase.beans.EmployeeMasterBean;
+import com.bcits.usecase.beans.AdminBean;
 import com.bcits.usecase.dao.EmployeeDAO;
 
 
@@ -17,7 +18,16 @@ public class EmployeeServiceImp implements EmployeeService {
 	private EmployeeDAO dao;
 
 	@Override
-	public EmployeeMasterBean empauthenticate(int empId, String password) {
+	public EmployeeMasterBean employeelogin(int empId, String password) {
+		if(empId<1 && password.isEmpty()) {
+			return null;
+		}
+		return dao.employeeLogin(empId, password);
+	}
+	
+
+	@Override
+	public AdminBean adminLogin(int adminId, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}

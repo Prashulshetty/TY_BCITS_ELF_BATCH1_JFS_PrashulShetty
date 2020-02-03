@@ -1,26 +1,25 @@
 
  var uCheck=document.getElementById("checkbox");
- var rrNum = document.getElementById("rrNum").value;
- var password = document.getElementById("password").value;
- var userValue = false; 
- var passwordValue=false;
- var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-z]+/;
+ 
  
 function validation() {
+	var email = document.getElementById("email").value;
+	 var password = document.getElementById("password").value;
+	 var userValue = false; 
+	 var passwordValue=false;
+	 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-z]+/;
     
-    if (rrNum == "") {
-        document.getElementById("uName").innerHTML = " *Please fill the RR Number";
+    if (email == "") {
+        document.getElementById("uName").innerHTML = " *Please fill the email";
         return false;
-    } else if ((rrNum.length < 6) || (rrNum.length > 9)) {
-        document.getElementById("uName").innerHTML = "*Invalid RR Number";
+    } else if ((email.length < 10) || (email.length > 30)) {
+        document.getElementById("uName").innerHTML = "*Invalid Username";
         return false;
-    } else if (format.test(rrNum)){
-        document.getElementById("uName").innerHTML = "*Invalid RR Number";
-        return false;
-    } else {
+    }  else {
         document.getElementById("uName").style.display = 'none';
         userValue = true;
     }   
+
 
     if (password == "") {
         document.getElementById("uPsw").innerHTML = " *Please fill password field";

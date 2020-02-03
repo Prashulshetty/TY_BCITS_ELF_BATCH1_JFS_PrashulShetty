@@ -1,24 +1,25 @@
 
  var uCheck=document.getElementById("checkbox");
- var rrNum = document.getElementById("eid").value;
- var password = document.getElementById("password").value;
- var userValue = false; 
- var passwordValue=false;
- var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-z]+/;
+ 
  
 function validation() {
+	var empId = document.getElementById("empId").value;
+	 var password = document.getElementById("password").value;
+	 var userValue = false; 
+	 var passwordValue=false;
+	 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-z]+/;
     
-    if (rrNum == "") {
-        document.getElementById("uName").innerHTML = " *Please fill the RR Number";
+    if (empId == "") {
+        document.getElementById("eId").innerHTML = " *Please fill the field";
         return false;
-    } else if ((rrNum.length < 6) || (rrNum.length > 9)) {
-        document.getElementById("uName").innerHTML = "*Invalid RR Number";
+    } else if ((empId.length < 6) || (empId.length > 9)) {
+        document.getElementById("eId").innerHTML = "*Invalid empId";
         return false;
-    } else if (format.test(rrNum)){
-        document.getElementById("uName").innerHTML = "*Invalid RR Number";
+    } else if (format.test(empId)){
+        document.getElementById("eId").innerHTML = "*Invalid empId";
         return false;
     } else {
-        document.getElementById("uName").style.display = 'none';
+        document.getElementById("eId").style.display = 'none';
         userValue = true;
     }   
 

@@ -1,101 +1,160 @@
+function validation() {
 
-    function passwordValidation(password) {
+	var fname = document.getElementById("firstName").value;
+	var lname = document.getElementById("lastName").value;
+	var email = document.getElementById("email").value;
+	var pnumber = document.getElementById("phoneNumber").value;
+	var psw = document.getElementById("password").value;
+	var cpsw = document.getElementById("conPwd").value;
+	var rrnum = document.getElementById("rrNumber").value;
+	var houseNum = document.getElementById("houseNumber").value;
+	var area = document.getElementById("Area").value;
+	var pincode = document.getElementById("pincode").value;
 
-        let valid = true;
-        console.log(password);
-        let upperV = password.match(/[A-Z]/)
-        let lowerV = password.match(/[a-z]/)
-        let numberV = password.match(/[0-9]/)
-        let special = password.match(/[!-=]/) //'!@#$%^&*()_+~`|}{[]\:;?><,./-=';
-        console.log(special);
-        if (numberV !== null && upperV !== null && lowerV !== null && special !== null) {
-            valid = false
-        }
-    
-        return valid
-    }
+	var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?0-9]+/;
+	var format1 = /[A-Z]+/;
+	var format2 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-zA-Z]+/;
+	var format3 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-z]+/;
 
-function validateForm() {
-    let valid = true
+	var fnameValid = false;
+	var lnameValid = false;
+	var emailValid = false;
+	var pnumberValid = false;
+	var pswValid = false;
+	var cpswValid = false;
+	var rrnumValid = false;
+	var houseNumValid = false;
+	var area = false;
+	var pincode = false;
+	
+	
+
+	if (fname == "") {
+		document.getElementById("fName").innerHTML = " *Please fill field";
+		return false;
+	} else if ((fname.length < 3) || (fname.length > 15)) {
+		document.getElementById("fName").innerHTML = "*Length must be between 3 and 15";
+		return false;
+	} else if (format.test(fname)) {
+		document.getElementById("fName").innerHTML = "Special character & Number is not allowed";
+		return false;
+	} else {
+		document.getElementById("fName").style.display = 'none';
+		fnameValid = true;
+	}
 
 
 
-    
-    var fName=document.getElementById("fName");
-    var lName=document.getElementById("lName");
-    var email=document.getElementById("email");
-    var Mobile=document.getElementById("Mobile");
-    var password=document.getElementById("password");
-    var cPassword=document.getElementById("cpassword");
-    var mNumber=document.getElementById("MNumber");
-    var PinCode=document.getElementById("PinCode");
+	if (lname == "") {
+		document.getElementById("lName").innerHTML = " *Please fill the field";
+		return false;
+	} else if (format.test(lname)) {
+		document.getElementById("lName").innerHTML = "Special character & Number is not allowed";
+		return false;
+	} else {
+		document.getElementById("lName").style.display = 'none';
+		lnameValid = true;
+	}
 
-    var fNameI=document.getElementById("fNameI");
-    var lNameI=document.getElementById("lNameI");
-    var emailI=document.getElementById("emailI");
-    var MobileI=document.getElementById("MobileI");
-    var pele=document.getElementById("pele");
-    var cPasswordI=document.getElementById("cpasswordI");
-    var mNumberI=document.getElementById("MNumberI");
-    var PinCodeI=document.getElementById("PinCodeI");
+	
 
-    if (fName.value.match(/[0-9]/) !== null) {
-        fNameI.style.display = "block";
-        fName.style.border = "2px solid red";
+	if (email == "") {
+		document.getElementById("email").innerHTML = " *Please fill field";
+		return false;
+	} else if (format1.test(email)) {
+		document.getElementById("email").innerHTML = "*Should Not contains Upper Case characters";
+		return false;
+	} else {
+		document.getElementById("email").style.display = 'none';
+		emailValid = true;
+	}
 
-        valid = false
+	
 
-    } else {
-        fNameI.style.display = "none";
-        fName.style.border = "1px solid black";
-    }
-    if (lName.value.match(/[0-9]/) !== null) {
-        lNameI.style.display = "block";
-        lName.style.border = "2px solid red";
-        valid = false
+	if (pnumber == "") {
+		document.getElementById("number").innerHTML = "*Please fill field";
+		return false;
+	} else if (format2.test(pnumber)) {
+		document.getElementById("number").innerHTML = "*Should Not contains character";
+		return false;
+	} else {
+		document.getElementById("number").style.display = 'none';
+		pnumberValid = true;
+	}
 
-    } else {
-        lNameI.style.display = "none";
-        lName.style.border = "1px solid black";
-    }
-    if (Mobile.value.trim().length !== 10) {
-        MobileI.style.display = "block";
-        Mobile.style.border = "2px solid red";
-        valid = false
+	
 
-    } else {
-        MobileI.style.display = "none";
-        Mobile.style.border = "1px solid black";
-    }
-    if (mNumber.value.trim().length !== 8) {
-        mNumberI.style.display = "block";
-        mNumber.style.border = "2px solid red";
-        valid = false
+	if (psw == "") {
+		document.getElementById("pwd").innerHTML = "*Please fill field";
+		return false;
+	} else if (psw.length < 5) {
+		document.getElementById("pwd").innerHTML = "*Should contains more than 5 character";
+		return false;
+	} else {
+		document.getElementById("pwd").style.display = 'none';
+		pswValid = true;
+	}
+	
 
-    } else {
-        mNumberI.style.display = "none";
-        mNumber.style.border = "1px solid black";
-    }
-    if (passwordValidation(password.value)) {
-        pTag.style.display = "block";
-        password.style.border = "2px solid red";
-        valid = false
-    } else {
-        pTag.style.display = "none";
-        password.style.border = "1px solid black";  
-    } if (password.value!==cPassword.value) {
-        cPasswordI.style.display = "block";
-        cPassword.style.border = "2px solid red";
-        valid = false
-    } else {
-        cPasswordI.style.display = "none";
-        cPassword.style.border = "1px solid black";  
-    }
-    return valid;
+	if (cpsw == "") {
+		document.getElementById("cPwd").innerHTML = "*Please fill field";
+		return false;
+	} else if (psw != cpsw) {
+		document.getElementById("cPwd").innerHTML = "*Password is not match";
+		return false;
+	} else {
+		document.getElementById("cPwd").style.display = 'none';
+		cpswValid = true;
+	}
+	
+
+	if (rrnum == "") {
+		document.getElementById("rrNum").innerHTML = " *Please fill the field";
+		return false;
+	} else if ((rrnum.length < 6) || (rrnum.length > 9)) {
+		document.getElementById("rrNum").innerHTML = "*Invalid RR Number";
+		return false;
+	} else if (format3.test(rrnum)) {
+		document.getElementById("rrNum").innerHTML = "*Invalid ";
+		return false;
+	} else {
+		document.getElementById("rrNum").style.display = 'none';
+		rrnumValid = true;
+	}
+
+
+
+	if (houseNum == "") {
+		document.getElementById("houseNumber").innerHTML = " *Please fill the  field";
+		return false;
+	} else {
+		document.getElementById("houseNumber").style.display = 'none';
+		houseNumValid = true;
+	}
+
+	if (area == "") {
+		document.getElementById("area").innerHTML = " *Please fill the field";
+		return false;
+	} else {
+		document.getElementById("area").style.display = 'none';
+		area = true;
+	}
+
+	if (pincode == "") {
+		document.getElementById("pincode").innerHTML = " *Please fill the field";
+		return false;
+	} else {
+		document.getElementById("pincode").style.display = 'none';
+		pincode = true;
+	}
+
+	if (fnameValid && lnameValid && emailValid && pnumberValid && pswValid
+			&& cpswValid && rrnumValid && houseNumValid && pincode && area) {
+
+		document.body.appendChild(form);
+		form.submit();
+		return true;
+
+	}
 
 }
-
-
-
-
-

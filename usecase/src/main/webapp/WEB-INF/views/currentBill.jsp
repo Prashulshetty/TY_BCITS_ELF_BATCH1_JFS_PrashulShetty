@@ -1,9 +1,12 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.bcits.usecase.beans.ConsumerMasterBean"%>
+<%@page import="com.bcits.usecase.beans.CurrentBillBean"%>
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.bcits.usecase.beans.ConsumerMasterBean"%>
-<% ConsumerMasterBean consumerBean = (ConsumerMasterBean) session.getAttribute("Info"); 
- String errMsg = (String) request.getAttribute("errMsg");%>
+<% CurrentBillBean billBean = (CurrentBillBean) request.getAttribute("generatedBill");
+ConsumerMasterBean consumerBean = (ConsumerMasterBean) session.getAttribute("Info");
+%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
@@ -12,7 +15,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>customer home page</title>
+<title>customer bill page</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -20,17 +23,10 @@
 </head>
  <jsp:include page="header.jsp"></jsp:include>
 <body style=" background-color : lightblue">
-<% if(errMsg != null && !errMsg.isEmpty()){ %>
-     <div style="color: red; font-size:35px; font: bold; margin-right: 50px" align="center">
-  	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
-	</div>
-
-
-<%} %>
 <div class="row" >
   <div class="col-3" ><br>
   <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
-  <a href="./consumerHomePage" class="list-group-item list-group-item-action active"> Account Details</a>
+  <a href="./consumerHomePage" class="list-group-item list-group-item-action "> Account Details</a>
   <a href="./consumerBillDisplay" class="list-group-item list-group-item-action">Current Bill</a>
   <a href="./monthlyConsumption" class="list-group-item list-group-item-action">Monthly Consumption</a>
   <a href="./billHistory" class="list-group-item list-group-item-action">Bill History</a>
@@ -44,12 +40,12 @@
             <table class="table table-hover table-dark">
   <thead>
     <tr>
-      <th scope="col">Consumer Details</th>
+      <th scope="col">Bill Details</th>
     </tr>
   </thead>
   <tbody>
     
-                    <tr>
+                <tr>
                     <td><strong style="color: white">Name</strong></td>
                     <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td><strong style="color: white"><%= consumerBean.getFirstName()+" "+consumerBean.getLastName() %></strong></td>
@@ -59,35 +55,41 @@
                     <td>:</td>
                     <td><strong style="color: white"><%= consumerBean.getRrNumber() %></strong></td>
                 </tr>
-                <tr>
-                    <td><Strong style="color: white">PhoneNumber</Strong></td>
+                 <tr>
+                    <td><strong style="color: white">Due Date</strong></td>
                     <td>:</td>
-                    <td><strong style="color: white"><%= consumerBean.getPhoneNumber() %></strong></td>
+                    <td><% SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); %>
+                         <strong style="color: white"><%= billBean.getDate()%></strong></td>
+                </tr>
+              <tr>
+                    <td><strong style="color: white"> Initial Reading</strong></td>
+                    <td>:</td>
+                    <td><strong style="color: white"><%= billBean.getInitialReading() %></strong></td>
                 </tr>
                 <tr>
-                    <td><strong style="color: white">Email</strong></td>
+                    <td><strong style="color: white"> Final Reading</strong></td>
                     <td>:</td>
-                    <td><strong style="color: white"><%= consumerBean.getEmail() %></strong></td>
+                    <td><strong style="color: white"><%=billBean.getCurrentReading() %></strong></td>
+                </tr>
+                  <tr>
+                    <td><strong style="color: white"> Units</strong></td>
+                    <td>:</td>
+                    <td><strong style="color: white"><%= billBean.getUnits() %></strong></td>
+                </tr>
+                  <tr>
+                    <td><strong style="color: white">Bill Amount</strong></td>
+                    <td>:</td>
+                    <td><strong style="color: white"><%= billBean.getBillAmount() %></strong></td>
                 </tr>
                 <tr>
-                    <td><Strong style="color: white">Region</Strong></td>
+                    <td><strong style="color: white">Due Date</strong></td>
                     <td>:</td>
-                    <td><strong style="color: white"><%= consumerBean.getRegion()%></strong></td>
-                </tr>
-                <tr>
-                    <td><strong style="color: white">Type Of Consumer &nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
-                    <td>:</td>
-                    <td><strong style="color: white"><%= consumerBean.getTypeOfConsumer() %></strong></td>
+                    <td>
+                         <strong style="color: white"><%= billBean.getDueDate()%></strong></td>
                 </tr>
   </tbody>
 </table>
-  	  </div>
-   <div class="form-group" style="width: 500px; font-size: 20px ;">
-  		<label for="comment"><strong >Query:</strong></label>
- 		<textarea class="form-control" rows="2" id="comment"></textarea><br>
- 		<button type="submit" formaction="#" class="btn btn-primary" style="margin-top: -7px;">Submit</button>
-	</div> 
-	</div>
+ 
 </div>
 	 <jsp:include page="footer.jsp"></jsp:include>
 	

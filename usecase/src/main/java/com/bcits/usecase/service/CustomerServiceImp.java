@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
+import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.beans.PaymentDetailsBean;
 import com.bcits.usecase.dao.CustomerDAO;
 
@@ -27,29 +28,34 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
-	public ConsumerMasterBean consumerLogin(String rrNumber, String password) {
-		if(rrNumber.isEmpty() && password.isEmpty()) {
+	public ConsumerMasterBean consumerLogin(String email, String password) {
+		if(email.isEmpty() && password.isEmpty()) {
 			return null;
 		}
-		return dao.consumerLogin(rrNumber, password);
+		return dao.consumerLogin(email, password);
 	}
 
 	@Override
 	public boolean payment(PaymentDetailsBean paymentBean) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
 	@Override
-	public CurrentBillBean showCurrentBill(String rrNumber, Date date) {
-		// TODO Auto-generated method stub
-		return null;
+	public CurrentBillBean generateCurrentBill(String rrNumber) {
+		return dao.generateCurrentBill(rrNumber);
 	}
 
 	@Override
 	public List<CurrentBillBean> showBillHistory(String rrNumber) {
-		// TODO Auto-generated method stub
+
 		return null;
+	}
+
+	@Override
+	public List<MonthlyConsumption> getMonthlyConsumptions(String rrNumber) {
+
+		return dao.getMonthlyConsumptions(rrNumber);
 	}
 
 }

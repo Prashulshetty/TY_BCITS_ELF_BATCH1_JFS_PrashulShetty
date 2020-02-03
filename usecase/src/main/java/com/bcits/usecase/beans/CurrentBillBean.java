@@ -14,19 +14,20 @@ import lombok.Data;
 @Entity
 @Table(name = "current_bill")
 public class CurrentBillBean implements Serializable {
-    @Id
-    @Column
+	@Id
+	@Column(name = "rr_number")
 	private String rrNumber;
-    @Column
-	private double initialReading;
-    @Column
-	private double finalReading;
-    @Column
-  	private int Units;
-    @Column
+	@Column(name = "due_date")
+	private Date dueDate;
+	@Column
+	private Date date;
+	@Column(name = "initial_reading")
+	private double InitialReading;
+	@Column(name = "current_reading")
+	private double currentReading;
+	@Column
+	private double units;
+	@Column(name = "bill_amount")
 	private double billAmount;
-    @Column
-    private Date date;
-    @Column
-    private Date dueDate;
+
 }
