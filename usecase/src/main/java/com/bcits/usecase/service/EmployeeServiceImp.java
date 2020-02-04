@@ -28,8 +28,14 @@ public class EmployeeServiceImp implements EmployeeService {
 
 	@Override
 	public AdminBean adminLogin(int adminId, String password) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public long numberOfConsumer(String region) {
+		
+		return dao.numberOfConsumer(region);
 	}
 
 }

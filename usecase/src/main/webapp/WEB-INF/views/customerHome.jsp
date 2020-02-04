@@ -24,16 +24,14 @@
      <div style="color: red; font-size:35px; font: bold; margin-right: 50px" align="center">
   	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
 	</div>
-
-
 <%} %>
 <div class="row" >
   <div class="col-3" ><br>
   <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
   <a href="./consumerHomePage" class="list-group-item list-group-item-action active"> Account Details</a>
   <a href="./consumerBillDisplay" class="list-group-item list-group-item-action">Current Bill</a>
-  <a href="./monthlyConsumption" class="list-group-item list-group-item-action">Monthly Consumption</a>
-  <a href="./billHistory" class="list-group-item list-group-item-action">Bill History</a>
+  <a href="./monthlyConsumptions" class="list-group-item list-group-item-action">Monthly Consumption</a>
+  <a href="./billHistoryDisplay" class="list-group-item list-group-item-action">Bill History</a>
   <a href="./payOnline" class="list-group-item list-group-item-action">Pay Online</a>
 </div>
   </div>
@@ -81,7 +79,7 @@
                 </tr>
   </tbody>
 </table>
-  	  </div>
+</div>
    <div class="form-group" style="width: 500px; font-size: 20px ;">
   		<label for="comment"><strong >Query:</strong></label>
  		<textarea class="form-control" rows="2" id="comment"></textarea><br>

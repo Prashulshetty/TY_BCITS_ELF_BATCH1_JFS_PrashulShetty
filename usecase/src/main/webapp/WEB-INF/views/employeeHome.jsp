@@ -3,7 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<% EmployeeMasterBean employeeBean = (EmployeeMasterBean) session.getAttribute("Info"); %>
+<% EmployeeMasterBean employeeBean = (EmployeeMasterBean) session.getAttribute("Info");  %>
+    <%long count = (long) request.getAttribute("count"); %>
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
@@ -24,7 +25,10 @@
 <div class="row" >
   <div class="col-3" ><br>
    <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
-  <a href="#" class="list-group-item list-group-item-action active"> Employee Detais</a>
+  <a href="./employeeHomePage" class="list-group-item list-group-item-action active"> Employee Details</a>
+   <!-- <a href="#" class="list-group-item list-group-item-action">Monthly Bill Generated</a>
+   <a href="#" class="list-group-item list-group-item-action">Monthly Bill Collected</a>
+   <a href="#" class="list-group-item list-group-item-action">Month on month Revenue</a> -->
   <a href="#" class="list-group-item list-group-item-action">Generate Bill</a>
   <a href="#" class="list-group-item list-group-item-action">See All Bills</a>
 
@@ -32,42 +36,47 @@
   </div>
 	<div class="col-8">
   
-  <div class="consumerDetails"> <br>
-           
-            <table class="table table-hover table-dark">
+  <div class=""> <br>
+                 
+            <table class="table table-hover table-dark ">
   <thead>
-    <tr>
-      <th scope="col">Consumer Details</th>
+    <tr  >
+      <th scope="col" >Employee Details : </th><br><br>
     </tr>
   </thead>
   <tbody>
-    
-                    <tr>
-                    <td><strong style="color: white">Employee ID</strong></td>
-                    <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><strong style="color: white"><%=employeeBean.getEmpId()%></strong></td>
-                </tr>
-                <tr>
-                    <td><strong style="color: white">Employee Name</strong></td>
-                    <td>:</td>
-                    <td><strong style="color: white"><%= employeeBean.getEmpName() %></strong></td>
-                </tr>
-                <tr>
-                    <td><Strong style="color: white">Designation</Strong></td>
-                    <td>:</td>
-                    <td><strong style="color: white"><%= employeeBean.getDesignation()%></strong></td>
-                </tr>
-                <tr>
-                    <td><Strong style="color: white">Region</Strong></td>
-                    <td>:</td>
-                    <td><strong style="color: white"><%= employeeBean.getRegion()%></strong></td>
-                </tr>
-                
-  </tbody>
-</table>
+						<tr>
+							<td><strong style="color: white">Employee ID</strong></td>
+							<td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td><strong style="color: white"><%=employeeBean.getEmpId()%></strong></td>
+						</tr>
+						<tr>
+							<td><strong style="color: white">Employee Name</strong></td>
+							<td>:</td>
+							<td><strong style="color: white"><%=employeeBean.getEmpName()%></strong></td>
+						</tr>
+						<tr>
+							<td><Strong style="color: white">Designation</Strong></td>
+							<td>:</td>
+							<td><strong style="color: white"><%=employeeBean.getDesignation()%></strong></td>
+						</tr>
+						<tr>
+							<td><Strong style="color: white">Region</Strong></td>
+							<td>:</td>
+							<td><strong style="color: white"><%=employeeBean.getRegion()%></strong></td>
+						</tr>
+						<tr>
+							<td><Strong style="color: white">Total Number of Consumer</Strong></td>
+							<td>:</td>
+							<td><strong style="color: white"><%= count%></strong></td>
+						</tr>
+
+					</tbody>
+
+ </table>
   	  
-</div>
-	 <jsp:include page="footer.jsp"></jsp:include>
-	
+	</div>
+	</div>
 </body>
+
 </html>

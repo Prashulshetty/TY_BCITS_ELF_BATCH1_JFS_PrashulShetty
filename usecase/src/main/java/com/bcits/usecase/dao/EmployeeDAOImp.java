@@ -3,6 +3,7 @@ package com.bcits.usecase.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -36,5 +37,19 @@ public class EmployeeDAOImp implements EmployeeDAO{
 		}
 		return null;
 	}
+
+	@Override
+	public long numberOfConsumer(String region) {
+			EntityManager manager =factory.createEntityManager();
+			String jpql ="select count(*) from ConsumerMasterBean where region= :region ";
+			Query query =manager.createQuery(jpql);
+			query.setParameter("region", region);
+			long number = (long) query.getSingleResult();
+			if(number != 0) {
+				return number;
+			}
+			return 0;
+		}
+	
 
 }

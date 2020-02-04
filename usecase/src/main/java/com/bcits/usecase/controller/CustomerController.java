@@ -18,11 +18,14 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bcits.usecase.beans.BillHistoryBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.service.CustomerService;
+
+
 
 
 
@@ -93,14 +96,36 @@ public class CustomerController {
 		return "home";
 	}
 	
-	/*
-	 * @GetMapping("/consumerHomePage") public String displayCustomerHomePage() {
-	 * return "customerHome"; }
-	 */
-	
-	@GetMapping("/paymentPage")
-	public String displayPaymentPage() {
-		return "payment";
+	@GetMapping("/payOnline")
+	public String displayPaymentPage(HttpSession session, ModelMap modelMap) {
+		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
+			if (consumerInfo != null) {
+				return "payment";
+			} else {
+				modelMap.addAttribute("errMsg", "please Login first");
+				return "consumerLogin";
+			}
+	}
+	@PostMapping("/paySuccess")
+	public String sucessfullPayment(HttpSession session, ModelMap modelMap, int amount) {
+		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
+		Date date = new Date();
+		if (consumerInfo != null) {
+			System.out.println(date);
+			System.out.println(consumerInfo.getRrNumber());
+			System.out.println(amount);
+			boolean pay =service.payment(consumerInfo.getRrNumber(), date, amount);
+			System.out.println(pay);
+			if (pay == true) {
+				modelMap.addAttribute("msg", "payment successful..");
+				return "payment";
+			} else {
+				modelMap.addAttribute("errMsg", "payment already done...");
+				return "payment";
+			}
+		} else {
+			return "consumerLogin";
+		}
 	}
 	
 	@GetMapping("/consumerLoginPage")
@@ -140,16 +165,36 @@ public class CustomerController {
 		}
 	}
 	
-	@GetMapping("/monthlyConsumptionDisplay")
+	@GetMapping("/monthlyConsumptions")
 	public String displayConsumptionPage(HttpSession session, ModelMap modelMap) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
+		System.out.println(consumerInfo);
 		if (consumerInfo != null) {
 			List<MonthlyConsumption> consumptionList =service.getMonthlyConsumptions(consumerInfo.getRrNumber());
+			System.out.println(consumptionList);
 			if (consumptionList != null) {
 				modelMap.addAttribute("monthlyConsumption", consumptionList);
 				return "monthlyConsumption";
 			} else {
-				modelMap.addAttribute("errMsg", "Service unavailable...");
+				modelMap.addAttribute("errMsg", "No bill found...");
+				return "customerHome";
+			}
+		} else {
+			modelMap.addAttribute("errMsg", "Please Login First..");
+			return "consumerLogin";
+		}
+	}
+	@GetMapping("/billHistoryDisplay")
+	public String displayBillHistory(HttpSession session, ModelMap modelMap) {
+		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
+		if (consumerInfo != null) {
+			List<BillHistoryBean> history = service.showBillHistory(consumerInfo.getRrNumber());
+			
+			if (history != null) {
+				modelMap.addAttribute("history", history);
+				return "billHistory";
+			} else {
+				modelMap.addAttribute("errMsg", "Try again Later.");
 				return "customerHome";
 			}
 		} else {

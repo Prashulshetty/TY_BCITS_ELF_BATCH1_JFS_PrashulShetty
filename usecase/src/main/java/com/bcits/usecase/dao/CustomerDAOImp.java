@@ -11,10 +11,14 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
+import com.bcits.usecase.beans.BillHistoryBean;
+import com.bcits.usecase.beans.BillHistoryPK;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
-import com.bcits.usecase.beans.PaymentDetailsBean;
+
+
+
 
 @Repository
 public class CustomerDAOImp implements CustomerDAO {
@@ -52,10 +56,7 @@ public class CustomerDAOImp implements CustomerDAO {
 		return null;
 	}
 	
-	@Override
-	public boolean payment(PaymentDetailsBean paymentBean) {
-		return false;
-	}
+	
 
 	@Override
 	public CurrentBillBean generateCurrentBill(String rrNumber) {
@@ -71,8 +72,15 @@ public class CustomerDAOImp implements CustomerDAO {
 	
 
 	@Override
-	public List<CurrentBillBean> showBillHistory(String rrNumber) {
-
+	public List<BillHistoryBean> showBillHistory(String rrNumber) {
+		EntityManager manager = factory.createEntityManager();
+		Query query = manager.createQuery(" from BillHistoryBean where rrNumber= :rrNum ");
+		query.setParameter("rrNum", rrNumber);
+		List<BillHistoryBean> history = query.getResultList();
+		if (history != null) {
+			return history;
+		}
+		manager.close();
 		return null;
 	}
 
@@ -80,7 +88,7 @@ public class CustomerDAOImp implements CustomerDAO {
 	public List<MonthlyConsumption> getMonthlyConsumptions(String rrNumber) {
 		
 			EntityManager manager = factory.createEntityManager();
-			Query query = manager.createQuery(" from MonthlyConsumption where rrNumber= :rrNum");
+			Query query = manager.createQuery(" from MonthlyConsumption where rrNumber= :rrNum ");
 			query.setParameter("rrNum", rrNumber);
 			List<MonthlyConsumption> billList = query.getResultList();
 			if (billList != null) {
@@ -91,4 +99,35 @@ public class CustomerDAOImp implements CustomerDAO {
 		
 	}
 
+	@Override
+	public boolean payment(String rrNumber, Date date, int billamount) {
+		System.out.println(date);
+		System.out.println(rrNumber);
+		System.out.println(billamount);
+		boolean paid=false;
+			EntityManager manager = factory.createEntityManager();
+			EntityTransaction transaction = manager.getTransaction();
+			BillHistoryBean billHistory = new BillHistoryBean();
+			BillHistoryPK billHistoryPk = new BillHistoryPK();
+			billHistory.setBillAmount(billamount);
+			billHistory.setStatus("paid");
+            billHistoryPk.setRrNumber(rrNumber);
+            billHistoryPk.setDateOfPayment(date);
+            billHistory.setHistory(billHistoryPk);
+         
+			System.out.println(billHistoryPk);
+			System.out.println(billHistory);
+			
+			try {
+				if (billHistoryPk != null) {
+					transaction.begin();
+					manager.persist(billHistory);
+					transaction.commit();
+					paid = true;
+				} 
+			} catch (Exception e) {
+				paid = false;
+			}
+			return paid;
+	}
 }

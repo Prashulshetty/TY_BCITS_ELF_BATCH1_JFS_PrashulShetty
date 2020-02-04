@@ -1,11 +1,12 @@
-<%@page import="com.bcits.usecase.beans.MonthlyConsumption"%>
+
+<%@page import="com.bcits.usecase.beans.BillHistoryBean"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<% List<MonthlyConsumption> consumed = (List<MonthlyConsumption>) request.getAttribute("monthlyConsumption"); %> 
+<% List<BillHistoryBean> historyInfo = (List<BillHistoryBean>) request.getAttribute("history"); %>
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
@@ -16,15 +17,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Monthly Consumption</title>
+<title>Bill History</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${css}/monthlyConsumption.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
  <jsp:include page="header.jsp"></jsp:include>
-<body>
-<body style=" background-color : lightblue">
+ <body style=" background-color : lightblue">
 <div class="row" >
   <div class="col-3" ><br>
   <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
@@ -42,34 +41,34 @@
             <table class="table table-hover table-dark">
   <thead>
     <tr>
-      <th scope="col">Monthly Consumption Details</th>
+      <th scope="col">Bill History</th>
     </tr>
      </thead>
     <thead class="thead-dark">
     <tr>
-      <th class="th-sm">Date
-      </th>
-      <th class="th-sm">Units 
+      <th class="th-sm">Payment Date
       </th>
       <th class="th-sm">Bill Amount
       </th>
+      <th class="th-sm">Status
+      </th>
      
     </tr>
+ 
   </thead>
- <tbody>
-
+   <tbody>
+   
     <%
-  for( MonthlyConsumption list :consumed) { %><tr>
+  for(BillHistoryBean history :historyInfo) { %><tr>
       
       <%SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); %>
-      <td><strong><%= formatter.format(list.getConsumptionPk().getDate()) %></strong></td>
-      <td><strong><%= list.getUnits() %></strong></td>
-      <td><strong><%= list.getBillAmount() %></strong></td>
+      <td><strong><%= formatter.format(history.getHistory().getDateOfPayment()) %></strong></td>
+      <td><strong><%= history.getBillAmount() %></strong></td>
+      <td><strong><%= history.getStatus()%></strong></td>
     </tr>
     <%  
          } %>
    </tbody>
-      
 </table>
  
 </div>

@@ -12,19 +12,11 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "bill_History")
+@Table(name = "bill_history")
 public class BillHistoryBean implements Serializable {
 	@EmbeddedId
-	private BillHistoryPK monthlybill;
-	@Column
-	private double initialReading;
-	@Column
-	private double finalReading;
-	@Column
-	private int Units;
-	@Column
+	private BillHistoryPK history;
 	private int billAmount;
-	@Column
 	private String status;
 
 }

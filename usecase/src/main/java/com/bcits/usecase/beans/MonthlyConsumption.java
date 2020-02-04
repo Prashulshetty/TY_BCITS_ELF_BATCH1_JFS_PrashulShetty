@@ -14,7 +14,7 @@ public class MonthlyConsumption implements Serializable{
 	@EmbeddedId
 	private MonthlyConsumptionPK consumptionPk;
 	@Column
-	private long unit;
+	private long units;
 	@Column(name="bill_amount")
 	private double billAmount; 
 	@Column

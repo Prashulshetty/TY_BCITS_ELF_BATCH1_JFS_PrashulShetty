@@ -78,7 +78,7 @@
 
 			<div class="form-group">
 				<label for="">RR Number Region</label> <input name="rrNumber" 
-					id="rrNumber" type="number"
+					id="rrNumber" type="text"
 					placeholder="Enter RR Number Region"
 					class="form-control" id="" aria-describedby="">
 					<span id="rrNum" style="color: red;"></span>

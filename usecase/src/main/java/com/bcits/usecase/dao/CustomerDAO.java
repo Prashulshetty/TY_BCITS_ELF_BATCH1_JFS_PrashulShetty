@@ -13,9 +13,9 @@ import com.bcits.usecase.beans.PaymentDetailsBean;
 public interface CustomerDAO {
 	public boolean consumerSignUp(ConsumerMasterBean consumerBean);
 	public ConsumerMasterBean consumerLogin(String email, String password);
-	public boolean payment(PaymentDetailsBean paymentBean);
+	public boolean payment(String rrNumber, Date date, int amount);
 	public CurrentBillBean generateCurrentBill(String rrNumber);
-	public List<CurrentBillBean> showBillHistory(String rrNumber);
+	public List<BillHistoryBean> showBillHistory(String rrNumber);
 	public List<MonthlyConsumption> getMonthlyConsumptions(String rrNumber);
 	
 }

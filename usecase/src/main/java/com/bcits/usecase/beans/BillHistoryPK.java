@@ -12,5 +12,5 @@ import lombok.Data;
 @Embeddable
 public class BillHistoryPK implements Serializable {
 	private String rrNumber;
-	private Date Date;
+	private Date dateOfPayment;
 }

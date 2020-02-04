@@ -47,10 +47,14 @@ public class EmployeeController {
 	
 	@PostMapping("/loginEmployee") 
 	public String employeeLogin(int empId, String password ,HttpServletRequest req ,ModelMap modelMap) {
+		
 		EmployeeMasterBean empInfo = service.employeelogin(empId, password);
+		long count = service.numberOfConsumer(empInfo.getRegion());
+		System.out.println(count);
 		if( empInfo != null) {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("Info", empInfo);
+			modelMap.addAttribute("count", count);
 			return "employeeHome";
 		} else  {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");

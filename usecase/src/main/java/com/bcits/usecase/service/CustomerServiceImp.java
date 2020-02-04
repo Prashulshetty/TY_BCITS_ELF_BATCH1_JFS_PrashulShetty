@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bcits.usecase.beans.BillHistoryBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
@@ -15,7 +16,6 @@ import com.bcits.usecase.dao.CustomerDAO;
 @Service
 public class CustomerServiceImp implements CustomerService {
 
-	
 	@Autowired
 	private CustomerDAO dao;
 
@@ -29,17 +29,13 @@ public class CustomerServiceImp implements CustomerService {
 
 	@Override
 	public ConsumerMasterBean consumerLogin(String email, String password) {
-		if(email.isEmpty() && password.isEmpty()) {
+		if (email.isEmpty() && password.isEmpty()) {
 			return null;
 		}
 		return dao.consumerLogin(email, password);
 	}
 
-	@Override
-	public boolean payment(PaymentDetailsBean paymentBean) {
-
-		return false;
-	}
+	
 
 	@Override
 	public CurrentBillBean generateCurrentBill(String rrNumber) {
@@ -47,15 +43,21 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
-	public List<CurrentBillBean> showBillHistory(String rrNumber) {
+	public List<BillHistoryBean> showBillHistory(String rrNumber) {
+		return dao.showBillHistory(rrNumber);
 
-		return null;
 	}
 
 	@Override
 	public List<MonthlyConsumption> getMonthlyConsumptions(String rrNumber) {
 
 		return dao.getMonthlyConsumptions(rrNumber);
+	}
+
+	@Override
+	public boolean payment(String rrNumber, Date date, int amount) {
+	
+		return dao.payment(rrNumber, date, amount);
 	}
 
 }

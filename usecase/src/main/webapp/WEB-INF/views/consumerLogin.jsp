@@ -32,13 +32,9 @@
   	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
 	</div>
 
-
 <%} %>
 <% if(msg != null && !msg.isEmpty()){ %>
 <h2 style="color: green;" align="center"><%= msg %></h2>
-
-</div>
-
 <%} %>
 
     <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
@@ -74,7 +70,7 @@
             </div>
 			<button type="submit"
 				class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">login</button>
-			</button>
+			
 
 		</form>
 		<p class="text-center mt-1">

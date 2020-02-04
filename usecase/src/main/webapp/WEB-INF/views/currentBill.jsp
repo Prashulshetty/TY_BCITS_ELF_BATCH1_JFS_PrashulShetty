@@ -28,8 +28,8 @@ ConsumerMasterBean consumerBean = (ConsumerMasterBean) session.getAttribute("Inf
   <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
   <a href="./consumerHomePage" class="list-group-item list-group-item-action "> Account Details</a>
   <a href="./consumerBillDisplay" class="list-group-item list-group-item-action">Current Bill</a>
-  <a href="./monthlyConsumption" class="list-group-item list-group-item-action">Monthly Consumption</a>
-  <a href="./billHistory" class="list-group-item list-group-item-action">Bill History</a>
+  <a href="./monthlyConsumptions" class="list-group-item list-group-item-action">Monthly Consumption</a>
+  <a href="./billHistoryDisplay" class="list-group-item list-group-item-action">Bill History</a>
   <a href="./payOnline" class="list-group-item list-group-item-action">Pay Online</a>
 </div>
   </div>
@@ -40,7 +40,7 @@ ConsumerMasterBean consumerBean = (ConsumerMasterBean) session.getAttribute("Inf
             <table class="table table-hover table-dark">
   <thead>
     <tr>
-      <th scope="col">Bill Details</th>
+      <th scope="col">Current Bill Details</th>
     </tr>
   </thead>
   <tbody>
