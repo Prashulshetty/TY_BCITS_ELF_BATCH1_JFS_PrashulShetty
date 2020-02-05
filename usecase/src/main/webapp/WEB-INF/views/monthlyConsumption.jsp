@@ -49,6 +49,10 @@
     <tr>
       <th class="th-sm">Date
       </th>
+      <th class="th-sm">previous reading 
+      </th>
+      <th class="th-sm">current reading 
+      </th>
       <th class="th-sm">Units 
       </th>
       <th class="th-sm">Bill Amount
@@ -63,6 +67,8 @@
       
       <%SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); %>
       <td><strong><%= formatter.format(list.getConsumptionPk().getDate()) %></strong></td>
+          <td><strong><%= list.getPreviousReading() %></strong></td>
+              <td><strong><%= list.getCurrentReading() %></strong></td>
       <td><strong><%= list.getUnits() %></strong></td>
       <td><strong><%= list.getBillAmount() %></strong></td>
     </tr>

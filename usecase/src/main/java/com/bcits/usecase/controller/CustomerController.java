@@ -28,7 +28,6 @@ import com.bcits.usecase.service.CustomerService;
 
 
 
-
 @Controller
 //@RequestMapping("/consumer")
 
@@ -46,7 +45,8 @@ public class CustomerController {
 	
 	@GetMapping("/headerPage")
 	public String headerPage() {
-		return "header";
+	return "header";
+	
 	}
 	
 	@GetMapping("/homePage")
@@ -72,7 +72,7 @@ public class CustomerController {
 			map.addAttribute("errMsg", "already exists...");
 		}  
 		
-		return "consumerLogin";
+		return "consumerSignUp";
 	}
 	
 	@PostMapping("/LoginPage") 
@@ -91,9 +91,14 @@ public class CustomerController {
 
 	@GetMapping("/consumerLogout")
 	public String consumerLogOut(ModelMap modelMap, HttpSession session) {
-		session.invalidate();
-		modelMap.addAttribute("errMsg", "You Are Sucessfully Logged Out !!");
-		return "home";
+		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
+		if (consumerInfo != null) {
+			session.invalidate();
+			modelMap.addAttribute("msg", "Logged Out..");
+		} else {
+		modelMap.addAttribute("errMsg", "please Login first");	
+		}
+		return "home";		
 	}
 	
 	@GetMapping("/payOnline")
@@ -172,11 +177,11 @@ public class CustomerController {
 		if (consumerInfo != null) {
 			List<MonthlyConsumption> consumptionList =service.getMonthlyConsumptions(consumerInfo.getRrNumber());
 			System.out.println(consumptionList);
-			if (consumptionList != null) {
+			if (!consumptionList.isEmpty()) {
 				modelMap.addAttribute("monthlyConsumption", consumptionList);
 				return "monthlyConsumption";
 			} else {
-				modelMap.addAttribute("errMsg", "No bill found...");
+				modelMap.addAttribute("errMsg", "Details not found for display...");
 				return "customerHome";
 			}
 		} else {
@@ -190,11 +195,11 @@ public class CustomerController {
 		if (consumerInfo != null) {
 			List<BillHistoryBean> history = service.showBillHistory(consumerInfo.getRrNumber());
 			
-			if (history != null) {
+			if (!history.isEmpty()) {
 				modelMap.addAttribute("history", history);
 				return "billHistory";
 			} else {
-				modelMap.addAttribute("errMsg", "Try again Later.");
+				modelMap.addAttribute("errMsg", "No Bill history found for display..");
 				return "customerHome";
 			}
 		} else {

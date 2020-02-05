@@ -20,6 +20,7 @@ import com.bcits.usecase.beans.MonthlyConsumption;
 
 
 
+
 @Repository
 public class CustomerDAOImp implements CustomerDAO {
 	
@@ -46,16 +47,20 @@ public class CustomerDAOImp implements CustomerDAO {
 
 	@Override
 	public ConsumerMasterBean consumerLogin(String email, String password) {
+		ConsumerMasterBean info=null;
+		try {
 		EntityManager manager = factory.createEntityManager();
 		Query query = manager.createQuery(" from ConsumerMasterBean where email= :email ");
 		query.setParameter("email",email);
 		ConsumerMasterBean InfoBean = (ConsumerMasterBean) query.getSingleResult();
 		if(InfoBean != null && InfoBean.getPassword().equals(password)) {
-			return InfoBean;
+			info =  InfoBean;
 		}
-		return null;
+		} catch (Exception e) {
+
 	}
-	
+		return info;
+	}	
 	
 
 	@Override
@@ -130,4 +135,35 @@ public class CustomerDAOImp implements CustomerDAO {
 			}
 			return paid;
 	}
-}
+
+	@Override
+	public ConsumerMasterBean getCustomer(String rrNumber) {
+		EntityManager manager = factory.createEntityManager();
+		ConsumerMasterBean consumerInfo = manager.find(ConsumerMasterBean.class, rrNumber);
+		if(consumerInfo != null) {
+			return consumerInfo;
+		}
+		manager.close();
+		return null;
+	}
+	
+
+	@Override
+	public long getPreviousReading(String rrNumber) {
+		EntityManager manager = factory.createEntityManager();
+		long previous;
+		try {
+		String jpql =" select currentReading from MonthlyConsumption where rrNumber=:rrNum order by currentReading DESC";
+		Query query = manager.createQuery(jpql);
+		query.setMaxResults(1);
+		query.setParameter("rrNum", rrNumber);
+		previous = (long) query.getSingleResult();
+		}catch (Exception e) {
+			return 0;
+		}
+		if(previous != 0) {
+			return previous;
+		}
+		return 0;
+	}
+	}

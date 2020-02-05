@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<% String errMsg = (String) request.getAttribute("errMsg"); %>
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
 <spring:url var="images" value="/resources/images" />
@@ -21,6 +22,12 @@
 
 
 <body>
+ <% if(errMsg != null && !errMsg.isEmpty()){ %>
+     <div style="color: red; font-size:35px; font: bold; margin-right: 50px" align="center">
+  	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
+	</div>
+
+<%} %>
 
 	<div id="screen"
 		class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
@@ -55,7 +62,7 @@
 			</div>
 			<div class="form-group">
 				<label for="exampleMobileNumber">Mobile Number</label> <input name="phoneNumber" 
-					id="phoneNumber " type="tel" placeholder="Enter Mobile Number"
+					id="phoneNumber " type="tel" placeholder="Enter Mobile Number" required="required"
 					class="form-control" 
 					aria-describedby="Mobile Number">
 					<span id="number" style="color: red;"></span>

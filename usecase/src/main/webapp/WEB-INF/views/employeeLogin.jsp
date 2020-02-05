@@ -24,15 +24,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
 
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="empheader.jsp"></jsp:include>
 <body style=" background-color : lightblue">
 
  <% if(errMsg != null && !errMsg.isEmpty()){ %>
      <div style="color: red; font-size:35px; font: bold; margin-right: 50px" align="center">
   	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
 	</div>
-
-
+<%} %>
+ <% if(msg != null && !msg.isEmpty()){ %>
+     <div style="color: green; font-size:35px; font: bold; margin-right: 50px" align="center">
+  	<strong style="transition-duration: 60s;"><%= msg %></strong>
+	</div>
 <%} %>
 
 

@@ -29,5 +29,7 @@ public class CurrentBillBean implements Serializable {
 	private double units;
 	@Column(name = "bill_amount")
 	private double billAmount;
+	@Column
+	private String typeOfConsumer;
 
 }

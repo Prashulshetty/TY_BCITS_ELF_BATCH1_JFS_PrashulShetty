@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.AdminBean;
+import com.bcits.usecase.beans.ConsumerMasterBean;
+import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.dao.EmployeeDAO;
 
 
@@ -28,7 +30,7 @@ public class EmployeeServiceImp implements EmployeeService {
 
 	@Override
 	public AdminBean adminLogin(int adminId, String password) {
-		return null;
+		return dao.adminLogin(adminId, password);
 	}
 
 
@@ -37,6 +39,30 @@ public class EmployeeServiceImp implements EmployeeService {
 		
 		return dao.numberOfConsumer(region);
 	}
+
+
+	@Override
+	public boolean addEmp(EmployeeMasterBean employeeBean) {
+
+		return dao.addEmp(employeeBean);
+	}
+
+
+	@Override
+	public List<ConsumerMasterBean> showAllConsumer(String region) {
+		
+		return dao.showAllConsumer(region);
+	}
+
+
+	@Override
+	public boolean addCurrentBill(CurrentBillBean currentBill) {
+		if(currentBill != null ) {
+			return dao.addCurrentBill(currentBill);
+		}
+		return false;
+	}
+	
 
 }
 	

@@ -17,12 +17,12 @@
     <link rel="stylesheet" href="${css}/adminLogin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
- <jsp:include page="header.jsp"></jsp:include>
-<body style=" background-color : lightblue">
-    
+
+ <jsp:include page="empheader.jsp"></jsp:include>
+ <body style=" background-color : lightblue">  
     <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card" style=" box-shadow: 0 0 20px;">
         
-        <form onsubmit="return validateForm()">
+        <form action="./loginAdmin" method="post">
             <div id="success" class="alert alert-success" style="display: none;">
                 login
                 <strong>Success!</strong>
@@ -33,13 +33,13 @@
             <h2 class="text-center">Admin Login</h2><br>
             <div class="form-group">
                 <label for="exampleInputEmail1">Admin ID</label>
-                <input id="eid" type="text" placeholder="Enter Admin id" class="form-control" id="exampleInputEmail1"
+                <input id="adminId" name="adminId" type="text" placeholder="Enter Admin id" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp">
                 <p id="eele" style="color: red; display:none; font-size: 12px;">Invalid Admin ID </p>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input  id="password" type="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1">
+                <input  id="password" name="password" type="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1">
                 <p id="pele" style="color: red; display:none; font-size: 12px;">Invalid password</p>
 
             </div>

@@ -3,8 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<% EmployeeMasterBean employeeBean = (EmployeeMasterBean) session.getAttribute("Info");  %>
+<% EmployeeMasterBean employeeBean = (EmployeeMasterBean) session.getAttribute("empInfo");  %>
     <%long count = (long) request.getAttribute("count"); %>
+    <% String errMsg = (String) request.getAttribute("errMsg"); %>
+    
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
@@ -20,16 +22,20 @@
 <link rel="stylesheet"
 	href="./resources/fontawesome-free-5.12.0-web/css/all.css">
 </head>
- <jsp:include page="header.jsp"></jsp:include>
+ <jsp:include page="empheader.jsp"></jsp:include>
 <body style=" background-color : lightblue">
+ <% if(errMsg != null && !errMsg.isEmpty()){ %>
+     <div style="color: red; font-size:35px; font: bold; margin-right: 50px" align="center">
+  	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
+	</div>
+
+<%} %>
+
 <div class="row" >
   <div class="col-3" ><br>
    <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
   <a href="./employeeHomePage" class="list-group-item list-group-item-action active"> Employee Details</a>
-   <!-- <a href="#" class="list-group-item list-group-item-action">Monthly Bill Generated</a>
-   <a href="#" class="list-group-item list-group-item-action">Monthly Bill Collected</a>
-   <a href="#" class="list-group-item list-group-item-action">Month on month Revenue</a> -->
-  <a href="#" class="list-group-item list-group-item-action">Generate Bill</a>
+   <a href="./getConsumersDetails" class="list-group-item list-group-item-action">See all Consumers</a> 
   <a href="#" class="list-group-item list-group-item-action">See All Bills</a>
 
 </div>

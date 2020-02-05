@@ -21,7 +21,7 @@
  <jsp:include page="header.jsp"></jsp:include>
 <body style=" background-color : lightblue">
 <% if(errMsg != null && !errMsg.isEmpty()){ %>
-     <div style="color: red; font-size:35px; font: bold; margin-right: 50px" align="center">
+     <div style="color: red; font-size:25px; font: bold; margin-right: 50px" align="center">
   	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
 	</div>
 <%} %>
