@@ -13,8 +13,8 @@ import lombok.Data;
 public class MonthlyConsumption implements Serializable{
 	@EmbeddedId
 	private MonthlyConsumptionPK consumptionPk;
-	@Column(name="previous_reading")
-	private double previousReading;
+	@Column(name="initial_reading")
+	private double initialReading;
 	@Column(name="current_reading")
 	private double currentReading;
 	@Column
@@ -23,5 +23,7 @@ public class MonthlyConsumption implements Serializable{
 	private double billAmount; 
 	@Column
 	private String Status;
+	@Column
+	private String region;
 	
 }

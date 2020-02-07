@@ -6,7 +6,7 @@
 	pageEncoding="ISO-8859-1"%>
 
    <% ConsumerMasterBean consumerInfo = (ConsumerMasterBean) request.getAttribute("consumerInfo"); %>
-<% long preFinal = (long) request.getAttribute("previous");%>
+<% double preFinal = (double) request.getAttribute("previous");%>
 
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
@@ -30,7 +30,8 @@
    <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
   <a href="./employeeHomePage" class="list-group-item list-group-item-action active"> Employee Details</a>
    <a href="./getConsumersDetails"  class="list-group-item list-group-item-action">See all Consumers</a> 
-  <a href="#"class="list-group-item list-group-item-action">See All Bills</a>
+  <a href="#"class="list-group-item list-group-item-action">Generate Bills</a>
+    <a href="./seeAllBills" class="list-group-item list-group-item-action">See Generated Bills</a>
 </div>
   </div>
 	<div class="col-8">
@@ -68,7 +69,7 @@
 							class="form-control" id="dueDate" name="dueDate">
 					</div>
 				</div>
-				<button id="login" type="submit" class="btn btn-primary">Generate Bill</button>
+				<button id="login" type="submit" class="btn btn-primary">Generate</button>
 			</form>
 			<% } %>
 		</div>          

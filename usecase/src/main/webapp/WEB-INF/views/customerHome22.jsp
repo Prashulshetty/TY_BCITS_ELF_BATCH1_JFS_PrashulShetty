@@ -80,13 +80,11 @@
   </tbody>
 </table>
 </div>
-<form action="./query" method="post">
    <div class="form-group" style="width: 500px; font-size: 20px ;">
   		<label for="comment"><strong >Query:</strong></label>
- 		<textarea class="form-control" rows="2" id="query" name="query"></textarea><br>
+ 		<textarea class="form-control" rows="2" id="comment"></textarea><br>
  		<button type="submit" formaction="#" class="btn btn-primary" style="margin-top: -7px;">Submit</button>
 	</div> 
-	</form>
 	</div>
 </div>
 	 <jsp:include page="footer.jsp"></jsp:include>

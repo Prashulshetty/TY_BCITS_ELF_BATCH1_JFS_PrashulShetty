@@ -92,9 +92,9 @@
 			</div>
 			<label for="">Type of Consumer</label> <select class="custom-select" name="typeOfConsumer" >
 				<option value="0" selected disabled>Select Consumer Type</option>
-				<option >Residential</option>
-				<option >Commercial</option>
-				<option >Industries</option>
+				<option >residential</option>
+				<option >commercial</option>
+				<option >industries</option>
 			</select>
 			 <label for="">Region</label> <select class="custom-select" name="region" >
 				<option value="0" selected disabled>Select Region</option>

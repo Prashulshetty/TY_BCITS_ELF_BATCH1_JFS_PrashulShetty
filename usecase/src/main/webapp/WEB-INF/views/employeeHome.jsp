@@ -36,7 +36,9 @@
    <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
   <a href="./employeeHomePage" class="list-group-item list-group-item-action active"> Employee Details</a>
    <a href="./getConsumersDetails" class="list-group-item list-group-item-action">See all Consumers</a> 
-  <a href="#" class="list-group-item list-group-item-action">See All Bills</a>
+  <a href="./generatePage" class="list-group-item list-group-item-action">Generate Bills</a>
+    <a href="./seeAllBills" class="list-group-item list-group-item-action">See Generated Bills</a>
+  
 
 </div>
   </div>
@@ -51,6 +53,7 @@
     </tr>
   </thead>
   <tbody>
+  <% if(employeeBean != null) { %>
 						<tr>
 							<td><strong style="color: white">Employee ID</strong></td>
 							<td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -76,7 +79,7 @@
 							<td>:</td>
 							<td><strong style="color: white"><%= count%></strong></td>
 						</tr>
-
+<% } %>
 					</tbody>
 
  </table>

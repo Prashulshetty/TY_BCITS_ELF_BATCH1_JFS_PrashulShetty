@@ -25,6 +25,7 @@
 </head>
  <jsp:include page="empheader.jsp"></jsp:include>
 <body style=" background-color : lightblue">
+
  <% if(errMsg != null && !errMsg.isEmpty()){ %>
      <div style="color: red; font-size:25px; font: bold; margin-right: 50px" align="center">
   	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
@@ -67,28 +68,30 @@
       </th>
        <th class="th-sm">Type Of Consumer
       </th>
-     <!--  </th>
+      </th>
        <th class="th-sm">Generate Bill
-      </th> -->
+      </th>
      
     </tr>-
   </thead>
    <tbody>
+   <% if(consumerBean != null) {%>
     <%  for( ConsumerMasterBean list : consumerBean) { 
             %>
-<%--       <form action="./generateBillPage" method="get">
-     	<input type="text" name="rrNumber" value="<%=list.getRrNumber() %>" hidden="true" />    --%>
+      <form action="./generateBillPage" method="get">
+     	<input type="text" name="rrNumber" value="<%=list.getRrNumber() %>" hidden="true" />   
      <tr>
       <td><strong><%= list.getFirstName() +" "+list.getLastName() %></strong></td>
       <td><strong><%= list.getEmail() %></strong></td>
       <td><strong><%= list.getPhoneNumber() %></strong></td>
       <td><strong><%= list.getRrNumber() %></strong></td>
       <td><strong><%= list.getTypeOfConsumer() %></strong></td>
-     <!--  <td><button type="submit" class="btn btn-primary">Generate Bill</button></td> -->
+      <td><button type="submit" class="btn btn-primary">Generate Bill</button></td>
     </tr>
-    <!--  </form> -->
+     </form>
     <%  
          } %>
+         <% } %>
    </tbody>
 
  </table>

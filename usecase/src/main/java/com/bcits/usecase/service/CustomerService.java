@@ -14,9 +14,11 @@ public interface CustomerService {
 	public boolean consumerSignUp(ConsumerMasterBean consumerBean,String confirmPassword);
 	public ConsumerMasterBean consumerLogin(String email, String password);
 	public boolean payment(String rrNumber, Date date, int amount);
-	public CurrentBillBean generateCurrentBill(String rrNumber);
 	public List<BillHistoryBean> showBillHistory(String rrNumber);
 	public List<MonthlyConsumption> getMonthlyConsumptions(String rrNumber);
 	public ConsumerMasterBean getCustomer(String rrNumber);
-	public long getPreviousReading(String rrNumber);
+	public CurrentBillBean showCurrentBill(String rrNumber);
+	public double getPreviousReading(String rrNumber);
+	public List<MonthlyConsumption> getAllBills(String region);
+    public boolean  queryMsg(String query,String rrNumber,String region);
 }

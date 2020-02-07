@@ -19,6 +19,7 @@ import com.bcits.usecase.beans.AdminBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.EmployeeMasterBean;
+import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.service.CustomerService;
 import com.bcits.usecase.service.EmployeeService;
 
@@ -48,9 +49,26 @@ public class EmployeeController {
 	public String displayEmployeeLoginPage() {
 		return "employeeLogin";
 	}
+	
+	@GetMapping("/generatePage")
+		public String displayGeneratePage(ModelMap modelMap, HttpSession session) {
+			EmployeeMasterBean employeeInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
+			System.out.println(employeeInfo);
+			if (employeeInfo != null) {
+				List<ConsumerMasterBean> consumers = service.showAllConsumer(employeeInfo.getRegion());
+				System.out.println(consumers);
+				if (!consumers.isEmpty()) {
+					modelMap.addAttribute("consumers", consumers);
+				} else {
+					modelMap.addAttribute("errMsg", "No records found");
+				}
+				return "generate";
+			} else {
+				modelMap.addAttribute("errMsg", "Please login first !!");
+				return "employeeLogin";
+			}
+		}
 
-	
-	
 	@GetMapping("/employeeHomePage")
 	public String displayConsumerHomePage(ModelMap modelMap, HttpSession session) {
 		EmployeeMasterBean employeeInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
@@ -82,10 +100,12 @@ public class EmployeeController {
 		if (adminInfo != null) {
 		if(service.addEmp(employeeBean)) {
 			map.addAttribute("msg", "Employee details added...");
-			return "employeeLogin";
+			//return "addEmpPage";
+			return "addEmployee";
+			
 		} else { 
 			map.addAttribute("errMsg", "already exists...");
-		return "addEmpPage";
+		return "addEmployee";
 	} 
 		} else {
 		map.addAttribute("errMsg", "Please Login First..");
@@ -148,10 +168,16 @@ public class EmployeeController {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
 		System.out.println(empInfo);
 		if (empInfo != null) {
-			customerService.getMonthlyConsumptions(rrNumber);
+			System.out.println(empInfo);
 			ConsumerMasterBean consumerInfo = customerService.getCustomer(rrNumber);
-			long previous = customerService.getPreviousReading(rrNumber);
+			
+			System.out.println(consumerInfo);
+
+			double previous = customerService.getPreviousReading(rrNumber);
+			
+			System.out.println(consumerInfo);
 			System.out.println(previous);
+			
 			if (consumerInfo != null) {
 				modelMap.addAttribute("consumerInfo", consumerInfo);
 				modelMap.addAttribute("previous", previous);
@@ -170,19 +196,44 @@ public class EmployeeController {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
 		System.out.println(empInfo);
 		if (empInfo != null) {
-			List<ConsumerMasterBean> consumersInfo = service.showAllConsumer(empInfo.getRegion()); 
-			modelMap.addAttribute("consumersInfo", consumersInfo);
+			List<ConsumerMasterBean> consumers = service.showAllConsumer(empInfo.getRegion()); 
+			
+
+			System.out.println(consumers);
 			if (service.addCurrentBill(currentBill)) {
 				modelMap.addAttribute("msg","Bill Generated Sucessfully..");
+				modelMap.addAttribute("consumers", consumers);
+
 			} else {
 				modelMap.addAttribute("errMsg", " bill not generated...!");
+				modelMap.addAttribute("consumers", consumers);
+
 			}
-			return "allConsumers";
+			return "generate";
 		} else {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "employeeLogin";
 		}
-
 	}
-	 
+	
+	@GetMapping("/seeAllBills")
+	public String displayConsumptionPage(HttpSession session, ModelMap modelMap) {
+		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
+		System.out.println(empInfo);
+		if (empInfo != null) {
+		//	System.out.println(empInfo.getRegion());
+			List<MonthlyConsumption> billList =customerService.getAllBills(empInfo.getRegion());
+			System.out.println(billList);
+			if (!billList.isEmpty()) {
+				modelMap.addAttribute("bills", billList);
+			} else {
+				modelMap.addAttribute("errMsg", "No records found for Display..");
+			}
+			return "seeGeneratedBill";
+		} 
+			modelMap.addAttribute("errMsg", "Please Login First..");
+			return "employeeLogin";
+		
+	}
+	
 }

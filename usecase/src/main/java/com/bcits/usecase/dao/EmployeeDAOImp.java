@@ -29,6 +29,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
 	
 	@Autowired
 	private BillCalculation calculation;
+	
 	@Override
 	public EmployeeMasterBean employeeLogin(int empId, String password) {
 			EntityManager manager = factory.createEntityManager();
@@ -105,25 +106,38 @@ public class EmployeeDAOImp implements EmployeeDAO{
 			MonthlyConsumption monthlyConsumption = new MonthlyConsumption();
 			MonthlyConsumptionPK monthlyPK = new MonthlyConsumptionPK();
 			CurrentBillBean bill = manager.find(CurrentBillBean.class, currentBill.getRrNumber());
-		
+			
+			
+			ConsumerMasterBean consumerBean = manager.find(ConsumerMasterBean.class,currentBill.getRrNumber() );
+			
+		    System.out.println(bill);
 			System.out.println(units);
 			System.out.println(currentBill.getTypeOfConsumer());
 			 double billAmount = calculation.calculateBill(units, currentBill.getTypeOfConsumer());
+			 System.out.println(billAmount);
 			try {
 				transaction.begin();
+				System.out.println(bill);
 			if(bill != null  ) {
 				manager.remove(bill);
 			}
-			monthlyConsumption.setBillAmount(billAmount);
+			
+			    monthlyConsumption.setBillAmount(billAmount);
 				monthlyConsumption.setStatus("Not Paid");
-				monthlyConsumption.setPreviousReading(currentBill.getInitialReading());
+				monthlyConsumption.setInitialReading(currentBill.getInitialReading());
 				monthlyConsumption.setCurrentReading(currentBill.getCurrentReading());
+				
+				monthlyConsumption.setRegion(consumerBean.getRegion());
+				
 				monthlyConsumption.setUnits(units);
+				monthlyConsumption.setConsumptionPk(monthlyPK);
 				monthlyPK.setDate(new Date());
 				monthlyPK.setRrNumber(currentBill.getRrNumber());
 				monthlyConsumption.setConsumptionPk(monthlyPK);
 				currentBill.setBillAmount(billAmount);
 				currentBill.setUnits(units);
+				currentBill.setDate(new Date());
+	
 				manager.persist(monthlyConsumption);
 				manager.persist(currentBill);
 				transaction.commit();
@@ -132,7 +146,8 @@ public class EmployeeDAOImp implements EmployeeDAO{
 			
 			return false;
 		}
-
+			
+	
 	}
 }
 

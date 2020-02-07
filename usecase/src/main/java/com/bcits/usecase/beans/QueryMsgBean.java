@@ -1,22 +1,25 @@
 package com.bcits.usecase.beans;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "bill_history")
-public class BillHistoryBean implements Serializable {
+@Table(name="query_msg")
+public class QueryMsgBean implements Serializable {
+	
 	@EmbeddedId
-	private BillHistoryPK history;
-	private double billAmount;
-	private String status;
-
+	private QueryMsgBeanPK msgPk;
+	@Column
+	private String queryRequest;
+	@Column
+	private String queryResponse;
+	@Column
+	private String region;
 }

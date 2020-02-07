@@ -35,12 +35,6 @@ public class CustomerServiceImp implements CustomerService {
 		return dao.consumerLogin(email, password);
 	}
 
-	
-
-	@Override
-	public CurrentBillBean generateCurrentBill(String rrNumber) {
-		return dao.generateCurrentBill(rrNumber);
-	}
 
 	@Override
 	public List<BillHistoryBean> showBillHistory(String rrNumber) {
@@ -67,9 +61,25 @@ public class CustomerServiceImp implements CustomerService {
 	}
 
 	@Override
-	public long getPreviousReading(String rrNumber) {
+	public double getPreviousReading(String rrNumber) {
 		
 		return dao.getPreviousReading(rrNumber);
+	}
+
+	@Override
+	public CurrentBillBean showCurrentBill(String rrNumber) {
+		return dao.showCurrentBill(rrNumber);
+	}
+
+	@Override
+	public List<MonthlyConsumption> getAllBills(String region) {
+		return dao.getAllBills(region);
+	}
+
+	@Override
+	public boolean queryMsg(String query, String rrNumber, String region) {
+	
+		return dao.queryMsg(query, rrNumber, region);
 	}
 
 }
