@@ -15,29 +15,28 @@ import org.springframework.stereotype.Repository;
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.beans.MonthlyConsumptionPK;
+import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.beans.AdminBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 
-
-
 @Repository
-public class EmployeeDAOImp implements EmployeeDAO{
+public class EmployeeDAOImp implements EmployeeDAO {
 
 	@PersistenceUnit
-	EntityManagerFactory factory ;
-	
+	EntityManagerFactory factory;
+
 	@Autowired
 	private BillCalculation calculation;
-	
+
 	@Override
 	public EmployeeMasterBean employeeLogin(int empId, String password) {
-			EntityManager manager = factory.createEntityManager();
-			EmployeeMasterBean empInfo = manager.find(EmployeeMasterBean.class, empId);
-			if(empInfo != null && empInfo.getPassword().equals(password)) {
-				return empInfo;
-			}
-			return null;
+		EntityManager manager = factory.createEntityManager();
+		EmployeeMasterBean empInfo = manager.find(EmployeeMasterBean.class, empId);
+		if (empInfo != null && empInfo.getPassword().equals(password)) {
+			return empInfo;
+		}
+		return null;
 
 	}
 
@@ -45,7 +44,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
 	public AdminBean adminLogin(int adminId, String password) {
 		EntityManager manager = factory.createEntityManager();
 		AdminBean adminInfo = manager.find(AdminBean.class, adminId);
-		if(adminInfo != null && adminInfo.getPassword().equals(password)) {
+		if (adminInfo != null && adminInfo.getPassword().equals(password)) {
 			return adminInfo;
 		}
 		return null;
@@ -53,16 +52,16 @@ public class EmployeeDAOImp implements EmployeeDAO{
 
 	@Override
 	public long numberOfConsumer(String region) {
-			EntityManager manager =factory.createEntityManager();
-			String jpql ="select count(*) from ConsumerMasterBean where region= :region ";
-			Query query =manager.createQuery(jpql);
-			query.setParameter("region", region);
-			long number = (long) query.getSingleResult();
-			if(number != 0) {
-				return number;
-			}
-			return 0;
+		EntityManager manager = factory.createEntityManager();
+		String jpql = "select count(*) from ConsumerMasterBean where region= :region ";
+		Query query = manager.createQuery(jpql);
+		query.setParameter("region", region);
+		long number = (long) query.getSingleResult();
+		if (number != 0) {
+			return number;
 		}
+		return 0;
+	}
 
 	@Override
 	public boolean addEmp(EmployeeMasterBean employeeBean) {
@@ -80,74 +79,106 @@ public class EmployeeDAOImp implements EmployeeDAO{
 			manager.close();
 		}
 		return isAdded;
-	}//end 
+	}// end
 
 	@Override
 	public List<ConsumerMasterBean> showAllConsumer(String region) {
 		EntityManager manager = factory.createEntityManager();
 		String jpql = " from ConsumerMasterBean where region= :reg ";
-		Query query =manager.createQuery(jpql);
+		Query query = manager.createQuery(jpql);
 		query.setParameter("reg", region);
 		List<ConsumerMasterBean> consumerList = (List<ConsumerMasterBean>) query.getResultList();
 		System.out.println(consumerList);
-		if(consumerList != null) {
+		if (consumerList != null) {
 			return consumerList;
 		}
 		return null;
 	}
-	
 
 	@Override
 	public boolean addCurrentBill(CurrentBillBean currentBill) {
-		
-			double units =currentBill.getCurrentReading()-currentBill.getInitialReading();
-			EntityManager manager =factory.createEntityManager();
-			EntityTransaction transaction = manager.getTransaction();
-			MonthlyConsumption monthlyConsumption = new MonthlyConsumption();
-			MonthlyConsumptionPK monthlyPK = new MonthlyConsumptionPK();
-			CurrentBillBean bill = manager.find(CurrentBillBean.class, currentBill.getRrNumber());
-			
-			
-			ConsumerMasterBean consumerBean = manager.find(ConsumerMasterBean.class,currentBill.getRrNumber() );
-			
-		    System.out.println(bill);
-			System.out.println(units);
-			System.out.println(currentBill.getTypeOfConsumer());
-			 double billAmount = calculation.calculateBill(units, currentBill.getTypeOfConsumer());
-			 System.out.println(billAmount);
-			try {
-				transaction.begin();
-				System.out.println(bill);
-			if(bill != null  ) {
+
+		double units = currentBill.getCurrentReading() - currentBill.getInitialReading();
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		MonthlyConsumption monthlyConsumption = new MonthlyConsumption();
+		MonthlyConsumptionPK monthlyPK = new MonthlyConsumptionPK();
+		CurrentBillBean bill = manager.find(CurrentBillBean.class, currentBill.getRrNumber());
+
+		ConsumerMasterBean consumerBean = manager.find(ConsumerMasterBean.class, currentBill.getRrNumber());
+
+		double billAmount = calculation.calculateBill(units, currentBill.getTypeOfConsumer());
+
+		try {
+			transaction.begin();
+
+			if (bill != null) {
 				manager.remove(bill);
 			}
-			
-			    monthlyConsumption.setBillAmount(billAmount);
-				monthlyConsumption.setStatus("Not Paid");
-				monthlyConsumption.setInitialReading(currentBill.getInitialReading());
-				monthlyConsumption.setCurrentReading(currentBill.getCurrentReading());
-				
-				monthlyConsumption.setRegion(consumerBean.getRegion());
-				
-				monthlyConsumption.setUnits(units);
-				monthlyConsumption.setConsumptionPk(monthlyPK);
-				monthlyPK.setDate(new Date());
-				monthlyPK.setRrNumber(currentBill.getRrNumber());
-				monthlyConsumption.setConsumptionPk(monthlyPK);
-				currentBill.setBillAmount(billAmount);
-				currentBill.setUnits(units);
-				currentBill.setDate(new Date());
-	
-				manager.persist(monthlyConsumption);
-				manager.persist(currentBill);
-				transaction.commit();
-				return true;
-			} catch (Exception e) {
-			
+
+			monthlyConsumption.setBillAmount(billAmount);
+			monthlyConsumption.setStatus("Not Paid");
+			monthlyConsumption.setInitialReading(currentBill.getInitialReading());
+			monthlyConsumption.setCurrentReading(currentBill.getCurrentReading());
+
+			monthlyConsumption.setRegion(consumerBean.getRegion());
+
+			monthlyConsumption.setUnits(units);
+			monthlyConsumption.setConsumptionPk(monthlyPK);
+			monthlyPK.setDate(new Date());
+			monthlyPK.setRrNumber(currentBill.getRrNumber());
+			monthlyConsumption.setConsumptionPk(monthlyPK);
+			currentBill.setBillAmount(billAmount);
+			currentBill.setUnits(units);
+			currentBill.setDate(new Date());
+
+			manager.persist(monthlyConsumption);
+			manager.persist(currentBill);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+
 			return false;
 		}
-			
-	
-	}
-}
 
+	}
+
+	@Override
+	public boolean sendRespond(String rrNumber, String queryResponse, Date date) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		try {
+			transaction.begin();
+			String jpql = " from QueryMsgBean where rrNumber= :num and DATE(date)=:date ";
+			Query query = manager.createQuery(jpql);
+			query.setParameter("num", rrNumber);
+			query.setParameter("date", date);
+			QueryMsgBean queryBean = (QueryMsgBean) query.getSingleResult();
+			queryBean.setQueryResponse(queryResponse);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	@Override
+	public List<QueryMsgBean> getQueryList(String region) {
+		EntityManager manager = factory.createEntityManager();
+		try {
+			String jpql = " from QueryMsgBean where region = :region ";
+			Query queries = manager.createQuery(jpql);
+			queries.setParameter("region", region);
+			List<QueryMsgBean> queryList = queries.getResultList();
+			if (queryList == null && queryList.isEmpty()) {
+				return null;
+			}
+			return queryList;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+
+}

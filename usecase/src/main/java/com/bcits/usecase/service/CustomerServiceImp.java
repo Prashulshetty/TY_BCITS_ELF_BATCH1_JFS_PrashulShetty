@@ -11,6 +11,7 @@ import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.beans.PaymentDetailsBean;
+import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.dao.CustomerDAO;
 
 @Service
@@ -76,10 +77,18 @@ public class CustomerServiceImp implements CustomerService {
 		return dao.getAllBills(region);
 	}
 
+
 	@Override
-	public boolean queryMsg(String query, String rrNumber, String region) {
+	public List<QueryMsgBean> getResponse(String rrNumber) {
+		return dao.getResponse(rrNumber);
+	}
 	
-		return dao.queryMsg(query, rrNumber, region);
+
+	@Override
+	public boolean setQuery(String request, String rrNumber, String region) {
+		if(request != null && !request.isEmpty()) {
+			return dao.setQuery(request, rrNumber, region);		}
+		return false;
 	}
 
 }

@@ -1,11 +1,13 @@
 package com.bcits.usecase.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bcits.usecase.beans.EmployeeMasterBean;
+import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.beans.AdminBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
@@ -62,6 +64,23 @@ public class EmployeeServiceImp implements EmployeeService {
 		}
 		return false;
 	}
+
+
+	@Override
+	public List<QueryMsgBean> getQueryList(String region) {
+		if (region != null) {
+			return dao.getQueryList(region);
+		}
+		return null;
+	}
+
+
+
+	@Override
+	public boolean sendRespond(String rrNumber, String response, Date date) {
+		return dao.sendRespond(rrNumber, response, date);
+		}	
+	
 	
 
 }

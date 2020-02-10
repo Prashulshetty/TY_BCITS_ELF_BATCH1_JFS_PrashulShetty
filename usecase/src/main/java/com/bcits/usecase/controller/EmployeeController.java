@@ -20,10 +20,9 @@ import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
+import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.service.CustomerService;
 import com.bcits.usecase.service.EmployeeService;
-
-
 
 @Controller
 public class EmployeeController {
@@ -221,7 +220,6 @@ public class EmployeeController {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
 		System.out.println(empInfo);
 		if (empInfo != null) {
-		//	System.out.println(empInfo.getRegion());
 			List<MonthlyConsumption> billList =customerService.getAllBills(empInfo.getRegion());
 			System.out.println(billList);
 			if (!billList.isEmpty()) {
@@ -233,7 +231,40 @@ public class EmployeeController {
 		} 
 			modelMap.addAttribute("errMsg", "Please Login First..");
 			return "employeeLogin";
+	}
+	
+	@GetMapping("/SeeQueryDetails")
+	public String diplayQueryDetails(ModelMap modelMap, HttpSession session) {
+		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
+		if(empInfo != null) {
+			List<QueryMsgBean> queryList = service.getQueryList(empInfo.getRegion());
+			if(queryList != null && !queryList.isEmpty()) {
+				modelMap.addAttribute("query",queryList);
+			} else {
+				modelMap.addAttribute("errMsg","No queries Record.");
+			}
+			return "QueryListPage";
+		}else {
+			modelMap.addAttribute("errMsg", "Invalid Credential !!");
+			return "employeeLogin";
+		}
+	}
+	@PostMapping("/sendResponse")
+	public String addResponses(ModelMap modelMap, HttpSession session,String rrNumber,String response ,Date date) {
+		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
+		if(empInfo != null) {
+			List<QueryMsgBean> queryList = service.getQueryList(empInfo.getRegion());
+			modelMap.addAttribute("query",queryList);
+			if(service.sendRespond(rrNumber,response,date)) {
+				modelMap.addAttribute("msg","Sent");
+			}
+			return "QueryListPage";
+		}else {
+			modelMap.addAttribute("errMsg", "Invalid Credential !!");
+			return "employeeLogin";
+		}
 		
 	}
+	
 	
 }

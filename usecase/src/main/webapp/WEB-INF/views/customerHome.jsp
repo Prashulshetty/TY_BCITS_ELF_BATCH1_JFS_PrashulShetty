@@ -3,7 +3,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="com.bcits.usecase.beans.ConsumerMasterBean"%>
 <% ConsumerMasterBean consumerBean = (ConsumerMasterBean) session.getAttribute("Info"); 
- String errMsg = (String) request.getAttribute("errMsg");%>
+ String errMsg = (String) request.getAttribute("errMsg") ;
+  String msg = (String) request.getAttribute("msg"); %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
@@ -25,6 +26,11 @@
   	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
 	</div>
 <%} %>
+<% if(msg != null && !msg.isEmpty()){ %>
+     <div style="color: green; font-size:25px; font: bold; margin-right: 50px" align="center">
+  	<strong style="transition-duration: 60s;"><%= msg %></strong>
+	</div>
+<%} %>
 <div class="row" >
   <div class="col-3" ><br>
   <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
@@ -33,6 +39,7 @@
   <a href="./monthlyConsumptions" class="list-group-item list-group-item-action">Monthly Consumption</a>
   <a href="./billHistoryDisplay" class="list-group-item list-group-item-action">Bill History</a>
   <a href="./payOnline" class="list-group-item list-group-item-action">Pay Online</a>
+  <a href="./seeResponse" class="list-group-item list-group-item-action">See Query Response</a>
 </div>
   </div>
  <div class="col-8">
@@ -80,11 +87,11 @@
   </tbody>
 </table>
 </div>
-<form action="./query" method="post">
+<form action="./query">
    <div class="form-group" style="width: 500px; font-size: 20px ;">
   		<label for="comment"><strong >Query:</strong></label>
  		<textarea class="form-control" rows="2" id="query" name="query"></textarea><br>
- 		<button type="submit" formaction="#" class="btn btn-primary" style="margin-top: -7px;">Submit</button>
+ 		<button type="submit" class="btn btn-primary" style="margin-top: -7px;">Submit</button>
 	</div> 
 	</form>
 	</div>

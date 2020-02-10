@@ -8,6 +8,7 @@ import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.beans.PaymentDetailsBean;
+import com.bcits.usecase.beans.QueryMsgBean;
 
 
 public interface CustomerService {
@@ -20,5 +21,6 @@ public interface CustomerService {
 	public CurrentBillBean showCurrentBill(String rrNumber);
 	public double getPreviousReading(String rrNumber);
 	public List<MonthlyConsumption> getAllBills(String region);
-    public boolean  queryMsg(String query,String rrNumber,String region);
+	public List<QueryMsgBean> getResponse(String rrNumber);
+	public boolean setQuery(String query, String rrNumber, String region);
 }

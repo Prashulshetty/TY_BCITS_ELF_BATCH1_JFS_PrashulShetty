@@ -1,8 +1,9 @@
 package com.bcits.usecase.dao;
 
 import com.bcits.usecase.beans.EmployeeMasterBean;
+import com.bcits.usecase.beans.QueryMsgBean;
 
-
+import java.util.Date;
 import java.util.List;
 
 import com.bcits.usecase.beans.AdminBean;
@@ -16,4 +17,7 @@ public interface EmployeeDAO {
 	public boolean addEmp(EmployeeMasterBean employeeBean);
 	public List<ConsumerMasterBean> showAllConsumer(String region);
 	public boolean addCurrentBill(CurrentBillBean currentBill);
+	public List<QueryMsgBean> getQueryList(String region);
+	public boolean sendRespond(String rrNumber,String response ,Date date);
+	
 }

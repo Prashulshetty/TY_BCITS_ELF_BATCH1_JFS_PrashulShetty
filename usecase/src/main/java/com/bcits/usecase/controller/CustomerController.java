@@ -23,6 +23,7 @@ import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
+import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.service.CustomerService;
 
 @Controller
@@ -207,12 +208,12 @@ public class CustomerController {
 	}
 	
 	
-	@PostMapping("/query")
+	@GetMapping("/query")
 	public String QuerySubmit(HttpSession session, ModelMap modelMap, String query) {
 		System.out.println(query);
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
 		if (consumerInfo != null) {
-			if (service.queryMsg(query, consumerInfo.getRrNumber(), consumerInfo.getRegion())) {
+			if (service.setQuery(query, consumerInfo.getRrNumber(), consumerInfo.getRegion())) {
 				modelMap.addAttribute("msg", "query sent..");
 			}
 			return "customerHome";
@@ -222,4 +223,18 @@ public class CustomerController {
 		}
 
 	}
+	@GetMapping("/seeResponse")
+	public String seeResponse(HttpSession session, ModelMap modelMap) {
+		ConsumerMasterBean consumerInfoBean = (ConsumerMasterBean) session.getAttribute("Info");
+		if (consumerInfoBean != null) {
+		
+			List<QueryMsgBean> response = service.getResponse(consumerInfoBean.getRrNumber());
+			modelMap.addAttribute("response",response);
+			return "responsePage";
+	}else {
+		modelMap.addAttribute("errMsg", "Please Login First..");
+		return "consumerLogin";
+		}
+	}
+
 }

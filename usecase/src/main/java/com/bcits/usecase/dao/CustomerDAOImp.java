@@ -173,8 +173,15 @@ public class CustomerDAOImp implements CustomerDAO {
 
 	}
 
+	
 	@Override
-	public boolean queryMsg(String query, String rrNumber, String region) {
+	public List<QueryMsgBean> getResponse(String rrNumber) {
+
+		return null;
+	}
+
+	@Override
+	public boolean setQuery(String request, String rrNumber, String region) {
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		QueryMsgBean msgBean = new QueryMsgBean();
@@ -183,7 +190,7 @@ public class CustomerDAOImp implements CustomerDAO {
 			transaction.begin();
 			msgBean.setRegion(region);
 			msgBeanPK.setRrNumber(rrNumber);
-			msgBean.setQueryRequest(query);
+			msgBean.setQueryRequest(request);
 			msgBeanPK.setDate(new Date());
 			msgBean.setMsgPk(msgBeanPK);
 			manager.persist(msgBean);
@@ -194,4 +201,8 @@ public class CustomerDAOImp implements CustomerDAO {
 		}
 		return false;
 	}
+
+	
+
+	
 }
