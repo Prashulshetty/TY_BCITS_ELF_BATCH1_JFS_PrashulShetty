@@ -67,6 +67,8 @@
       </th>
       <th class="th-sm">Bill Amount
       </th>
+      <th class="th-sm">Status
+      </th>
      
     </tr>
   </thead>
@@ -81,6 +83,7 @@
               <td><strong><%= list.getCurrentReading() %></strong></td>
       <td><strong><%= list.getUnits() %></strong></td>
       <td><strong><%= list.getBillAmount() %></strong></td>
+      <td><strong><%= list.getStatus() %></strong></td>
     </tr>
     <% } %>
     <%  

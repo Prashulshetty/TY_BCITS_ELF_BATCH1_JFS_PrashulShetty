@@ -14,8 +14,10 @@ public interface EmployeeService {
 	public AdminBean adminLogin(int adminId,String password);	
 	public long numberOfConsumer(String region);
 	public boolean addEmp(EmployeeMasterBean employeeBean);
+	public boolean deleteEmp(int empId);
 	public List<ConsumerMasterBean> showAllConsumer(String region);
-	public boolean addCurrentBill(CurrentBillBean currentBill);
+	public CurrentBillBean addCurrentBill(CurrentBillBean currentBill,String region);
 	public List<QueryMsgBean> getQueryList(String region);
 	public boolean sendRespond(String rrNumber,String response ,Date date);
+	
 }

@@ -32,6 +32,7 @@
    <a href="./getConsumersDetails"  class="list-group-item list-group-item-action">See all Consumers</a> 
   <a href="#"class="list-group-item list-group-item-action">Generate Bills</a>
     <a href="./seeAllBills" class="list-group-item list-group-item-action">See Generated Bills</a>
+       <a href="./seeQueryDetails" class="list-group-item list-group-item-action">See Query Details</a>
 </div>
   </div>
 	<div class="col-8">
@@ -45,27 +46,28 @@
 				<h3 style="color: blue">Bill Generator</h3>
 				<div class="form-row">
 					<div class="form-group col-md-10">
-						<label for="rrNum">RR Number</label> <input type="tel"
+						<label for="rrNum">RR Number</label> <input type="tel" readonly="readonly" 
 							class="form-control" id="rrNum" name="rrNumber" value="<%= consumerInfo.getRrNumber()%>" placeholder="RR Number">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-5">
-						<label for="prev">Previous Reading</label> <input type="tel"
+						<label for="prev">Previous Reading</label> <input type="tel" readonly="readonly" 
 							class="form-control" id="previous"  name="previousReading" value="<%= preFinal %>" placeholder="Previous Reading">
 					</div>
 					<div class="form-group col-md-5">
-						<label for="pres">Current Reading</label> <input type="tel"
+						<label for="pres">Current Reading</label> <input type="tel" 
 							class="form-control" id="current" name="currentReading"  placeholder="Current Reading">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-5">
+					
 						<label for="date">Type Of Consumer</label> 
-						<input type="text" class="form-control" name="typeOfConsumer" value="<%= consumerInfo.getTypeOfConsumer()%>" id="date">
+						<input type="text" class="form-control" name="typeOfConsumer" value="<%= consumerInfo.getTypeOfConsumer()%>" readonly="readonly"  id="date">
 					</div>
 					<div class="form-group col-md-5">
-						<label for="dueDate">Due Date</label> <input type="date"
+						<label for="dueDate">Due Date</label> <input type="date" 
 							class="form-control" id="dueDate" name="dueDate">
 					</div>
 				</div>

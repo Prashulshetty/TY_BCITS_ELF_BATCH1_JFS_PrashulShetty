@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>See all Consumers</title>
+<title>Generate bill</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -44,6 +44,7 @@
    <a href="./getConsumersDetails"  class="list-group-item list-group-item-action">See all Consumers</a> 
   <a href="./generatePage"class="list-group-item list-group-item-action">Generate Bills</a>
     <a href="./seeAllBills" class="list-group-item list-group-item-action">See Generated Bills</a>
+       <a href="./seeQueryDetails" class="list-group-item list-group-item-action">See Query Details</a>
 </div>
   </div>
 	<div class="col-8">

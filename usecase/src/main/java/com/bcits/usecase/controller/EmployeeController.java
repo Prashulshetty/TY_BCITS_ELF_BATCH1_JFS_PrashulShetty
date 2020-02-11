@@ -21,6 +21,7 @@ import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.beans.QueryMsgBean;
+import com.bcits.usecase.dao.GenerateMail;
 import com.bcits.usecase.service.CustomerService;
 import com.bcits.usecase.service.EmployeeService;
 
@@ -32,18 +33,14 @@ public class EmployeeController {
 	@Autowired
 	private CustomerService customerService;
 	
-
+   private GenerateMail  generateMail = new GenerateMail();
+   
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		CustomDateEditor dateEditor = new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true);
 		binder.registerCustomEditor(Date.class, dateEditor);
 	}
 	
-	@GetMapping("/adminLoginPage")
-	public String displayAdminLoginPage() {
-		return "adminLogin";
-	}
-
 	@GetMapping("/employeeLoginPage")
 	public String displayEmployeeLoginPage() {
 		return "employeeLogin";
@@ -59,7 +56,7 @@ public class EmployeeController {
 				if (!consumers.isEmpty()) {
 					modelMap.addAttribute("consumers", consumers);
 				} else {
-					modelMap.addAttribute("errMsg", "No records found");
+					modelMap.addAttribute("errMsg","No records found");
 				}
 				return "generate";
 			} else {
@@ -79,38 +76,16 @@ public class EmployeeController {
 		return "employeeLogin";
 	}
 
-	@PostMapping("/loginAdmin") 
-	public String adminLogin(int adminId, String password ,HttpServletRequest req ,ModelMap modelMap){
-		AdminBean admininfo = service.adminLogin(adminId, password);
-		if( admininfo != null) {
-			HttpSession session = req.getSession(true);
-			session.setAttribute("adminInfo", admininfo);
-			modelMap.addAttribute("msg", "login success...!!");
-			return "addEmployee";
-		} else  {
-			modelMap.addAttribute("errMsg", "Invalid Credential !!");
-			return "adminLogin";
-		}		
-	}
+	/*
+	 * @PostMapping("/loginAdmin") public String adminLogin(int adminId, String
+	 * password ,HttpServletRequest req ,ModelMap modelMap){ AdminBean admininfo =
+	 * service.adminLogin(adminId, password); if( admininfo != null) { HttpSession
+	 * session = req.getSession(true); session.setAttribute("adminInfo", admininfo);
+	 * modelMap.addAttribute("msg", "login success...!!"); return "addEmployee"; }
+	 * else { modelMap.addAttribute("errMsg", "Invalid Credential !!"); return
+	 * "adminLogin"; } }
+	 */
 	
-	@PostMapping("/addEmp")
-	public String addEmp(EmployeeMasterBean employeeBean,HttpSession session,ModelMap map) {
-		AdminBean adminInfo = (AdminBean) session.getAttribute("adminInfo");
-		if (adminInfo != null) {
-		if(service.addEmp(employeeBean)) {
-			map.addAttribute("msg", "Employee details added...");
-			//return "addEmpPage";
-			return "addEmployee";
-			
-		} else { 
-			map.addAttribute("errMsg", "already exists...");
-		return "addEmployee";
-	} 
-		} else {
-		map.addAttribute("errMsg", "Please Login First..");
-		return "adminLogin";
-	}
-		}
 	
 	
 	@GetMapping("/getConsumersDetails")
@@ -134,21 +109,22 @@ public class EmployeeController {
 	 
 	
 	
-	@PostMapping("/loginEmployee") 
-	public String employeeLogin(int empId, String password ,HttpServletRequest req ,ModelMap modelMap) {	
+	@PostMapping("/loginEmployee")
+	public String employeeLogin(int empId, String password, HttpServletRequest req, ModelMap modelMap) {
 		EmployeeMasterBean empInfo = service.employeelogin(empId, password);
-		long count = service.numberOfConsumer(empInfo.getRegion());
-		System.out.println(count);
-		if( empInfo != null) {
+		if (empInfo != null) {
+			long count = service.numberOfConsumer(empInfo.getRegion());
 			HttpSession session = req.getSession(true);
 			session.setAttribute("empInfo", empInfo);
 			modelMap.addAttribute("count", count);
 			return "employeeHome";
-		} else  {
-       modelMap.addAttribute("errMsg", "Invalid Credential !!");
+		} else {
+			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "employeeLogin";
-}		
+		}
 	}
+	
+	
 	@GetMapping("/empLogout")
 	public String consumerLogOut(ModelMap modelMap, HttpSession session) {
 		EmployeeMasterBean employeeInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
@@ -167,15 +143,11 @@ public class EmployeeController {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
 		System.out.println(empInfo);
 		if (empInfo != null) {
-			System.out.println(empInfo);
 			ConsumerMasterBean consumerInfo = customerService.getCustomer(rrNumber);
 			
-			System.out.println(consumerInfo);
 
 			double previous = customerService.getPreviousReading(rrNumber);
 			
-			System.out.println(consumerInfo);
-			System.out.println(previous);
 			
 			if (consumerInfo != null) {
 				modelMap.addAttribute("consumerInfo", consumerInfo);
@@ -193,18 +165,17 @@ public class EmployeeController {
 	@GetMapping("/billGenerate")
 	public String generateBill(ModelMap modelMap, HttpSession session, CurrentBillBean currentBill) {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
-		System.out.println(empInfo);
 		if (empInfo != null) {
-			List<ConsumerMasterBean> consumers = service.showAllConsumer(empInfo.getRegion()); 
-			
-
-			System.out.println(consumers);
-			if (service.addCurrentBill(currentBill)) {
+			List<ConsumerMasterBean> consumers = service.showAllConsumer(empInfo.getRegion());
+			 CurrentBillBean bill =service.addCurrentBill(currentBill,empInfo.getRegion());
+			if (bill != null) {
+				ConsumerMasterBean consumerInfo = customerService.getCustomer(currentBill.getRrNumber());
+				generateMail.sendMail(currentBill, consumerInfo);
 				modelMap.addAttribute("msg","Bill Generated Sucessfully..");
 				modelMap.addAttribute("consumers", consumers);
 
 			} else {
-				modelMap.addAttribute("errMsg", " bill not generated...!");
+				modelMap.addAttribute("errMsg", " This month bill already exists...!");
 				modelMap.addAttribute("consumers", consumers);
 
 			}
@@ -214,7 +185,6 @@ public class EmployeeController {
 			return "employeeLogin";
 		}
 	}
-	
 	@GetMapping("/seeAllBills")
 	public String displayConsumptionPage(HttpSession session, ModelMap modelMap) {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
@@ -233,7 +203,7 @@ public class EmployeeController {
 			return "employeeLogin";
 	}
 	
-	@GetMapping("/SeeQueryDetails")
+	@GetMapping("/seeQueryDetails")
 	public String diplayQueryDetails(ModelMap modelMap, HttpSession session) {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
 		if(empInfo != null) {
@@ -241,24 +211,24 @@ public class EmployeeController {
 			if(queryList != null && !queryList.isEmpty()) {
 				modelMap.addAttribute("query",queryList);
 			} else {
-				modelMap.addAttribute("errMsg","No queries Record.");
+				modelMap.addAttribute("errMsg","No queries....");
 			}
-			return "QueryListPage";
+			return "queryListPage";
 		}else {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "employeeLogin";
 		}
 	}
 	@PostMapping("/sendResponse")
-	public String addResponses(ModelMap modelMap, HttpSession session,String rrNumber,String response ,Date date) {
+	public String addResponses(ModelMap modelMap, HttpSession session,String rrNumber,String query ,Date date) {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
 		if(empInfo != null) {
 			List<QueryMsgBean> queryList = service.getQueryList(empInfo.getRegion());
 			modelMap.addAttribute("query",queryList);
-			if(service.sendRespond(rrNumber,response,date)) {
+			if(service.sendRespond(rrNumber,query,date)) {
 				modelMap.addAttribute("msg","Sent");
 			}
-			return "QueryListPage";
+			return "queryListPage";
 		}else {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "employeeLogin";

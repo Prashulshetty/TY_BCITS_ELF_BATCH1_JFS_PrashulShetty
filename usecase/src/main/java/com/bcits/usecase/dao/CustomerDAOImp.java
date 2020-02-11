@@ -19,6 +19,7 @@ import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.beans.QueryMsgBeanPK;
 
+
 @Repository
 public class CustomerDAOImp implements CustomerDAO {
 
@@ -176,9 +177,19 @@ public class CustomerDAOImp implements CustomerDAO {
 	
 	@Override
 	public List<QueryMsgBean> getResponse(String rrNumber) {
-
+		EntityManager manager = factory.createEntityManager();
+		try {
+			String jpql=" from QueryMsgBean where rrNumber= :num ";
+			Query query =manager.createQuery(jpql);
+			query.setParameter("num", rrNumber);
+			List<QueryMsgBean> response =query.getResultList();
+			return response;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
-	}
+
+}
 
 	@Override
 	public boolean setQuery(String request, String rrNumber, String region) {

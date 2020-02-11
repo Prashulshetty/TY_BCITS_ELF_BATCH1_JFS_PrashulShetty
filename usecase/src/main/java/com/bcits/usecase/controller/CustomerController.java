@@ -98,17 +98,30 @@ public class CustomerController {
 		return "home";
 	}
 
+	
 	@GetMapping("/payOnline")
 	public String displayPaymentPage(HttpSession session, ModelMap modelMap) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
 		if (consumerInfo != null) {
+
 			return "payment";
 		} else {
 			modelMap.addAttribute("errMsg", "please Login first");
 			return "consumerLogin";
 		}
 	}
+	 
 
+	/*
+	 * @GetMapping("/payOnline") public String displayPaymentPage(HttpSession
+	 * session, ModelMap modelMap) { ConsumerMasterBean consumerInfo =
+	 * (ConsumerMasterBean) session.getAttribute("Info"); if (consumerInfo != null)
+	 * { List<MonthlyConsumption> consumptionList =
+	 * service.getMonthlyConsumptions(consumerInfo.getRrNumber()); return "payment";
+	 * } else { modelMap.addAttribute("errMsg", "please Login first"); return
+	 * "consumerLogin"; } }
+	 */
+	
 	@PostMapping("/paySuccess")
 	public String sucessfullPayment(HttpSession session, ModelMap modelMap, int amount) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
@@ -225,10 +238,12 @@ public class CustomerController {
 	}
 	@GetMapping("/seeResponse")
 	public String seeResponse(HttpSession session, ModelMap modelMap) {
-		ConsumerMasterBean consumerInfoBean = (ConsumerMasterBean) session.getAttribute("Info");
-		if (consumerInfoBean != null) {
-		
-			List<QueryMsgBean> response = service.getResponse(consumerInfoBean.getRrNumber());
+		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
+		if (consumerInfo != null) {
+			System.out.println(consumerInfo.getRrNumber());
+
+			List<QueryMsgBean> response = service.getResponse(consumerInfo.getRrNumber());
+			System.out.println(response);
 			modelMap.addAttribute("response",response);
 			return "responsePage";
 	}else {

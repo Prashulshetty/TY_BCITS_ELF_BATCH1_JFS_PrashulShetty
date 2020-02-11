@@ -1,5 +1,6 @@
 package com.bcits.usecase.dao;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -80,7 +81,29 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		}
 		return isAdded;
 	}// end
+	
+	@Override
+	public boolean deleteEmp(int empId) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		boolean isDeleted = false;
+		try {
+			transaction.begin();
+			EmployeeMasterBean info = manager.find(EmployeeMasterBean.class,empId);
+			if (info != null) {
+				manager.remove(info);
 
+				transaction.commit();
+
+				isDeleted = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			manager.close();
+		}
+		return isDeleted;
+	}
 	@Override
 	public List<ConsumerMasterBean> showAllConsumer(String region) {
 		EntityManager manager = factory.createEntityManager();
@@ -95,8 +118,9 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		return null;
 	}
 
+	
 	@Override
-	public boolean addCurrentBill(CurrentBillBean currentBill) {
+	public CurrentBillBean addCurrentBill(CurrentBillBean currentBill,String region) {
 
 		double units = currentBill.getCurrentReading() - currentBill.getInitialReading();
 		EntityManager manager = factory.createEntityManager();
@@ -104,25 +128,27 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		MonthlyConsumption monthlyConsumption = new MonthlyConsumption();
 		MonthlyConsumptionPK monthlyPK = new MonthlyConsumptionPK();
 		CurrentBillBean bill = manager.find(CurrentBillBean.class, currentBill.getRrNumber());
-
+		if(bill != null) {
+			Calendar cal = Calendar.getInstance();
+		  	cal.setTime(new Date());
+		  	Calendar cal1 = Calendar.getInstance();
+		  	cal1.setTime(bill.getDate());
+		  	if(cal.get(Calendar.MONTH) == cal1.get(Calendar.MONTH)) {
+		  		return null;
+		  	}
+		}
 		ConsumerMasterBean consumerBean = manager.find(ConsumerMasterBean.class, currentBill.getRrNumber());
-
 		double billAmount = calculation.calculateBill(units, currentBill.getTypeOfConsumer());
-
 		try {
 			transaction.begin();
-
 			if (bill != null) {
 				manager.remove(bill);
 			}
-
 			monthlyConsumption.setBillAmount(billAmount);
 			monthlyConsumption.setStatus("Not Paid");
 			monthlyConsumption.setInitialReading(currentBill.getInitialReading());
 			monthlyConsumption.setCurrentReading(currentBill.getCurrentReading());
-
 			monthlyConsumption.setRegion(consumerBean.getRegion());
-
 			monthlyConsumption.setUnits(units);
 			monthlyConsumption.setConsumptionPk(monthlyPK);
 			monthlyPK.setDate(new Date());
@@ -131,14 +157,13 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			currentBill.setBillAmount(billAmount);
 			currentBill.setUnits(units);
 			currentBill.setDate(new Date());
-
 			manager.persist(monthlyConsumption);
 			manager.persist(currentBill);
 			transaction.commit();
-			return true;
+			return currentBill;
 		} catch (Exception e) {
 
-			return false;
+			return null;
 		}
 
 	}
@@ -149,7 +174,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		EntityTransaction transaction = manager.getTransaction();
 		try {
 			transaction.begin();
-			String jpql = " from QueryMsgBean where rrNumber= :num and DATE(date)=:date ";
+			String jpql = " from QueryMsgBean where msgPk.rrNumber= :num and DATE(msgPk.date)=:date ";
 			Query query = manager.createQuery(jpql);
 			query.setParameter("num", rrNumber);
 			query.setParameter("date", date);
@@ -179,6 +204,8 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			return null;
 		}
 	}
+
+	
 
 
 }

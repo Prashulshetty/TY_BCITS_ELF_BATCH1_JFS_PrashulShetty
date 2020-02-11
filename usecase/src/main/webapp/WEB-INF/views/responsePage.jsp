@@ -49,6 +49,7 @@
   <a href="./monthlyConsumptions" class="list-group-item list-group-item-action">Monthly Consumption</a>
   <a href="./billHistoryDisplay" class="list-group-item list-group-item-action">Bill History</a>
   <a href="./payOnline" class="list-group-item list-group-item-action">Pay Online</a>
+  <a href="./seeResponse" class="list-group-item list-group-item-action">See Query Response</a>
 </div>
   </div>
  <div class="col-8">

@@ -49,6 +49,11 @@ public class EmployeeServiceImp implements EmployeeService {
 		return dao.addEmp(employeeBean);
 	}
 
+	@Override
+	public boolean deleteEmp(int empId) {
+		
+		return dao.deleteEmp(empId);
+	}	
 
 	@Override
 	public List<ConsumerMasterBean> showAllConsumer(String region) {
@@ -58,11 +63,11 @@ public class EmployeeServiceImp implements EmployeeService {
 
 
 	@Override
-	public boolean addCurrentBill(CurrentBillBean currentBill) {
+	public CurrentBillBean addCurrentBill(CurrentBillBean currentBill,String region) {
 		if(currentBill != null ) {
-			return dao.addCurrentBill(currentBill);
+			return dao.addCurrentBill(currentBill,region);
 		}
-		return false;
+		return null;
 	}
 
 
@@ -79,7 +84,10 @@ public class EmployeeServiceImp implements EmployeeService {
 	@Override
 	public boolean sendRespond(String rrNumber, String response, Date date) {
 		return dao.sendRespond(rrNumber, response, date);
-		}	
+		}
+
+
+	
 	
 	
 

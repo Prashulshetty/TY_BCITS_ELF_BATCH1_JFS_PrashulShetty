@@ -1,4 +1,4 @@
-<%@page import="com.bcits.usecase.beans.QueryMsgBean"%>
+jkl<%@page import="com.bcits.usecase.beans.QueryMsgBean"%>
 <%@page import="com.bcits.usecase.beans.MonthlyConsumption"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -21,7 +21,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>resquest page</title>
+<title>query Details page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="${css}/monthlyConsumption.css">
@@ -44,11 +44,11 @@
 <div class="row" >
   <div class="col-3" ><br>
   <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
-  <a href="./consumerHomePage" class="list-group-item list-group-item-action "> Account Details</a>
-  <a href="./consumerBillDisplay" class="list-group-item list-group-item-action">Current Bill</a>
-  <a href="./monthlyConsumptions" class="list-group-item list-group-item-action">Monthly Consumption</a>
-  <a href="./billHistoryDisplay" class="list-group-item list-group-item-action">Bill History</a>
-  <a href="./payOnline" class="list-group-item list-group-item-action">Pay Online</a>
+  <a href="./employeeHomePage" class="list-group-item list-group-item-action active"> Employee Details</a>
+   <a href="./getConsumersDetails" class="list-group-item list-group-item-action">See all Consumers</a> 
+  <a href="./generatePage" class="list-group-item list-group-item-action">Generate Bills</a>
+    <a href="./seeAllBills" class="list-group-item list-group-item-action">See Generated Bills</a>
+      <a href="./seeQueryDetails" class="list-group-item list-group-item-action">See Query Details</a>
 </div>
   </div>
  <div class="col-8">
@@ -79,12 +79,15 @@
     <%
   for( QueryMsgBean queries :queryRequests) { %><tr>
        <form action="./sendResponse" method="post">
+      
+      <input type="datetime" name="date" value="<%=queries.getMsgPk().getDate()%>" hidden="true" />
       <%SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); %>
       <td><strong><%= formatter.format(queries.getMsgPk().getDate()) %></strong></td>
+      <input type="text" name="rrNumber" value="<%= queries.getMsgPk().getRrNumber() %>" hidden="true"  />
       <td><strong><%= queries.getMsgPk().getRrNumber() %></strong></td>
-          <td><strong><%= queries.getQueryRequest() %></strong></td>
-              <td><strong><%= queries.getQueryResponse() %></strong></td>
-<td><textarea class="form-control"  rows="2" id="comment" name ="response"></textarea></td> 
+      <td><strong><%= queries.getQueryRequest() %></strong></td>
+      <td><strong><%= queries.getQueryResponse() %></strong></td>
+      <td><textarea class="form-control"  rows="2" id="query" name ="query"></textarea></td> 
  	  <td><button type="submit" class="btn btn-primary">Send</button></td>
  	  
     </tr>
