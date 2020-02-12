@@ -29,8 +29,8 @@ public class BillCalculation {
 		long finalRange = tariff.get(2).getTarriffpk().getRange();
 		
 		double initialAmount =tariff.get(0).getAmount();
-		double midAmount =tariff.get(0).getAmount();
-		double finalAmount =tariff.get(0).getAmount();
+		double midAmount =tariff.get(1).getAmount();
+		double finalAmount =tariff.get(2).getAmount();
 		
 		double bill =0.0;
 		if(units < initialRange) {

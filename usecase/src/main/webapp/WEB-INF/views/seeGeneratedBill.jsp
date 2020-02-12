@@ -61,6 +61,8 @@
     <tr>
       <th class="th-sm">Date
       </th>
+      <th class="th-sm">RR Number
+      </th>
       <th class="th-sm">previous reading 
       </th>
       <th class="th-sm">current reading 
@@ -79,6 +81,7 @@
       
       <%SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); %>
       <td><strong><%= formatter.format(list.getConsumptionPk().getDate()) %></strong></td>
+       <td><strong><%= list.getConsumptionPk().getRrNumber() %></strong></td>
           <td><strong><%= list.getInitialReading() %></strong></td>
               <td><strong><%= list.getCurrentReading() %></strong></td>
       <td><strong><%= list.getUnits() %></strong></td>

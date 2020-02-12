@@ -87,9 +87,14 @@ public class EmployeeServiceImp implements EmployeeService {
 		}
 
 
-	
-	
-	
+	@Override
+	public boolean updatePassword(String password, String cPassword, int empId) {
+		if (password.equals(cPassword)) {
+			return dao.updatePassword(password, empId);
+		}
+		return false;
+	}
+
 
 }
 	

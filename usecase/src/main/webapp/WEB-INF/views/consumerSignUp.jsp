@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Customer Login</title>
+    <title>Customer SignUp</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="${css}/CustomerSignUp.css">
@@ -26,14 +26,12 @@
      <div style="color: red; font-size:35px; font: bold; margin-right: 50px" align="center">
   	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
 	</div>
-
 <%} %>
-
 	<div id="screen"
 		class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card">
    	
-  <form onsubmit= "validation(); return false" action="./signUpPage" id="formData" method="post">	
-
+ <form id="formData" onsubmit= "validation(); return false"   method="post">	
+ 
 			<div class="text-primary offset-md-5 ">
 				<h1>
 					<i class="fas fa-user-alt "></i>
@@ -41,56 +39,55 @@
 			</div>
 			<h2 class="text-center">User SignUp</h2>
 			<div class="form-group">
-				<label for="">First Name</label> 
-				<input id="firstName" type="text" name="firstName"
+				<label for="firstName">First Name</label> 
+				<input id="firstName" name="firstName" type="text" 
 					placeholder="Enter First Name "  class="form-control"
 					aria-describedby="">
 					<span id="fName" style="color: red;"></span>
 			</div>
 			<div class="form-group">
-				<label for="">Last Name</label> <input id="lastName" type="text" name="lastName" 
+				<label for="lastName">Last Name</label> <input id="lastName" name="lastName" type="text" 
 					placeholder="Enter Last Name " class="form-control"
 					aria-describedby="emailHelp">
 					<span id="lName" style="color: red;"></span>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Email address</label> <input name="email" 
-					id="email" type="email" placeholder="Enter email address"
+				<label for="exampleInputEmail1">Email address</label> <input  
+					id="email" name="email" type="email" placeholder="Enter email address"
 					class="form-control" 
 					aria-describedby="emailHelp">
 					<span id="email" style="color: red;"></span>
 			</div>
 			<div class="form-group">
-				<label for="exampleMobileNumber">Mobile Number</label> <input name="phoneNumber" 
-					id="phoneNumber " type="tel" placeholder="Enter Mobile Number" required="required"
+				<label for="exampleMobileNumber">Mobile Number</label> <input 
+					id="phoneNumber "  name="phoneNumber" type="tel" placeholder="Enter Mobile Number" required="required"
 					class="form-control" 
 					aria-describedby="Mobile Number">
 					<span id="number" style="color: red;"></span>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">Password</label> <input name="password" 
-					id="password" type="password" placeholder="Enter password"
+				<label for="exampleInputPassword1">Password</label> <input  
+					id="password" name="password" type="password" placeholder="Enter password"
 					class="form-control" >
 				
 					<span id="pwd" style="color: red;"></span>
 			</div>
 
 			<div class="form-group">
-				<label for="exampleInputPassword2">Confirm Password</label> <input name="conPwd" 
-					id="conPwd" type="password" placeholder="Confirm Password" name="conPwd"
+				<label for="exampleInputPassword2">Confirm Password</label> <input  
+					id="conPwd" name="conPwd" type="password" placeholder="Confirm Password" name="conPwd"
 					class="form-control" >
-				
 					<span id="cPwd" style="color: red;"></span>
 			</div>
 
 			<div class="form-group">
-				<label for="">RR Number Region</label> <input name="rrNumber" 
-					id="rrNumber" type="text"
+				<label for="">RR Number Region</label> <input 
+					id="rrNumber" name="rrNumber"  type="text"
 					placeholder="Enter RR Number Region"
 					class="form-control" id="" aria-describedby="">
 					<span id="rrNum" style="color: red;"></span>
 			</div>
-			<label for="">Type of Consumer</label> <select class="custom-select" name="typeOfConsumer" >
+			<label for="">Type of Consumer</label> <select class="custom-select" name="typeOfConsumer" id="typeOfConsumer">
 				<option value="0" selected disabled>Select Consumer Type</option>
 				<option >residential</option>
 				<option >commercial</option>
@@ -115,15 +112,15 @@
 			</div>
 			<input type="checkbox" name="Cbox" id="" >&nbsp;<label for="">By
 				Signing up.I agree the terms and condition.</label>
-			<button type="submit"
+			<button type="submit" formaction="./signUpPage"
 				class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">SignUp</button>
 
 		</form>
 		</div>
    <jsp:include page="footer.jsp"></jsp:include>
 	<script src="${js}/jquery-3.4.1.js"></script>
-	<script src="${js}/bootstrap.min.js"></script>
     <script src="${js}/CustomerSignUp.js"></script>
+	<script src="${js}/bootstrap.min.js"></script>
 </body>
 
 </html>

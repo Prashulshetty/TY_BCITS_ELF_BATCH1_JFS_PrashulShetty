@@ -23,4 +23,7 @@ public interface CustomerService {
 	public List<MonthlyConsumption> getAllBills(String region);
 	public List<QueryMsgBean> getResponse(String rrNumber);
 	public boolean setQuery(String query, String rrNumber, String region);
+	public double totalBill(String region);
+	public double collectedBill(String region);
+	public boolean getStatus(String rrNumber);
 }

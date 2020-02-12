@@ -5,9 +5,10 @@
 
 <% EmployeeMasterBean employeeBean = (EmployeeMasterBean) session.getAttribute("empInfo");  %>
     <%long count = (long) request.getAttribute("count"); %>
+     <%double totalBill = (double) request.getAttribute("totalBill"); %>
+      <%double collectedBill = (double) request.getAttribute("collectedBill"); %>
     <% String errMsg = (String) request.getAttribute("errMsg"); %>
-    
-
+  
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
@@ -35,6 +36,7 @@
   <div class="col-3" ><br>
    <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
   <a href="./employeeHomePage" class="list-group-item list-group-item-action active"> Employee Details</a>
+   <a href="./passwordChange" class="list-group-item list-group-item-action">Update Password</a>
    <a href="./getConsumersDetails" class="list-group-item list-group-item-action">See all Consumers</a> 
   <a href="./generatePage" class="list-group-item list-group-item-action">Generate Bills</a>
     <a href="./seeAllBills" class="list-group-item list-group-item-action">See Generated Bills</a>
@@ -78,6 +80,21 @@
 							<td><Strong style="color: white">Total Number of Consumer</Strong></td>
 							<td>:</td>
 							<td><strong style="color: white"><%= count%></strong></td>
+						</tr>
+						<tr>
+							<td><Strong style="color: white">Total Bill Amount Generated</Strong></td>
+							<td>:</td>
+							<td><strong style="color: white"><%= totalBill%></strong></td>
+						</tr>
+						<tr>
+							<td><Strong style="color: white">Total Bill Amount Collected</Strong></td>
+							<td>:</td>
+							<td><strong style="color: white"><%= collectedBill%></strong></td>
+						</tr>
+						<tr>
+							<td><Strong style="color: white">Total Due Amount </Strong></td>
+							<td>:</td>
+							<td><strong style="color: white"><%= totalBill-collectedBill%></strong></td>
 						</tr>
 <% } %>
 					</tbody>

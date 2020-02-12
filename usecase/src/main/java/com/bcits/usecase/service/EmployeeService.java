@@ -19,5 +19,6 @@ public interface EmployeeService {
 	public CurrentBillBean addCurrentBill(CurrentBillBean currentBill,String region);
 	public List<QueryMsgBean> getQueryList(String region);
 	public boolean sendRespond(String rrNumber,String response ,Date date);
+	public boolean updatePassword(String password,String cPassword,int empId);
 	
 }

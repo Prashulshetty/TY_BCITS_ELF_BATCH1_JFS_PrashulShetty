@@ -1,4 +1,4 @@
-jkl<%@page import="com.bcits.usecase.beans.QueryMsgBean"%>
+<%@page import="com.bcits.usecase.beans.QueryMsgBean"%>
 <%@page import="com.bcits.usecase.beans.MonthlyConsumption"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>

@@ -47,7 +47,7 @@ public class GenerateMail {
 			message.setFrom(new InternetAddress(username));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(consumerInfo.getEmail()));
 			message.setSubject("DESCOM");
-			message.setText("Dear Consumer," + "\n\n Electricity bill Details :\n\n" 
+			message.setText("Dear consumer"+ "\n\n Electricity bill Details :\n\n" 
 			+ "\n\n RR Number :" + consumerInfo.getRrNumber()
 			+ "\n\n Previous Reading : " +currentBill.getInitialReading()
 			+ "\n\n Current Reading : " +currentBill.getCurrentReading()

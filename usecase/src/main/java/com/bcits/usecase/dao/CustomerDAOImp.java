@@ -156,7 +156,27 @@ public class CustomerDAOImp implements CustomerDAO {
 		}
 		return 00;
 	}
-
+	@Override
+	public boolean getStatus(String rrNumber) {
+		EntityManager manager = factory.createEntityManager();	
+		String 	status ;
+		try {
+			String jpql = " select Status from MonthlyConsumption where rrNumber =: number order by currentReading DESC ";
+			Query query = manager.createQuery(jpql);
+			System.out.println(query);
+			query.setMaxResults(1);
+			System.out.println(rrNumber);
+			query.setParameter("number", rrNumber);
+			status = (String) query.getSingleResult();
+			System.out.println(status);
+		} catch (Exception e) {
+			return false;
+		}
+		if (status.equals("Not Paid")) {
+			return true;
+		}
+		return false;
+	}
 	
 	@Override
 	public List<MonthlyConsumption> getAllBills(String region) {
@@ -213,7 +233,41 @@ public class CustomerDAOImp implements CustomerDAO {
 		return false;
 	}
 
-	
+	@Override
+	public double totalBill(String region) {
+		double totalBill = 0.0;
+		EntityManager manager = factory.createEntityManager();
+		try {
+		String jpql = "select sum(billAmount) from MonthlyConsumption where region = :reg ";
+		Query query = manager.createQuery(jpql);
+		query.setParameter("reg", region);
+	    totalBill =(double) query.getSingleResult();
+		} catch (Exception e) {
+			return 0;
+		}
+		if (totalBill != 0) {
+			return totalBill;
+		}
+		return 0;
 
+	}
+
+	@Override
+	public double collectedBill(String region) {
+		double collectedBill =0.0;
+		EntityManager manager = factory.createEntityManager();
+		try {
+		String jpql = "select sum(billAmount) from MonthlyConsumption where region = :reg and Status ='paid' ";
+		Query query = manager.createQuery(jpql);
+		query.setParameter("reg", region);
+		collectedBill =(double) query.getSingleResult();
+		} catch (Exception e) {
+		return 0;
+		}
+		if (collectedBill != 0) {
+			return collectedBill;
+		}
+		return 0;
+	}
 	
 }

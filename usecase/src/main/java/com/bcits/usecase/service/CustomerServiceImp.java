@@ -91,4 +91,21 @@ public class CustomerServiceImp implements CustomerService {
 		return false;
 	}
 
+
+	@Override
+	public double totalBill(String region) {
+		return dao.totalBill(region);
+	}
+
+	@Override
+	public double collectedBill(String region) {
+		return dao.collectedBill(region);
+	}
+
+	@Override
+	public boolean getStatus(String rrNumber) {
+    return dao.getStatus(rrNumber);
+	
+	}
+
 }

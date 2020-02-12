@@ -64,6 +64,9 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		return 0;
 	}
 
+
+	
+	
 	@Override
 	public boolean addEmp(EmployeeMasterBean employeeBean) {
 		EntityManager manager = factory.createEntityManager();
@@ -205,7 +208,32 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		}
 	}
 
+	@Override
+	public boolean updatePassword(String password, int empId) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		boolean isUpdated = false;
+		try {
+			transaction.begin();
+			EmployeeMasterBean info = manager.find(EmployeeMasterBean.class,empId);
+			if (info != null) {
+				info.setPassword(password);
+
+				transaction.commit();
+
+				isUpdated = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			manager.close();
+		}
+		return isUpdated;
+	}
+
 	
 
+	
 
+	
 }

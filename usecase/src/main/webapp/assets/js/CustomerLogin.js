@@ -3,36 +3,35 @@
  
  
 function validation() {
-	var email = document.getElementById("email").value;
+	 var email = document.getElementById("email").value;
 	 var password = document.getElementById("password").value;
 	 var userValue = false; 
 	 var passwordValue=false;
-	 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-z]+/;
     
-    if (email == "") {
-        document.getElementById("uName").innerHTML = " *Please fill the email";
+    if(email == "") {
+        document.getElementById("uName").innerHTML = " *email should not be empty";
         return false;
-    } else if ((email.length < 10) || (email.length > 30)) {
-        document.getElementById("uName").innerHTML = "*Invalid Username";
+    } else if((email.length) < 10) {
+        document.getElementById("uName").innerHTML = "*invalid email";
         return false;
-    }  else {
+    } else {
         document.getElementById("uName").style.display = 'none';
         userValue = true;
     }   
 
 
     if (password == "") {
-        document.getElementById("uPsw").innerHTML = " *Please fill password field";
+        document.getElementById("uPsw").innerHTML = " *password should not be empty";
         return false;
-    }else if( password.length <=5 ){
-        document.getElementById("uPsw").innerHTML = " *Password Contains At list 5 character";
+    } else if((password.length) < 5 ) {
+        document.getElementById("uPsw").innerHTML = " *password Contains minimum 5 character";
         return false;
-    }else{
+    } else {
         document.getElementById("uPsw").style.display = 'none';
         passwordValue = true;
-
+    
     }   
-    if(passwordValue && userValue ){
+    if(passwordValue && userValue ) {
     	document.body.appendChild(form);
     	
 		form.submit();

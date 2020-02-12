@@ -22,9 +22,12 @@ public interface CustomerDAO {
 	public List<MonthlyConsumption> getMonthlyConsumptions(String rrNumber);
 	public ConsumerMasterBean getCustomer(String rrNumber);
 	public double getPreviousReading(String rrNumber);
+	public boolean getStatus(String rrNumber);
 	public List<MonthlyConsumption> getAllBills(String region);
 	public List<QueryMsgBean> getResponse(String rrNumber);
 	public boolean setQuery(String request, String rrNumber, String region);
+	public double totalBill(String region);
+	public double collectedBill(String region);
 }
 
 

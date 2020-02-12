@@ -74,13 +74,12 @@
 				class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">login</button>
 			</button>
 
-		</form>
-		
+		</form>		
     </div>
-  <jsp:include page="footer.jsp"></jsp:include>
 	<script src="${js}/jquery-3.4.1.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
     <script src="${js}/EmployeeLogin.js"></script>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>

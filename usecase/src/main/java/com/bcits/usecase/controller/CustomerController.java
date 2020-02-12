@@ -27,8 +27,6 @@ import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.service.CustomerService;
 
 @Controller
-//@RequestMapping("/consumer")
-
 public class CustomerController {
 
 	@Autowired
@@ -103,25 +101,20 @@ public class CustomerController {
 	public String displayPaymentPage(HttpSession session, ModelMap modelMap) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
 		if (consumerInfo != null) {
-
+		boolean status = service.getStatus(consumerInfo.getRrNumber());
+		System.out.println(status);
+		if(status == true) {
 			return "payment";
+		} else {
+			modelMap.addAttribute("errMsg", "this month payment already done...");
+			return "customerHome";
+		}
 		} else {
 			modelMap.addAttribute("errMsg", "please Login first");
 			return "consumerLogin";
 		}
 	}
-	 
-
-	/*
-	 * @GetMapping("/payOnline") public String displayPaymentPage(HttpSession
-	 * session, ModelMap modelMap) { ConsumerMasterBean consumerInfo =
-	 * (ConsumerMasterBean) session.getAttribute("Info"); if (consumerInfo != null)
-	 * { List<MonthlyConsumption> consumptionList =
-	 * service.getMonthlyConsumptions(consumerInfo.getRrNumber()); return "payment";
-	 * } else { modelMap.addAttribute("errMsg", "please Login first"); return
-	 * "consumerLogin"; } }
-	 */
-	
+	 	
 	@PostMapping("/paySuccess")
 	public String sucessfullPayment(HttpSession session, ModelMap modelMap, int amount) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
@@ -131,7 +124,6 @@ public class CustomerController {
 			System.out.println(consumerInfo.getRrNumber());
 			System.out.println(amount);
 			boolean pay = service.payment(consumerInfo.getRrNumber(), date, amount);
-			System.out.println(pay);
 			if (pay == true) {
 				modelMap.addAttribute("msg", "payment successful..");
 				return "payment";
