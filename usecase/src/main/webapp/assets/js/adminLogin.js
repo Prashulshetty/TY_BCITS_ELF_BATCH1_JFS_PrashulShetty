@@ -2,24 +2,24 @@ var uCheck = document.getElementById("checkbox");
 
 
 function validation() {
-	var empId = document.getElementById("empId").value;
+	var adminId = document.getElementById("adminId").value;
 	var password = document.getElementById("password").value;
 	var userValue = false;
 	var passwordValue = false;
-	var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-z]+/;
+	var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 
 	
-	if (empId == "") {
-		document.getElementById("eId").innerHTML = " *empId should not be empty";
+	if (adminId == "") {
+		document.getElementById("aId").innerHTML = " *adminId should not be empty";
 		return false;
-	} else if ((empId.length < 5) || (empId.length > 15)) {
-		document.getElementById("eId").innerHTML = "* empId length between 5-15 characters";
+	} else if ((adminId.length < 5) || (adminId.length > 15)) {
+		document.getElementById("aId").innerHTML = "* adminId length between 5-15 characters";
 		return false;
-	} else if (format.test(empId)) {
-		document.getElementById("eId").innerHTML = "*Only numbers are allowed";
+	} else if (format.test(adminId)) {
+		document.getElementById("aId").innerHTML = "*Only numbers are allowed";
 		return false;
 	} else {
-		document.getElementById("eId").style.display = 'none';
+		document.getElementById("aId").style.display = 'none';
 		userValue = true;
 	}
 

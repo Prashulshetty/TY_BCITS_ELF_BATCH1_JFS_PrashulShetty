@@ -246,4 +246,45 @@ public class EmployeeController {
 
 	}
 
+	@GetMapping("/revenue")
+	public String getmonthlyRevenuePage(HttpSession session,ModelMap modelMap) {
+		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
+		if (empInfo != null) {
+			modelMap.addAttribute("paidBill", service.getPaidBills(empInfo.getRegion()));
+			return "monthlyRevenue";
+		} else {
+			modelMap.addAttribute("errMsg", "Invalid Credential !!");
+			return "employeeLogin";
+		}
+	}
+	
+	@GetMapping("/payBillPage")
+	public String displayPayBillPage() {
+		return "payBill";
+	}
+
+	@PostMapping("/payBills")
+	public String payBill(ModelMap modelMap, HttpSession session, String rrNumber,int billAmount) {
+		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
+		if (empInfo != null) {
+			boolean status = customerService.getStatus(rrNumber);
+			if(status == true) {
+				Date date =new Date();
+			boolean pay = customerService.payment(rrNumber, date, billAmount);
+			if (pay == true) {
+				modelMap.addAttribute("msg", "payment successful..");
+				return "payBill";
+			} else {
+				modelMap.addAttribute("errMsg", "payment not successful...");
+				return "payBill";
+			}
+			} else {
+				modelMap.addAttribute("errMsg", "this month payment already done...");
+				return "payBill";
+			}
+		} else {
+			return "employeeLogin";
+		}
+	}
+
 }

@@ -39,29 +39,29 @@ String msg = (String) request.getAttribute("msg"); %>
             <div class="text-primary offset-md-5 ">
                 <h1><i class="fas fa-user-alt "></i></h1>
             </div>
-            <h2 class="text-center">Add Employees</h2><br>
+            <h2 class="text-center">Add Employee</h2><br>
             <div class="form-group">
                 <label for="exampleInputEmail1">Employee ID</label>
-                <input id="eid" type="number" name="empId" placeholder="Enter employee id" class="form-control" id="exampleInputEmail1"
+                <input id="eid" type="tel" name="empId" placeholder="Enter employee id" class="form-control" id="exampleInputEmail1" pattern="[0-9]{6}" maxlength="6" title=" should contain only digits" required="required"
                     aria-describedby="emailHelp">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Employee Name</label>
-                <input id="empName" type="text" name="empName" placeholder="Enter employee name" class="form-control" >
+                <input id="empName" type="text" name="empName" placeholder="Enter employee name" class="form-control"  pattern="[A-Z][a-z]{1,15}" maxlength="10" required="required" title="First Character should be capital and max lenth wil be 10"	 >
             </div>
          
              <div class="form-group">
                 <label for="exampleInputEmail1">Employee Designation</label>
-                <input id="designation" type="text" name="designation" placeholder="Enter employee designation" class="form-control" >
+                <input id="designation" type="text" name="designation" placeholder="Enter employee designation" class="form-control" pattern="[A-Z][a-z]{1,15}" maxlength="10" required="required" title="First Character should be capital and max lenth wil be 10">
             </div>
        
              <div class="form-group">
                 <label for="exampleInputEmail1">Region</label>
-                <input id="region" type="text" name="region" placeholder="Enter region" class="form-control" >
+                <input id="region" type="text" name="region" placeholder="Enter region" class="form-control"  maxlength="15" required="required" >
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input  id="password" type="password" name="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1">
+                <input  id="password" type="password" name="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1" maxlength="15" minlength="6" title="max length wil be 6-15" required="required" >
 
             </div>
      
@@ -74,7 +74,7 @@ String msg = (String) request.getAttribute("msg"); %>
     
  <script src="${js}/jquery-3.4.1.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
-    <script src="${js}/addEmployeeLogin.js"></script>
+   
 </body>
 
 </html>

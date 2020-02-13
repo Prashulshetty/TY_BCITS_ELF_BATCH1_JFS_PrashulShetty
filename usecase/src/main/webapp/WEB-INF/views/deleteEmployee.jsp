@@ -42,7 +42,7 @@ String msg = (String) request.getAttribute("msg"); %>
             <h2 class="text-center">delete Employees</h2><br>
             <div class="form-group">
                 <label for="exampleInputEmail1">Employee ID</label>
-                <input id="eid" type="number" name="empId" placeholder="Enter employee id" class="form-control" id="exampleInputEmail1"
+                <input id="eid" type="tel" name="empId" placeholder="Enter employee id" class="form-control" id="exampleInputEmail1" pattern="[0-9]{6}" maxlength="6" title=" should contain only digits" required="required"
                     aria-describedby="emailHelp">
             </div>
 
@@ -55,7 +55,6 @@ String msg = (String) request.getAttribute("msg"); %>
     
  <script src="${js}/jquery-3.4.1.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
-    <script src="${js}/addEmployeeLogin.js"></script>
 </body>
 
 </html>

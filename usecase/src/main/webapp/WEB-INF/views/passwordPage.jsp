@@ -33,27 +33,24 @@ String msg = (String) request.getAttribute("msg"); %>
 	</div>
 <%} %>
     <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card" style=" box-shadow: 0 0 20px;">
-        
-        <form action="./password" method="post">
-           
+     <form onsubmit= "validation(); return false" action="./password" id="formData" method="post">   
+          
             <div class="text-primary offset-md-5 ">
                 <h1><i class="fas fa-user-alt "></i></h1>
             </div>
             <h2 class="text-center">Update Password</h2><br>
-            <!-- <div class="form-group">
-                <label for="exampleInputEmail1">Employee ID</label>
-                <input id="eid" type="number" name="empId" placeholder="Enter employee id" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp">
-            </div> -->
+            
              <div class="form-group">
                 <label for="exampleInputEmail1">Password</label>
                 <input id="password" type="password" name="password" placeholder="Enter password " class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp">
+                    <span id="pwd" style="color: red;"></span>
             </div>
              <div class="form-group">
                 <label for="exampleInputEmail1">Confirm Password</label>
                 <input id="cPassword" type="password" name="cPassword" placeholder="Enter Confirm Password" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp">
+                    <span id="cPwd" style="color: red;"></span>
             </div>
 
             <button type="submit" class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">Update</button>
@@ -65,7 +62,7 @@ String msg = (String) request.getAttribute("msg"); %>
     
  <script src="${js}/jquery-3.4.1.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
-    <script src="${js}/addEmployeeLogin.js"></script>
+    <script src="${js}/passwordPage.js"></script>
 </body>
 
 </html>

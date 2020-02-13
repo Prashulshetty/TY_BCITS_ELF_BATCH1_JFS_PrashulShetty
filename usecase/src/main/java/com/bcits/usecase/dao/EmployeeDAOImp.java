@@ -231,9 +231,21 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		return isUpdated;
 	}
 
-	
+	@Override
+	public List<Object[]> getPaidBills(String region) {
+		EntityManager manager = factory.createEntityManager();
+		try {
+			String jpql = " select sum(billAmount), DATE_FORMAT(consumptionPk.date,'%Y-%m') from MonthlyConsumption "
+					+ " where region=:region and status='paid' GROUP BY MONTH(consumptionPk.date) ";
+			Query query = manager.createQuery(jpql);
+			query.setParameter("region", region);
+			List<Object[]> paid = query.getResultList();
+			return paid;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
-	
 
-	
 }

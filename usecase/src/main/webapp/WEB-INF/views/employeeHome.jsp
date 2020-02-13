@@ -40,6 +40,8 @@
    <a href="./getConsumersDetails" class="list-group-item list-group-item-action">See all Consumers</a> 
   <a href="./generatePage" class="list-group-item list-group-item-action">Generate Bills</a>
     <a href="./seeAllBills" class="list-group-item list-group-item-action">See Generated Bills</a>
+        <a href="./revenue" class="list-group-item list-group-item-action">Monthly Revenue</a>
+           <a href="./payBillPage" class="list-group-item list-group-item-action">Pay Bill</a>
       <a href="./seeQueryDetails" class="list-group-item list-group-item-action">See Query Details</a>
 
 </div>

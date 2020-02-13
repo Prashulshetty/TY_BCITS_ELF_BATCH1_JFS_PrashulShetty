@@ -6,7 +6,8 @@
 <spring:url var="images" value="/resources/images" />
 <!DOCTYPE html>
 <html lang="en">
-
+<% String errMsg = (String) request.getAttribute("errMsg");
+  String msg = (String) request.getAttribute("msg"); %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,9 +21,18 @@
 
  <jsp:include page="empheader.jsp"></jsp:include>
  <body style=" background-color : lightblue">  
+   <% if(errMsg != null && !errMsg.isEmpty()){ %>
+     <div style="color: red; font-size:25px; font: bold; margin-right: 50px" align="center">
+  	<strong style="transition-duration: 60s;"><%= errMsg %></strong>
+	</div>
+<%} %> 
+ <% if(msg != null && !msg.isEmpty()){ %>
+     <div style="color: blue; font-size:25px; font: bold; margin-right: 50px" align="center">
+  	<strong style="transition-duration: 60s;"><%= msg %></strong>
+	</div>
+<%} %> 
     <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card" style=" box-shadow: 0 0 20px;">
-        
-        <form action="./loginAdmin" method="post">
+       	<form onsubmit= "validation(); return false" action="./loginAdmin" id="formData" method="post"> 
             <div id="success" class="alert alert-success" style="display: none;">
                 login
                 <strong>Success!</strong>
@@ -35,12 +45,12 @@
                 <label for="exampleInputEmail1">Admin ID</label>
                 <input id="adminId" name="adminId" type="text" placeholder="Enter Admin id" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp">
-                <p id="eele" style="color: red; display:none; font-size: 12px;">Invalid Admin ID </p>
+                <span id="aId" style="color: red;"></span>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input  id="password" name="password" type="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1">
-                <p id="pele" style="color: red; display:none; font-size: 12px;">Invalid password</p>
+                <span id="uPsw" style="color: red;"></span><br>
 
             </div>
             <div class="form-group form-check ">
@@ -57,12 +67,11 @@
         </form>
     
         
-    </div>
-         <jsp:include page="footer.jsp"></jsp:include>
-    
+    </div>   
  <script src="${js}/jquery-3.4.1.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
-    <script src="${js}/EmployeeLogin.js"></script>
+    <script src="${js}/adminLogin.js"></script>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>

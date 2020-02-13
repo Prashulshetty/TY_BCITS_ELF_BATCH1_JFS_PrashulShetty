@@ -1,4 +1,5 @@
 function validation() {
+	
 	var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?0-9]+/;
 	var format1 = /[A-Z]+/;
 	var format2 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?a-zA-Z]+/;
@@ -127,7 +128,7 @@ function validation() {
 	}
 	if (fnameValid && lnameValid && emailValid && pnumberValid && pswValid
 			&& cpswValid && rrnumValid && houseNumValid && pincodevalid && areavalid) {
-		form.method('POST');
+		
 		document.body.appendChild(form);
 		form.submit();
 		return true;

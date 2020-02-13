@@ -94,7 +94,12 @@ public class EmployeeServiceImp implements EmployeeService {
 		}
 		return false;
 	}
+	@Override
+	public List<Object[]> getPaidBills(String region) {
+		return dao.getPaidBills(region);
+	}
 
+	
 
 }
 	

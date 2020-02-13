@@ -21,5 +21,6 @@ public interface EmployeeDAO {
 	public List<QueryMsgBean> getQueryList(String region);
 	public boolean sendRespond(String rrNumber,String response ,Date date);
 	public boolean updatePassword(String password, int empId);
+	public List<Object[]> getPaidBills(String region);
 	
 }

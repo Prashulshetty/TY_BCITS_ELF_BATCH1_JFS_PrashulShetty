@@ -73,19 +73,19 @@
 				<div class="form-group">
 					<label>Card Number</label>
 					<div class="input-group">
-						<input type="number" class="form-control" name="cardNumber" id="cardNumber"
+						<input type="text" class="form-control" name="cardNumber" id="cardNumber" pattern="[0-9]{1,15}" maxlength="12"  minlength="12" required="required" title="Only digits are allowed" 
 							placeholder="Valid Card Number">
 					</div>
 					<div class="col-xs-12">
 						<div class="form-group">
-							<label>Card Holder Name</label> <input type="text" name="name" id="name"
+							<label>Card Holder Name</label> <input type="text" name="name" id="name" "[A-Za-z/s]{1,15}" maxlength="12" title=" Card Holder name should contain 12 charactes" required="required" 
 								class="form-control" placeholder="Enter the Name" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label>Enter Amount</label>
 						<div class="input-group">
-							<input type="number" class="form-control" name="amount" id="amount"
+							<input type="tel" class="form-control" name="amount" id="amount" pattern="[0-9]{1,10}" maxlength="10" title="Amount should only digits" required="required"
 								placeholder="Enter the Amount">
 						</div>
 					</div>
@@ -93,25 +93,18 @@
 						<div class="col-xs-7 col-md-7">
 							<div class="form-group">
 								<label><span class="hidden-xs"></span><span
-									class="visible-xs-inline">EXP</span> DATE</label> <input type="tel" name="expdate" id="expdate"
-									class="form-control" placeholder="MM / YY" />
+									class="visible-xs-inline">EXP</span> DATE</label> <input type="tel" name="expdate" id="expdate" maxlength="5" title="Input field should be in the form of MM/YY"
+									required="required" class="form-control" placeholder="MM / YY" />
 							</div>
 						</div>
 						<div class="col-xs-5 col-md-5 pull-right">
 							<div class="form-group">
-								<label>CVC</label> <input type="tel" class="form-control" name="cvv" id="cvv"
+								<label>CVC</label> <input type="tel" class="form-control" name="cvv" id="cvv" pattern="[0-9]{3,3}" maxlength="3" title="Only digits are allowed" required="required"
 									placeholder="CVC" />
 							</div>
 						</div>
 					</div>
 
-					<!-- <div class="panel-footer">
-						<div class="sumbot">
-							<div class="col-xs-8">
-								<button class="btn btn-primary btn-lg btn-block name=">Pay</button>
-							</div>
-						</div>
-					</div> -->
 						<button type="submit"
 				class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">pay</button>
 			</button>

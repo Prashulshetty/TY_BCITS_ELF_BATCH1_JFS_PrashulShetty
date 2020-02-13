@@ -7,7 +7,6 @@ import com.bcits.usecase.beans.BillHistoryBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
-import com.bcits.usecase.beans.PaymentDetailsBean;
 import com.bcits.usecase.beans.QueryMsgBean;
 
 

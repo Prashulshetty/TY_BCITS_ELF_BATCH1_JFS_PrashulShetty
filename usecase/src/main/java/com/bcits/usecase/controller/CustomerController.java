@@ -65,7 +65,7 @@ public class CustomerController {
 			map.addAttribute("msg", "signup success...");
 			return "consumerLogin";
 		} else {
-			map.addAttribute("errMsg", "already exists...");
+			map.addAttribute("errMsg", "already exists or Inputs are invalid..");
 		}
 
 		return "consumerSignUp";
@@ -101,8 +101,7 @@ public class CustomerController {
 	public String displayPaymentPage(HttpSession session, ModelMap modelMap) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
 		if (consumerInfo != null) {
-		boolean status = service.getStatus(consumerInfo.getRrNumber());
-		System.out.println(status);
+		boolean status = service.getStatus(consumerInfo.getRrNumber());		
 		if(status == true) {
 			return "payment";
 		} else {
