@@ -12,11 +12,11 @@ function validation() {
 	if (adminId == "") {
 		document.getElementById("aId").innerHTML = " *adminId should not be empty";
 		return false;
-	} else if ((adminId.length < 5) || (adminId.length > 15)) {
-		document.getElementById("aId").innerHTML = "* adminId length between 5-15 characters";
+	} else if ((adminId.length != 6 )) {
+		document.getElementById("aId").innerHTML = "* adminId length will be 6 digits";
 		return false;
 	} else if (format.test(adminId)) {
-		document.getElementById("aId").innerHTML = "*Only numbers are allowed";
+		document.getElementById("aId").innerHTML = "*Only digits are allowed";
 		return false;
 	} else {
 		document.getElementById("aId").style.display = 'none';

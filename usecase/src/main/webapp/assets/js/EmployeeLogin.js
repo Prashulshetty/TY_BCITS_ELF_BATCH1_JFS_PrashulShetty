@@ -12,8 +12,8 @@ function validation() {
 	if (empId == "") {
 		document.getElementById("eId").innerHTML = " *empId should not be empty";
 		return false;
-	} else if ((empId.length < 5) || (empId.length > 15)) {
-		document.getElementById("eId").innerHTML = "* empId length between 5-15 characters";
+	} else if ((empId.length != 6)) {
+		document.getElementById("eId").innerHTML = "* empId length will be 6 characters";
 		return false;
 	} else if (format.test(empId)) {
 		document.getElementById("eId").innerHTML = "*Only numbers are allowed";

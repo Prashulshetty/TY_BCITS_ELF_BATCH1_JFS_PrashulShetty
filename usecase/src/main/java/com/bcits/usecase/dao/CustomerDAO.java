@@ -2,18 +2,13 @@ package com.bcits.usecase.dao;
 
 import java.util.Date;
 import java.util.List;
-
 import com.bcits.usecase.beans.BillHistoryBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
-
 import com.bcits.usecase.beans.QueryMsgBean;
 
-
-
-public interface CustomerDAO {
-	
+public interface CustomerDAO {	
 	public boolean consumerSignUp(ConsumerMasterBean consumerBean);
 	public ConsumerMasterBean consumerLogin(String email, String password);
 	public boolean payment(String rrNumber, Date date, int amount);
@@ -28,6 +23,7 @@ public interface CustomerDAO {
 	public boolean setQuery(String request, String rrNumber, String region);
 	public double totalBill(String region);
 	public double collectedBill(String region);
-}
+	
+} // end of CustomerDAO
 
 

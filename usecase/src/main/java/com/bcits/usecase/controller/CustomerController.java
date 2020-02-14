@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,12 +15,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.bcits.usecase.beans.BillHistoryBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
-import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.service.CustomerService;
@@ -42,22 +38,22 @@ public class CustomerController {
 	public String headerPage() {
 		return "header";
 
-	}
+	}// end of headerPage
 
 	@GetMapping("/homePage")
 	public String displayHomePage() {
 		return "home";
-	}
+	}// end of homePage
 
 	@GetMapping("/aboutUsPage")
 	public String displayAboutPage() {
 		return "aboutUs";
-	}
+	}// end of aboutUsPage
 
 	@GetMapping("/consumerSignUpPage")
 	public String displayConsumerSignUpPage() {
 		return "consumerSignUp";
-	}
+	}// end of consumerSignUpPage
 
 	@PostMapping("/signUpPage")
 	public String add(ConsumerMasterBean consumerBean, String conPwd, ModelMap map) {
@@ -69,7 +65,7 @@ public class CustomerController {
 		}
 
 		return "consumerSignUp";
-	}
+	} // end of signUpPage
 
 	@PostMapping("/LoginPage")
 	public String ConsumerLogin(String email, String password, HttpServletRequest req, ModelMap modelMap) {
@@ -82,7 +78,7 @@ public class CustomerController {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "consumerLogin";
 		}
-	}
+	} // end of LoginPage
 
 	@GetMapping("/consumerLogout")
 	public String consumerLogOut(ModelMap modelMap, HttpSession session) {
@@ -94,26 +90,25 @@ public class CustomerController {
 			modelMap.addAttribute("errMsg", "please Login first");
 		}
 		return "home";
-	}
+	} // end of consumerLogout
 
-	
 	@GetMapping("/payOnline")
 	public String displayPaymentPage(HttpSession session, ModelMap modelMap) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
 		if (consumerInfo != null) {
-		boolean status = service.getStatus(consumerInfo.getRrNumber());		
-		if(status == true) {
-			return "payment";
-		} else {
-			modelMap.addAttribute("errMsg", "this month payment already done...");
-			return "customerHome";
-		}
+			boolean status = service.getStatus(consumerInfo.getRrNumber());
+			if (status == true) {
+				return "payment";
+			} else {
+				modelMap.addAttribute("errMsg", "No Dues found...");
+				return "customerHome";
+			}
 		} else {
 			modelMap.addAttribute("errMsg", "please Login first");
 			return "consumerLogin";
 		}
-	}
-	 	
+	} // end of payOnline
+
 	@PostMapping("/paySuccess")
 	public String sucessfullPayment(HttpSession session, ModelMap modelMap, int amount) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
@@ -133,12 +128,12 @@ public class CustomerController {
 		} else {
 			return "consumerLogin";
 		}
-	}
+	} // end of paySuccess
 
 	@GetMapping("/consumerLoginPage")
 	public String displayConsumerLoginPage() {
 		return "consumerLogin";
-	}
+	} // end of consumerLoginPage
 
 	@GetMapping("/consumerHomePage")
 	public String displayConsumerHomePage(HttpSession session, ModelMap modelMap) {
@@ -149,15 +144,13 @@ public class CustomerController {
 		} else {
 			return "customerHome";
 		}
-	}
+	} //end of consumerHomePage
 
 	@GetMapping("/consumerBillDisplay")
 	public String displayCurrentBillPage(HttpSession session, ModelMap modelMap) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
 		if (consumerInfo != null) {
-
 			CurrentBillBean bill = service.showCurrentBill(consumerInfo.getRrNumber());
-
 			if (bill != null) {
 				modelMap.addAttribute("generatedBill", bill);
 				return "currentBill";
@@ -165,12 +158,11 @@ public class CustomerController {
 				modelMap.addAttribute("errMsg", "bill not generated");
 				return "customerHome";
 			}
-
 		} else {
 			modelMap.addAttribute("errMsg", "Please Login First..");
 			return "consumerLogin";
 		}
-	}
+	}// end of consumerBillDisplay
 
 	@GetMapping("/monthlyConsumptions")
 	public String displayConsumptionPage(HttpSession session, ModelMap modelMap) {
@@ -190,7 +182,7 @@ public class CustomerController {
 			modelMap.addAttribute("errMsg", "Please Login First..");
 			return "consumerLogin";
 		}
-	}
+	} // end of monthlyConsumptions
 
 	@GetMapping("/billHistoryDisplay")
 	public String displayBillHistory(HttpSession session, ModelMap modelMap) {
@@ -209,9 +201,8 @@ public class CustomerController {
 			modelMap.addAttribute("errMsg", "Please Login First..");
 			return "consumerLogin";
 		}
-	}
-	
-	
+	} // end of billHistoryDisplay
+
 	@GetMapping("/query")
 	public String QuerySubmit(HttpSession session, ModelMap modelMap, String query) {
 		System.out.println(query);
@@ -226,21 +217,19 @@ public class CustomerController {
 			return "consumerLogin";
 		}
 
-	}
+	} // end of query
+
 	@GetMapping("/seeResponse")
 	public String seeResponse(HttpSession session, ModelMap modelMap) {
 		ConsumerMasterBean consumerInfo = (ConsumerMasterBean) session.getAttribute("Info");
 		if (consumerInfo != null) {
-			System.out.println(consumerInfo.getRrNumber());
-
 			List<QueryMsgBean> response = service.getResponse(consumerInfo.getRrNumber());
-			System.out.println(response);
-			modelMap.addAttribute("response",response);
+			modelMap.addAttribute("response", response);
 			return "responsePage";
-	}else {
-		modelMap.addAttribute("errMsg", "Please Login First..");
-		return "consumerLogin";
+		} else {
+			modelMap.addAttribute("errMsg", "Please Login First..");
+			return "consumerLogin";
 		}
-	}
+	} // end of seeResponse
 
-}
+}// end of CustomerController 

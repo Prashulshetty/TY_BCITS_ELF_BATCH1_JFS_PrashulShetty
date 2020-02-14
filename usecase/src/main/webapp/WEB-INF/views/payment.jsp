@@ -65,9 +65,9 @@
              <img 
       src="${images}/visa.jpg"
             alt="">
-            <img 
+          <%--   <img 
       src="${images}/mastercard.jpg"
-            alt="">
+            alt=""> --%>
             
 			<div class="form-group">
 				<div class="form-group">

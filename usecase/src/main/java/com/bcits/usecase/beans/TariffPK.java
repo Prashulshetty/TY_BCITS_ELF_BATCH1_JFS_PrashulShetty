@@ -13,4 +13,5 @@ public class TariffPK implements Serializable {
     private String type;
 	@Column
    private Long range;
-}
+	
+} //end of TariffPK

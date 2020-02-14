@@ -27,13 +27,14 @@
  
 <div class="row" >
   <div class="col-3" ><br>
-   <div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
+<div class="list-group" style="text-align: center;font: bold;font-size: 20px;margin-left: 40px;margin-right: ">
   <a href="./employeeHomePage" class="list-group-item list-group-item-action active"> Employee Details</a>
    <a href="./getConsumersDetails"  class="list-group-item list-group-item-action">See all Consumers</a> 
-  <a href="#"class="list-group-item list-group-item-action">Generate Bills</a>
+  <a href="./generatePage"class="list-group-item list-group-item-action">Generate Bills</a>
     <a href="./seeAllBills" class="list-group-item list-group-item-action">See Generated Bills</a>
         <a href="./revenue" class="list-group-item list-group-item-action">Monthly Revenue</a>
        <a href="./seeQueryDetails" class="list-group-item list-group-item-action">See Query Details</a>
+
 </div>
   </div>
 	<div class="col-8">

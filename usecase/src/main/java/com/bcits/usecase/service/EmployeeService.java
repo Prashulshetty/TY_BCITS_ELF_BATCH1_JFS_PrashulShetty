@@ -2,7 +2,6 @@ package com.bcits.usecase.service;
 
 import java.util.Date;
 import java.util.List;
-
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.QueryMsgBean;
 import com.bcits.usecase.beans.AdminBean;
@@ -21,6 +20,5 @@ public interface EmployeeService {
 	public boolean sendRespond(String rrNumber,String response ,Date date);
 	public boolean updatePassword(String password,String cPassword,int empId);
 	public List<Object[]> getPaidBills(String region);
-
 	
-}
+} // end of EmployeeService

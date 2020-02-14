@@ -7,10 +7,9 @@ import javax.persistence.Embeddable;
 
 import lombok.Data;
 
-
 @Data
 @Embeddable
 public class BillHistoryPK implements Serializable {
 	private String rrNumber;
 	private Date dateOfPayment;
-}
+} // end of BillHistoryPK

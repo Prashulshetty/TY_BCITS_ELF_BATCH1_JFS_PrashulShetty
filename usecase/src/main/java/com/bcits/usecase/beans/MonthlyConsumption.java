@@ -26,4 +26,4 @@ public class MonthlyConsumption implements Serializable{
 	@Column
 	private String region;
 	
-}
+} // end of MonthlyConsumption

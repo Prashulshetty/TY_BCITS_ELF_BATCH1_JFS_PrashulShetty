@@ -2,10 +2,8 @@ package com.bcits.usecase.dao;
 
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.QueryMsgBean;
-
 import java.util.Date;
 import java.util.List;
-
 import com.bcits.usecase.beans.AdminBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
@@ -23,4 +21,4 @@ public interface EmployeeDAO {
 	public boolean updatePassword(String password, int empId);
 	public List<Object[]> getPaidBills(String region);
 	
-}
+} // end of EmployeeDAO

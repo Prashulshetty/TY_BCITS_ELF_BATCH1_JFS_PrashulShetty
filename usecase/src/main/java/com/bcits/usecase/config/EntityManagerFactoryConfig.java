@@ -12,5 +12,5 @@ public class EntityManagerFactoryConfig {
 		LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
 		factoryBean.setPersistenceUnitName("bcitsPeristenceUnit");
 		return factoryBean;
-	}
-}
+	} // end of getEntityManager
+} // end of  EntityManagerFactoryConfig

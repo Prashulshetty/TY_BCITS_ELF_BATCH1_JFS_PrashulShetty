@@ -51,7 +51,7 @@
 			<h2 class="text-center">Employee Login</h2>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Employee ID</label>
-				 <input id="empId" name="empId" type="text" placeholder="Enter employee Id"
+				 <input id="empId" name="empId" type="text" placeholder="Enter employee Id" maxlength="6"
 					class="form-control" 
 					aria-describedby="emailHelp">
 					 <span id="eId" style="color: red;"></span>

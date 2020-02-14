@@ -1,7 +1,6 @@
 package com.bcits.usecase.beans;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -22,4 +21,5 @@ public class QueryMsgBean implements Serializable {
 	private String queryResponse;
 	@Column
 	private String region;
-}
+	
+} // end of QueryMsgBean

@@ -17,4 +17,4 @@ public class TariffMaster implements Serializable {
 	@Column
 	private double amount;
 
-}
+} // end of TariffMaster

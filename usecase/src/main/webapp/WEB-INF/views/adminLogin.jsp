@@ -43,13 +43,13 @@
             <h2 class="text-center">Admin Login</h2><br>
             <div class="form-group">
                 <label for="exampleInputEmail1">Admin ID</label>
-                <input id="adminId" name="adminId" type="text" placeholder="Enter Admin id" class="form-control" id="exampleInputEmail1"
+                <input id="adminId" name="adminId" type="text" placeholder="Enter Admin id" class="form-control" id="exampleInputEmail1" maxlength="6"
                     aria-describedby="emailHelp">
                 <span id="aId" style="color: red;"></span>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input  id="password" name="password" type="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1">
+                <input  id="password" name="password" type="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1" maxlength="10">
                 <span id="uPsw" style="color: red;"></span><br>
 
             </div>
@@ -58,9 +58,7 @@
                 <div class="float-left">
                     <input onclick="checkBox()" id="checkbox" type="checkbox" class="form-check-input">
                 <label class="form-check-label" for="exampleCheck1">Show Password</label>
-                </div>
-
-              
+                </div>  
              </p>
             </div>
             <button type="submit" class="btn btn-outline-primary col-md-8 offset-md-2 mt-3">Login</button>
@@ -68,7 +66,7 @@
     
         
     </div>   
- <script src="${js}/jquery-3.4.1.js"></script>
+    <script src="${js}/jquery-3.4.1.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
     <script src="${js}/adminLogin.js"></script>
     <jsp:include page="footer.jsp"></jsp:include>

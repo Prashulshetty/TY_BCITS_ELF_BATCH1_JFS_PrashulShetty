@@ -32,6 +32,7 @@ String msg = (String) request.getAttribute("msg"); %>
   	<strong style="transition-duration: 60s;"><%= msg %></strong>
 	</div>
 <%} %>
+
     <div class="col-md-4 col-sm-12  col-10 col-4 offset-md-4   offset-1 card card-body mt-5 my-card" style=" box-shadow: 0 0 20px;">
      <form onsubmit= "validation(); return false" action="./password" id="formData" method="post">   
           

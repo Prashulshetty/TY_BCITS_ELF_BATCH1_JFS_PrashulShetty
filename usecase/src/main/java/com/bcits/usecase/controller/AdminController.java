@@ -15,73 +15,72 @@ import com.bcits.usecase.service.EmployeeService;
 
 @Controller
 public class AdminController {
-	
+
 	@Autowired
 	private EmployeeService service;
-	
+
 	@GetMapping("/adminLoginPage")
 	public String displayAdminLoginPage() {
 		return "adminLogin";
-	}
-	
-	@PostMapping("/loginAdmin") 
-	public String adminLogin(int adminId, String password ,HttpServletRequest req ,ModelMap modelMap){
+	}// end of adminLoginPage
+
+	@PostMapping("/loginAdmin")
+	public String adminLogin(int adminId, String password, HttpServletRequest req, ModelMap modelMap) {
 		AdminBean admininfo = service.adminLogin(adminId, password);
-		if( admininfo != null) {
+		if (admininfo != null) {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("adminInfo", admininfo);
 			modelMap.addAttribute("msg", "login success...!!");
 			return "adminHome";
-		} else  {
+		} else {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "adminLogin";
-		}		
-	}
-	
+		}
+	}// end of loginAdmin
+
 	@GetMapping("/addEmployeePage")
 	public String displayAddEmpPage() {
 		return "addEmployee";
-	}
-	
+	}// end of addEmployeePage
+
 	@GetMapping("/deleteEmployeePage")
 	public String displayDeleteEmpPage() {
 		return "deleteEmployee";
-	}
-		
+	}// end of deleteEmployeePage
+
 	@PostMapping("/addEmp")
-	public String addEmp(EmployeeMasterBean employeeBean,HttpSession session,ModelMap map) {
+	public String addEmp(EmployeeMasterBean employeeBean, HttpSession session, ModelMap map) {
 		AdminBean adminInfo = (AdminBean) session.getAttribute("adminInfo");
 		if (adminInfo != null) {
-		if(service.addEmp(employeeBean)) {
-			map.addAttribute("msg", "Employee details added...");
-			return "adminHome";
-			
-		} else { 
-			map.addAttribute("errMsg", "already exists...");
-		return "adminHome";
-	} 
+			if (service.addEmp(employeeBean)) {
+				map.addAttribute("msg", "Employee details added...");
+				return "adminHome";
+
+			} else {
+				map.addAttribute("errMsg", "already exists...");
+				return "adminHome";
+			}
 		} else {
-		map.addAttribute("errMsg", "Please Login First..");
-		return "adminLogin";
-	}
+			map.addAttribute("errMsg", "Please Login First..");
+			return "adminLogin";
 		}
-	
+	}// end of addEmp
+
 	@PostMapping("/deleteEmp")
-	public String deleteEmp(int empId,HttpSession session,ModelMap map) {
+	public String deleteEmp(int empId, HttpSession session, ModelMap map) {
 		AdminBean adminInfo = (AdminBean) session.getAttribute("adminInfo");
 		if (adminInfo != null) {
-		if(service.deleteEmp(empId)) {
-			map.addAttribute("msg", "Employee details deleted...");
-			return "adminHome";
-			
-		} else { 
-			map.addAttribute("errMsg", "Employee details not found..");
-		return "adminHome";
-	} 
+			if (service.deleteEmp(empId)) {
+				map.addAttribute("msg", "Employee details deleted...");
+				return "adminHome";
+
+			} else {
+				map.addAttribute("errMsg", "Employee details not found..");
+				return "adminHome";
+			}
 		} else {
-		map.addAttribute("errMsg", "Please Login First..");
-		return "adminLogin";
-	}
+			map.addAttribute("errMsg", "Please Login First..");
+			return "adminLogin";
 		}
-	
-}
+	}
+}// end of deleteEmp

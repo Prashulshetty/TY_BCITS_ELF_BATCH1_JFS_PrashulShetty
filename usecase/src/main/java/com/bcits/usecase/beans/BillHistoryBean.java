@@ -1,12 +1,8 @@
 package com.bcits.usecase.beans;
 
 import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -19,4 +15,4 @@ public class BillHistoryBean implements Serializable {
 	private double billAmount;
 	private String status;
 
-}
+} // end of BillHistoryBean

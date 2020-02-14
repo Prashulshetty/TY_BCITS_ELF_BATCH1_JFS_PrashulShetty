@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.bcits.usecase.beans.AdminBean;
 import com.bcits.usecase.beans.ConsumerMasterBean;
 import com.bcits.usecase.beans.CurrentBillBean;
 import com.bcits.usecase.beans.EmployeeMasterBean;
@@ -45,7 +44,7 @@ public class EmployeeController {
 	@GetMapping("/employeeLoginPage")
 	public String displayEmployeeLoginPage() {
 		return "employeeLogin";
-	}
+	} // end of employeeLoginPage
 
 	@GetMapping("/generatePage")
 	public String displayGeneratePage(ModelMap modelMap, HttpSession session) {
@@ -62,12 +61,12 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "Please login first !!");
 			return "employeeLogin";
 		}
-	}
+	} // end of generatePage
 
 	@GetMapping("/employeeHomePage")
 	public String displayConsumerHomePage(ModelMap modelMap, HttpSession session) {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
-		
+
 		if (empInfo != null) {
 			long count = service.numberOfConsumer(empInfo.getRegion());
 			double totalBill = customerService.totalBill(empInfo.getRegion());
@@ -78,7 +77,7 @@ public class EmployeeController {
 			return "employeeHome";
 		}
 		return "employeeLogin";
-	}
+	} // end of employeeHomePage
 
 	@GetMapping("/getConsumersDetails")
 	public String getAllConsumer(ModelMap modelMap, HttpSession session) {
@@ -95,8 +94,7 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "Please login first !!");
 			return "employeeLogin";
 		}
-	}
-
+	} // end of getConsumersDetails
 
 	@PostMapping("/loginEmployee")
 	public String employeeLogin(int empId, String password, HttpServletRequest req, ModelMap modelMap) {
@@ -115,7 +113,7 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "employeeLogin";
 		}
-	}
+	} // end of loginEmployee
 
 	@GetMapping("/passwordChange")
 	public String displayPasswordForgot(HttpSession session, ModelMap modelMap) {
@@ -126,7 +124,7 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "Please Login First..");
 			return "employeeLogin";
 		}
-	}
+	} // end of passwordChange
 
 	@PostMapping("/password")
 	public String password(HttpSession session, ModelMap modelMap, String password, String cPassword) {
@@ -142,7 +140,7 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "Please Login First..");
 			return "employeeLogin";
 		}
-	}
+	} // end of password
 
 	@GetMapping("/empLogout")
 	public String consumerLogOut(ModelMap modelMap, HttpSession session) {
@@ -154,7 +152,7 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "please Login first");
 		}
 		return "home";
-	}
+	} // end of empLogout
 
 	@GetMapping("/generateBillPage")
 	public String dispalyBillGeneratorPage(String rrNumber, ModelMap modelMap, HttpSession session) {
@@ -172,7 +170,7 @@ public class EmployeeController {
 			return "employeeLogin";
 		}
 		return "generateBill";
-	}
+	} // end of generateBillPage
 
 	@GetMapping("/billGenerate")
 	public String generateBill(ModelMap modelMap, HttpSession session, CurrentBillBean currentBill) {
@@ -194,7 +192,7 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "employeeLogin";
 		}
-	}
+	} // end of billGenerate
 
 	@GetMapping("/seeAllBills")
 	public String displayConsumptionPage(HttpSession session, ModelMap modelMap) {
@@ -210,7 +208,7 @@ public class EmployeeController {
 		}
 		modelMap.addAttribute("errMsg", "Please Login First..");
 		return "employeeLogin";
-	}
+	} // end of seeAllBills
 
 	@GetMapping("/seeQueryDetails")
 	public String diplayQueryDetails(ModelMap modelMap, HttpSession session) {
@@ -227,7 +225,7 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "employeeLogin";
 		}
-	}
+	} // end of seeQueryDetails
 
 	@PostMapping("/sendResponse")
 	public String addResponses(ModelMap modelMap, HttpSession session, String rrNumber, String query, Date date) {
@@ -244,10 +242,10 @@ public class EmployeeController {
 			return "employeeLogin";
 		}
 
-	}
+	} // end of sendResponse
 
 	@GetMapping("/revenue")
-	public String getmonthlyRevenuePage(HttpSession session,ModelMap modelMap) {
+	public String getmonthlyRevenuePage(HttpSession session, ModelMap modelMap) {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
 		if (empInfo != null) {
 			modelMap.addAttribute("paidBill", service.getPaidBills(empInfo.getRegion()));
@@ -256,28 +254,28 @@ public class EmployeeController {
 			modelMap.addAttribute("errMsg", "Invalid Credential !!");
 			return "employeeLogin";
 		}
-	}
-	
+	} // end of revenue
+
 	@GetMapping("/payBillPage")
 	public String displayPayBillPage() {
 		return "payBill";
-	}
+	} // end of payBillPage
 
 	@PostMapping("/payBills")
-	public String payBill(ModelMap modelMap, HttpSession session, String rrNumber,int billAmount) {
+	public String payBill(ModelMap modelMap, HttpSession session, String rrNumber, int billAmount) {
 		EmployeeMasterBean empInfo = (EmployeeMasterBean) session.getAttribute("empInfo");
 		if (empInfo != null) {
 			boolean status = customerService.getStatus(rrNumber);
-			if(status == true) {
-				Date date =new Date();
-			boolean pay = customerService.payment(rrNumber, date, billAmount);
-			if (pay == true) {
-				modelMap.addAttribute("msg", "payment successful..");
-				return "payBill";
-			} else {
-				modelMap.addAttribute("errMsg", "payment not successful...");
-				return "payBill";
-			}
+			if (status == true) {
+				Date date = new Date();
+				boolean pay = customerService.payment(rrNumber, date, billAmount);
+				if (pay == true) {
+					modelMap.addAttribute("msg", "payment successful..");
+					return "payBill";
+				} else {
+					modelMap.addAttribute("errMsg", "payment not successful...");
+					return "payBill";
+				}
 			} else {
 				modelMap.addAttribute("errMsg", "this month payment already done...");
 				return "payBill";
@@ -285,6 +283,6 @@ public class EmployeeController {
 		} else {
 			return "employeeLogin";
 		}
-	}
+	} // end of payBills
 
-}
+} // end of EmployeeController

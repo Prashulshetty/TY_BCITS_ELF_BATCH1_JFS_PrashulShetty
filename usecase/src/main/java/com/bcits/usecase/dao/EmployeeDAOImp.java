@@ -3,16 +3,13 @@ package com.bcits.usecase.dao;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.bcits.usecase.beans.EmployeeMasterBean;
 import com.bcits.usecase.beans.MonthlyConsumption;
 import com.bcits.usecase.beans.MonthlyConsumptionPK;
@@ -38,8 +35,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			return empInfo;
 		}
 		return null;
-
-	}
+	} // end of employeeLogin
 
 	@Override
 	public AdminBean adminLogin(int adminId, String password) {
@@ -49,7 +45,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			return adminInfo;
 		}
 		return null;
-	}
+	} // end of adminLogin
 
 	@Override
 	public long numberOfConsumer(String region) {
@@ -62,11 +58,8 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			return number;
 		}
 		return 0;
-	}
+	} // end of numberOfConsumer
 
-
-	
-	
 	@Override
 	public boolean addEmp(EmployeeMasterBean employeeBean) {
 		EntityManager manager = factory.createEntityManager();
@@ -83,8 +76,8 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			manager.close();
 		}
 		return isAdded;
-	}// end
-	
+	}// end of addEmp
+
 	@Override
 	public boolean deleteEmp(int empId) {
 		EntityManager manager = factory.createEntityManager();
@@ -92,12 +85,10 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		boolean isDeleted = false;
 		try {
 			transaction.begin();
-			EmployeeMasterBean info = manager.find(EmployeeMasterBean.class,empId);
+			EmployeeMasterBean info = manager.find(EmployeeMasterBean.class, empId);
 			if (info != null) {
 				manager.remove(info);
-
 				transaction.commit();
-
 				isDeleted = true;
 			}
 		} catch (Exception e) {
@@ -106,7 +97,8 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			manager.close();
 		}
 		return isDeleted;
-	}
+	} // end of deleteEmp
+
 	@Override
 	public List<ConsumerMasterBean> showAllConsumer(String region) {
 		EntityManager manager = factory.createEntityManager();
@@ -114,31 +106,28 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		Query query = manager.createQuery(jpql);
 		query.setParameter("reg", region);
 		List<ConsumerMasterBean> consumerList = (List<ConsumerMasterBean>) query.getResultList();
-		System.out.println(consumerList);
 		if (consumerList != null) {
 			return consumerList;
 		}
 		return null;
-	}
+	} // end of showAllConsumer
 
-	
 	@Override
-	public CurrentBillBean addCurrentBill(CurrentBillBean currentBill,String region) {
-
+	public CurrentBillBean addCurrentBill(CurrentBillBean currentBill, String region) {
 		double units = currentBill.getCurrentReading() - currentBill.getInitialReading();
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		MonthlyConsumption monthlyConsumption = new MonthlyConsumption();
 		MonthlyConsumptionPK monthlyPK = new MonthlyConsumptionPK();
 		CurrentBillBean bill = manager.find(CurrentBillBean.class, currentBill.getRrNumber());
-		if(bill != null) {
+		if (bill != null) {
 			Calendar cal = Calendar.getInstance();
-		  	cal.setTime(new Date());
-		  	Calendar cal1 = Calendar.getInstance();
-		  	cal1.setTime(bill.getDate());
-		  	if(cal.get(Calendar.MONTH) == cal1.get(Calendar.MONTH)) {
-		  		return null;
-		  	}
+			cal.setTime(new Date());
+			Calendar cal1 = Calendar.getInstance();
+			cal1.setTime(bill.getDate());
+			if (cal.get(Calendar.MONTH) == cal1.get(Calendar.MONTH)) {
+				return null;
+			}
 		}
 		ConsumerMasterBean consumerBean = manager.find(ConsumerMasterBean.class, currentBill.getRrNumber());
 		double billAmount = calculation.calculateBill(units, currentBill.getTypeOfConsumer());
@@ -165,11 +154,9 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			transaction.commit();
 			return currentBill;
 		} catch (Exception e) {
-
 			return null;
 		}
-
-	}
+	} // end of addCurrentBill
 
 	@Override
 	public boolean sendRespond(String rrNumber, String queryResponse, Date date) {
@@ -189,8 +176,8 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			e.printStackTrace();
 			return false;
 		}
-	}
-	
+	} // end of sendRespond
+
 	@Override
 	public List<QueryMsgBean> getQueryList(String region) {
 		EntityManager manager = factory.createEntityManager();
@@ -206,7 +193,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		} catch (Exception e) {
 			return null;
 		}
-	}
+	} // end of getQueryList
 
 	@Override
 	public boolean updatePassword(String password, int empId) {
@@ -215,12 +202,10 @@ public class EmployeeDAOImp implements EmployeeDAO {
 		boolean isUpdated = false;
 		try {
 			transaction.begin();
-			EmployeeMasterBean info = manager.find(EmployeeMasterBean.class,empId);
+			EmployeeMasterBean info = manager.find(EmployeeMasterBean.class, empId);
 			if (info != null) {
 				info.setPassword(password);
-
 				transaction.commit();
-
 				isUpdated = true;
 			}
 		} catch (Exception e) {
@@ -229,7 +214,7 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			manager.close();
 		}
 		return isUpdated;
-	}
+	} // end of updatePassword
 
 	@Override
 	public List<Object[]> getPaidBills(String region) {
@@ -245,7 +230,6 @@ public class EmployeeDAOImp implements EmployeeDAO {
 			e.printStackTrace();
 			return null;
 		}
-	}
+	} // end of getPaidBills
 
-
-}
+} // end of EmployeeDAOImp
